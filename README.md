@@ -1,26 +1,36 @@
 # Coran: lecture et tafsir
 
 A calm, mobile-first Quran reader. Pick a surah, read each ayah in Arabic with
-its translation underneath, and tap any ayah to open Tafsir Ibn Kathir for that
+its translations underneath, and tap any ayah to open Tafsir Ibn Kathir for that
 exact ayah.
 
 Live site: https://dyanshah76-gif.github.io/Quran/
 Link to an ayah: https://dyanshah76-gif.github.io/Quran/#2:255
 
+Interface languages: French, English, Arabic (right to left) and Roman Urdu.
+Everything is chosen in Settings and saved in the browser.
+
 ## Where every word comes from
 
-No Quran text, translation or tafsir is stored in this repository or written by
-hand. The site downloads them at runtime, unchanged, from these pinned sources
-(see `assets/sources.js`):
+The site downloads the Quran text, translations and tafsir at runtime,
+unchanged, from these pinned sources (see `assets/sources.js`):
 
 | Content | Source | Pinned version | Licence / terms |
 | --- | --- | --- | --- |
 | Arabic text (Uthmani, Hafs, Madinah Mushaf) | [QuranEnc.com](https://quranenc.com/), via [quran-json](https://github.com/risan/quran-json/tree/v3.1.2) | npm `quran-json@3.1.2` = git tag `v3.1.2` (`707ba0f`) | quran-json: CC BY-SA 4.0. QuranEnc: no modification, cite QuranEnc.com |
 | French translation: Muhammad Hamidullah | [Tanzil.net](https://tanzil.net/trans/fr.hamidullah), via quran-json | same | Tanzil: non-commercial use |
 | English translation: Saheeh International | [Tanzil.net](https://tanzil.net/trans/en.sahih), via quran-json | same | Tanzil: non-commercial use |
+| Urdu translation: Muhammad Junagarhi | [Tanzil.net](https://tanzil.net/trans/), via [fawazahmed0/quran-api](https://github.com/fawazahmed0/quran-api) edition `urd-muhammadjunagar` | commit `93e6f64` | Tanzil: non-commercial use |
 | Tafsir Ibn Kathir, English (abridged) | QUL resource [35](https://qul.tarteel.ai/resources/tafsir/35), slug `en-tafisr-ibn-kathir`, via [spa5k/tafsir_api](https://github.com/spa5k/tafsir_api) | commit `eb82bb6` | dataset code MIT; texts belong to their publishers |
 | Tafsir Ibn Kathir, Arabic | QUL resource [22](https://qul.tarteel.ai/resources/tafsir/22), slug `ar-tafsir-ibn-kathir`, via spa5k/tafsir_api | commit `eb82bb6` | same |
-| Quran font: KFGQPC HAFS Uthmanic Script v13 | [King Fahd Complex](https://fonts.qurancomplex.gov.sa/), copy in [fawazahmed0/quran-api](https://github.com/fawazahmed0/quran-api) | commit `93e6f64` | credited in the footer |
+| Tafsir Ibn Kathir, Urdu | QUL resource [30](https://qul.tarteel.ai/resources/tafsir/30), slug `tafseer-ibn-e-kaseer-urdu`, via spa5k/tafsir_api | commit `eb82bb6` | same |
+| Quran font: KFGQPC HAFS Uthmanic Script v13 | [King Fahd Complex](https://fonts.qurancomplex.gov.sa/), copy in fawazahmed0/quran-api | commit `93e6f64` | credited in the footer |
+
+**One exception, made on request: Roman Urdu.** No clean Roman Urdu edition
+exists as open data, so `data/roman-urdu/` holds Junagarhi's Urdu written in
+Latin letters by Claude, word by word. It is not an official translation, it is
+always shown with an "unofficial" label, and the Urdu text is the reference.
+How it was made: `data/roman-urdu/README.md` and `tools/roman-urdu/`.
 
 Every response is checked before it is shown: chapter number, number of ayahs,
 ayah numbers, and for the tafsir the surah and ayah inside the file must match
@@ -31,17 +41,23 @@ When Ibn Kathir explains several ayahs together, the dataset repeats the same
 passage on each of them. The tafsir panel detects this and says which ayahs the
 passage covers (for example 112:1 to 112:4).
 
+The Tanzil Urdu file stores a few letters as Arabic "presentation forms"
+(for example ﻻ for لا). They are displayed as the same standard letters so that
+Urdu fonts join them; no letter or word changes.
+
 ## Files
 
 ```
-index.html          page shell, early theme script
-favicon.svg         octagram icon
-.nojekyll           tells GitHub Pages to serve files as they are
+index.html             page shell, early theme script
+favicon.svg            octagram icon
+.nojekyll              tells GitHub Pages to serve files as they are
 assets/
-  styles.css        layout, light and dark themes, Quran font
-  app.js            routing, loading, tafsir panel, settings
-  sources.js        the pinned source addresses and IDs
-  i18n.js           interface text in French and English
+  styles.css           layout, light and dark themes, right-to-left, fonts
+  app.js               routing, loading, tafsir panel, settings
+  sources.js           the pinned source addresses and IDs
+  i18n.js              interface text: French, English, Arabic, Roman Urdu
+data/roman-urdu/       unofficial Roman Urdu (one file per surah) + README
+tools/roman-urdu/      the script and hand-written spellings used to make it
 README.md
 ```
 

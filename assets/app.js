@@ -2,10 +2,12 @@
 //
 // All Quran text, translations and tafsir are fetched at runtime, unchanged,
 // from the pinned sources in sources.js. This file only places them on the page;
-// it never writes, edits or translates any of that text.
+// it never writes, edits or translates any of that text. The one exception, made
+// at the user's request, is the Roman Urdu (data/roman-urdu), which is always
+// labelled as an unofficial transcription.
 
-import { QURAN_JSON, ARABIC_TEXT, TRANSLATIONS, TAFSIR, QURAN_FONT } from './sources.js';
-import { STRINGS } from './i18n.js';
+import { QURAN_JSON, ARABIC_TEXT, TRANSLATIONS, URDU, ROMAN_URDU, TAFSIR, QURAN_FONT } from './sources.js';
+import { STRINGS, LANGUAGES, arabicDigits } from './i18n.js';
 
 const SURAH_COUNT = 114;
 const SETTINGS_KEY = 'quran.settings.v1';
@@ -77,10 +79,22 @@ function writeStore(key, value) {
 /* Settings                                                            */
 /* ------------------------------------------------------------------ */
 
+const UI_LANGS = LANGUAGES.map(([code]) => code);
+
+function browserLanguage() {
+  const lang = (navigator.language || 'fr').toLowerCase();
+  if (lang.startsWith('fr')) return 'fr';
+  if (lang.startsWith('ar')) return 'ar';
+  if (lang.startsWith('ur')) return 'rur';
+  return 'en';
+}
+
 const DEFAULTS = {
-  ui: (navigator.language || 'fr').toLowerCase().startsWith('fr') ? 'fr' : 'en',
+  ui: browserLanguage(),
   showFr: true,
   showEn: false,
+  showUr: false,
+  showRur: false,
   tafsir: 'en',
   arSize: 30,
   trSize: 17,
@@ -89,11 +103,14 @@ const DEFAULTS = {
 
 function loadSettings() {
   const saved = readStore(SETTINGS_KEY) || {};
+  const flag = (key) => (typeof saved[key] === 'boolean' ? saved[key] : DEFAULTS[key]);
   return {
-    ui: saved.ui === 'fr' || saved.ui === 'en' ? saved.ui : DEFAULTS.ui,
-    showFr: typeof saved.showFr === 'boolean' ? saved.showFr : DEFAULTS.showFr,
-    showEn: typeof saved.showEn === 'boolean' ? saved.showEn : DEFAULTS.showEn,
-    tafsir: saved.tafsir === 'ar' || saved.tafsir === 'en' ? saved.tafsir : DEFAULTS.tafsir,
+    ui: UI_LANGS.includes(saved.ui) ? saved.ui : DEFAULTS.ui,
+    showFr: flag('showFr'),
+    showEn: flag('showEn'),
+    showUr: flag('showUr'),
+    showRur: flag('showRur'),
+    tafsir: saved.tafsir in TAFSIR.editions ? saved.tafsir : DEFAULTS.tafsir,
     arSize: clampNumber(saved.arSize, 22, 46, DEFAULTS.arSize),
     trSize: clampNumber(saved.trSize, 14, 26, DEFAULTS.trSize),
     theme: ['auto', 'light', 'dark'].includes(saved.theme) ? saved.theme : DEFAULTS.theme,
@@ -114,7 +131,8 @@ function saveSettings() {
 function applySettings() {
   const root = document.documentElement;
   const s = state.settings;
-  root.lang = s.ui;
+  root.lang = s.ui === 'rur' ? 'ur-Latn' : s.ui;
+  root.dir = s.ui === 'ar' ? 'rtl' : 'ltr';
   root.style.setProperty('--ar-size', `${s.arSize}px`);
   root.style.setProperty('--tr-size', `${s.trSize}px`);
   if (s.theme === 'auto') root.removeAttribute('data-theme');
@@ -157,6 +175,17 @@ function richText(tag, key, parts, attrs = {}) {
 }
 
 const extLink = (label, href) => el('a', { href, target: '_blank', rel: 'noopener' }, label);
+
+// Surah names' meanings exist in French and English only (quran-json index).
+const indexLang = () => (state.settings.ui === 'fr' ? 'fr' : 'en');
+const showMeanings = () => state.settings.ui !== 'ar';
+const fmtNum = (n) => (state.settings.ui === 'ar' ? arabicDigits(n) : String(n));
+const listSep = () => (state.settings.ui === 'ar' ? '، ' : ', ');
+
+// The Tanzil Urdu file stores a few letters as "presentation forms" (e.g. ﻻ
+// instead of لا). They are shown as the same standard letters so that Urdu
+// fonts can join them; no letter or word changes.
+const displayUrdu = (text) => text.replace(/[ﭐ-﷿ﹰ-﻿]/g, (ch) => ch.normalize('NFKC'));
 
 /* ------------------------------------------------------------------ */
 /* Data loading: pinned sources, fallbacks, validation                 */
@@ -275,6 +304,19 @@ const getTafsir = (edition, surah, ayah) =>
     fetchVerified(TAFSIR.bases, TAFSIR.ayahPath(TAFSIR.editions[edition].slug, surah, ayah), validTafsir(surah, ayah)),
   );
 
+const validUrdu = (n) => (data) =>
+  data &&
+  Array.isArray(data.chapter) &&
+  data.chapter.length > 0 &&
+  data.chapter.every((v, i) => v && v.chapter === n && v.verse === i + 1 && isText(v.text));
+
+const validRoman = (n) => (data) =>
+  data && data.surah === n && Array.isArray(data.verses) && data.verses.length > 0 && data.verses.every(isText);
+
+const getUrdu = (n) => once(`urdu:${n}`, () => fetchVerified(URDU.bases, URDU.chapterPath(n), validUrdu(n)));
+
+const getRoman = (n) => once(`roman:${n}`, () => fetchVerified(ROMAN_URDU.bases, ROMAN_URDU.chapterPath(n), validRoman(n)));
+
 async function quranFontReady(timeoutMs) {
   if (!document.fonts || !document.fonts.load) return true;
   const spec = `32px ${QURAN_FONT.family}`;
@@ -290,15 +332,20 @@ async function quranFontReady(timeoutMs) {
   }
 }
 
-let arabicProseFontRequested = false;
-function ensureArabicProseFont() {
-  // Amiri is only downloaded when the Arabic tafsir is opened.
-  if (arabicProseFontRequested) return;
-  arabicProseFontRequested = true;
-  document.head.append(
-    el('link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true }),
-    el('link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap' }),
-  );
+// Extra fonts are only downloaded when they are needed: Amiri for the Arabic
+// tafsir, Noto Nastaliq Urdu for Urdu text.
+const FONT_CSS = {
+  arabic: 'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap',
+  urdu: 'https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&display=swap',
+};
+const requestedFonts = new Set();
+function ensureFont(kind) {
+  if (requestedFonts.has(kind) || !FONT_CSS[kind]) return;
+  if (!requestedFonts.size) {
+    document.head.append(el('link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true }));
+  }
+  requestedFonts.add(kind);
+  document.head.append(el('link', { rel: 'stylesheet', href: FONT_CSS[kind] }));
 }
 
 /* ------------------------------------------------------------------ */
@@ -362,7 +409,7 @@ function renderTopbar() {
 
 function renderFooter() {
   const footer = document.getElementById('site-footer');
-  const { en, ar } = TAFSIR.editions;
+  const { en, ar, ur } = TAFSIR.editions;
   footer.replaceChildren(
     el(
       'div',
@@ -374,13 +421,16 @@ function renderFooter() {
         qj: extLink(`quran-json ${QURAN_JSON.version}`, QURAN_JSON.url),
         author: extLink(QURAN_JSON.author.name, QURAN_JSON.author.url),
         license: extLink(QURAN_JSON.license.name, QURAN_JSON.license.url),
+        urdu: extLink(URDU.name, URDU.url),
       }),
       richText('p', 'footTafsir', {
         en: extLink(`QUL ${en.id}`, en.qul),
         ar: extLink(`QUL ${ar.id}`, ar.qul),
+        ur: extLink(`QUL ${ur.id}`, ur.qul),
         repo: extLink(TAFSIR.name, TAFSIR.url),
         mit: extLink(TAFSIR.license.name, TAFSIR.license.url),
       }),
+      richText('p', 'footRoman', { more: extLink(t('sourceMore'), ROMAN_URDU.readme) }),
       richText('p', 'footFont', {
         font: extLink(QURAN_FONT.name, QURAN_FONT.makerUrl),
         maker: QURAN_FONT.maker,
@@ -484,7 +534,7 @@ async function renderHome(token) {
 
   let index;
   try {
-    ({ data: index } = await getIndex(state.settings.ui));
+    ({ data: index } = await getIndex(indexLang()));
   } catch (error) {
     if (token !== state.routeToken) return;
     body.replaceChildren(errorView(error, () => route()));
@@ -498,13 +548,13 @@ async function renderHome(token) {
     const link = el(
       'a',
       { class: 'surah-link', href: `#${surah.id}` },
-      el('span', { class: 'medal', 'aria-hidden': 'true' }, el('span', {}, surah.id)),
+      el('span', { class: 'medal', 'aria-hidden': 'true' }, el('span', {}, fmtNum(surah.id))),
       el(
         'span',
         { class: 'surah-text' },
-        el('span', { class: 'surah-tr' }, el('span', { class: 'visually-hidden' }, `${surah.id}. `), surah.transliteration),
-        el('span', { class: 'surah-meaning' }, surah.translation),
-        el('span', { class: 'surah-meta' }, `${verses}, ${type}`),
+        el('span', { class: 'surah-tr', lang: 'en', dir: 'ltr' }, el('span', { class: 'visually-hidden' }, `${surah.id}. `), surah.transliteration),
+        showMeanings() ? el('span', { class: 'surah-meaning', lang: indexLang() }, surah.translation) : null,
+        el('span', { class: 'surah-meta' }, `${verses}${listSep()}${type}`),
       ),
       el('span', { class: 'surah-ar', lang: 'ar', dir: 'rtl' }, surah.name),
     );
@@ -523,7 +573,7 @@ async function renderHome(token) {
     if (!lastRead || !Number.isInteger(lastRead.s) || !Number.isInteger(lastRead.a)) return null;
     const surah = index[lastRead.s - 1];
     if (!surah || lastRead.a < 1 || lastRead.a > surah.total_verses) return null;
-    return el('a', { class: 'btn', href: `#${lastRead.s}:${lastRead.a}` }, t('resume', { name: surah.transliteration, a: lastRead.a }));
+    return el('a', { class: 'btn', href: `#${lastRead.s}:${lastRead.a}` }, t('resume', { name: surah.transliteration, a: fmtNum(lastRead.a) }));
   };
 
   let firstMatch = null;
@@ -582,6 +632,7 @@ async function renderHome(token) {
 /* Surah page                                                          */
 /* ------------------------------------------------------------------ */
 
+// French and English come from quran-json; Urdu and Roman Urdu are loaded apart.
 function shownTranslations() {
   const langs = [];
   if (state.settings.showFr) langs.push('fr');
@@ -597,13 +648,20 @@ async function renderSurah(s, a, token) {
   window.scrollTo(0, 0);
 
   const langs = shownTranslations();
-  const files = langs.length ? langs : [state.settings.ui];
+  const files = langs.length ? langs : [indexLang()];
+  const wantUr = state.settings.showUr;
+  const wantRur = state.settings.showRur;
+  if (wantUr) ensureFont('urdu');
   let index;
   let chapters;
   let basmala = null;
   let fontOk = true;
+  let urdu = null;
+  let roman = null;
+  const extraErrors = [];
   try {
-    const results = await Promise.all([getIndex(state.settings.ui), ...files.map((lang) => getChapter(lang, s))]);
+    const optional = Promise.allSettled([wantUr ? getUrdu(s) : null, wantRur ? getRoman(s) : null]);
+    const results = await Promise.all([getIndex(indexLang()), ...files.map((lang) => getChapter(lang, s))]);
     index = results[0].data;
     chapters = results.slice(1).map((result) => result.data);
     if (s !== 1 && s !== 9) {
@@ -611,6 +669,16 @@ async function renderSurah(s, a, token) {
       // it is the text of 1:1 in the same dataset.
       const first = await getChapter(files[0], 1);
       basmala = first.data.verses[0].text;
+    }
+    const [urResult, rurResult] = await optional;
+    const total = chapters[0].total_verses;
+    if (wantUr) {
+      if (urResult.status === 'fulfilled' && urResult.value.data.chapter.length === total) urdu = urResult.value.data.chapter;
+      else extraErrors.push(urResult.status === 'rejected' ? urResult.reason : new SourceError('invalid', []));
+    }
+    if (wantRur) {
+      if (rurResult.status === 'fulfilled' && rurResult.value.data.verses.length === total) roman = rurResult.value.data.verses;
+      else extraErrors.push(rurResult.status === 'rejected' ? rurResult.reason : new SourceError('invalid', []));
     }
     fontOk = await quranFontReady(4000);
   } catch (error) {
@@ -624,18 +692,20 @@ async function renderSurah(s, a, token) {
   const total = meta.total_verses;
   const byLang = {};
   files.forEach((lang, i) => (byLang[lang] = chapters[i]));
-  const meaning = (byLang[state.settings.ui] || index[s - 1]).translation;
+  const meaning = (byLang[indexLang()] || index[s - 1]).translation;
 
   state.current = { view: 'surah', s, meta, total, verses: meta.verses, ready: false };
   document.title = t('docTitleSurah', { name: meta.transliteration, n: s });
-  dom.topTitle.textContent = `${s}. ${meta.transliteration}`;
+  dom.topTitle.textContent = `${fmtNum(s)}. ${meta.transliteration}`;
 
   // Header
   const sourceParts = [richText('span', 'sourceLine', { arabic: extLink(ARABIC_TEXT.name, ARABIC_TEXT.url) })];
-  langs.forEach((lang) => {
+  const sourceLangs = [...langs, ...(urdu ? ['ur'] : [])];
+  sourceLangs.forEach((lang) => {
     const tr = TRANSLATIONS[lang];
     sourceParts.push(' ', richText('span', 'sourceLineTr', { translator: extLink(tr.translator, tr.url), via: tr.via }));
   });
+  if (roman) sourceParts.push(' ', richText('span', 'sourceLineRur', { more: extLink(t('sourceMore'), ROMAN_URDU.readme) }));
   const jumpInput = el('input', {
     type: 'number',
     id: 'jump-input',
@@ -671,9 +741,9 @@ async function renderSurah(s, a, token) {
       el('p', { class: 'surah-name-ar', lang: 'ar', dir: 'rtl' }, meta.name),
       el('span', { class: 'orn end', 'aria-hidden': 'true' }),
     ),
-    el('h1', { id: 'surah-title', tabindex: '-1' }, meta.transliteration),
-    el('p', { class: 'meaning' }, meaning),
-    el('p', { class: 'meta' }, t('surahMeta', { n: s, verses: t('verses', total), type: t(meta.type) })),
+    el('h1', { id: 'surah-title', tabindex: '-1', lang: 'en', dir: 'ltr' }, meta.transliteration),
+    showMeanings() ? el('p', { class: 'meaning', lang: indexLang() }, meaning) : null,
+    el('p', { class: 'meta' }, t('surahMeta', { n: fmtNum(s), verses: t('verses', total), type: t(meta.type) })),
     jump,
     el('p', { class: 'source-line' }, ...sourceParts),
     el('p', { class: 'tap-hint' }, t('tapHint')),
@@ -681,6 +751,8 @@ async function renderSurah(s, a, token) {
 
   const parts = [head];
   if (!fontOk) parts.push(el('p', { class: 'notice warn', role: 'alert' }, t('fontWarn')));
+  extraErrors.forEach((error) => parts.push(errorView(error, () => rerenderKeepingPlace())));
+  if (roman) parts.push(el('p', { class: 'notice roman' }, el('span', { class: 'tag' }, t('romanTag')), ' ', t('romanNotice')));
   if (a !== null && (a < 1 || a > total)) {
     parts.push(el('p', { class: 'notice', role: 'alert' }, t('ayahMissing', { name: meta.transliteration, verses: t('verses', total), a })));
   }
@@ -699,8 +771,12 @@ async function renderSurah(s, a, token) {
       el('p', { class: 'ar', lang: 'ar', dir: 'rtl' }, verse.text, ' ', el('span', { class: 'ayah-num', 'aria-hidden': 'true' }, toArabicDigits(n))),
     );
     langs.forEach((lang) => {
-      item.append(el('p', { class: `tr tr-${lang}`, lang }, byLang[lang].verses[i].translation));
+      item.append(el('p', { class: `tr tr-${lang}`, lang, dir: 'ltr' }, byLang[lang].verses[i].translation));
     });
+    if (urdu) item.append(el('p', { class: 'tr tr-ur', lang: 'ur', dir: 'rtl' }, displayUrdu(urdu[i].text)));
+    if (roman) {
+      item.append(el('p', { class: 'tr tr-rur', lang: 'ur-Latn', dir: 'ltr' }, el('span', { class: 'tag' }, t('romanTag')), ' ', roman[i]));
+    }
     item.append(
       el(
         'div',
@@ -720,11 +796,11 @@ async function renderSurah(s, a, token) {
   const nav = el('nav', { class: 'surah-nav', 'aria-label': `${t('prevSurah')} / ${t('nextSurah')}` });
   if (s > 1) {
     const prev = index[s - 2];
-    nav.append(el('a', { class: 'prev', href: `#${s - 1}`, rel: 'prev' }, el('small', {}, t('prevSurah')), el('strong', {}, `${prev.id}. ${prev.transliteration}`)));
+    nav.append(el('a', { class: 'prev', href: `#${s - 1}`, rel: 'prev' }, el('small', {}, t('prevSurah')), el('strong', {}, `${fmtNum(prev.id)}. ${prev.transliteration}`)));
   }
   if (s < SURAH_COUNT) {
     const next = index[s];
-    nav.append(el('a', { class: 'next', href: `#${s + 1}`, rel: 'next' }, el('small', {}, t('nextSurah')), el('strong', {}, `${next.id}. ${next.transliteration}`)));
+    nav.append(el('a', { class: 'next', href: `#${s + 1}`, rel: 'next' }, el('small', {}, t('nextSurah')), el('strong', {}, `${fmtNum(next.id)}. ${next.transliteration}`)));
   }
   parts.push(nav);
 
@@ -844,7 +920,7 @@ function buildPanel() {
   panel.title = el('span', {});
   panel.sub = el('small', {});
   panel.closeButton = el('button', { class: 'icon-btn', type: 'button', onclick: () => closeTafsir() }, svgIcon(ICONS.close));
-  panel.tabs = ['en', 'ar'].map((edition) =>
+  panel.tabs = Object.keys(TAFSIR.editions).map((edition) =>
     el('button', { type: 'button', 'aria-pressed': 'false', dataset: { edition }, onclick: () => switchEdition(edition) }),
   );
   panel.tabGroup = el('div', { class: 'seg', role: 'group' }, ...panel.tabs);
@@ -876,8 +952,8 @@ function labelPanel() {
   panel.closeButton.setAttribute('aria-label', t('close'));
   panel.closeButton.title = t('close');
   panel.tabGroup.setAttribute('aria-label', t('tafsirLang'));
-  panel.tabs[0].textContent = t('tafsirEn');
-  panel.tabs[1].textContent = t('tafsirAr');
+  const tabLabels = { en: 'tabEn', ar: 'tabAr', ur: 'tabUr' };
+  panel.tabs.forEach((tab) => (tab.textContent = t(tabLabels[tab.dataset.edition])));
   panel.prevButton.textContent = t('prevPassage');
   panel.nextButton.textContent = t('nextPassage');
 }
@@ -987,8 +1063,19 @@ const looksLikeHeading = (text) => {
 // editor's [[...]] notes in the Arabic edition.
 function renderTafsirText(container, text, edition) {
   const isArabic = edition === 'ar';
-  container.setAttribute('lang', isArabic ? 'ar' : 'en');
-  container.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+  const { lang, dir } = TAFSIR.editions[edition];
+  container.setAttribute('lang', lang);
+  container.setAttribute('dir', dir);
+  if (edition === 'ur') {
+    const fragment = document.createDocumentFragment();
+    text
+      .split(/\n+/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .forEach((line) => fragment.append(el('p', {}, displayUrdu(line))));
+    container.replaceChildren(fragment);
+    return;
+  }
   const fragment = document.createDocumentFragment();
   text
     .split(/\n+/)
@@ -1066,7 +1153,7 @@ async function detectRange(edition, s, start, text, token) {
 }
 
 function showPanelSource(url, edition) {
-  const label = edition === 'ar' ? t('tafsirEditionAr') : t('tafsirEditionEn');
+  const label = t({ en: 'tafsirEditionEn', ar: 'tafsirEditionAr', ur: 'tafsirEditionUr' }[edition]);
   const path = url.split('/tafsir/').pop();
   panel.source.replaceChildren(document.createTextNode(`${t('tafsirSource', { edition: label })} `), extLink(path, url));
 }
@@ -1087,7 +1174,8 @@ async function loadPanel() {
   panel.body.scrollTop = 0;
   updatePanelNav();
   markReading(a, a);
-  if (edition === 'ar') ensureArabicProseFont();
+  if (edition === 'ar') ensureFont('arabic');
+  if (edition === 'ur') ensureFont('urdu');
 
   try {
     const result = await getTafsir(edition, s, a);
@@ -1213,8 +1301,26 @@ function buildSettingsForm() {
     ),
     rangeField('ar-size', t('arSize'), 22, 46, s.arSize, (n) => update({ arSize: n })),
     rangeField('tr-size', t('trSize'), 14, 26, s.trSize, (n) => update({ trSize: n })),
-    el('fieldset', {}, el('legend', {}, t('translations')), checkbox('showFr', t('trFr')), checkbox('showEn', t('trEn'))),
-    radioGroup('tafsir', t('tafsirDefault'), [['en', t('tafsirEn')], ['ar', t('tafsirAr')]], s.tafsir, (v) => update({ tafsir: v })),
+    el(
+      'fieldset',
+      {},
+      el('legend', {}, t('translations')),
+      checkbox('showFr', t('trFr')),
+      checkbox('showEn', t('trEn')),
+      checkbox('showUr', t('trUr')),
+      checkbox('showRur', t('trRur')),
+    ),
+    radioGroup(
+      'tafsir',
+      t('tafsirDefault'),
+      [
+        ['en', t('tafsirEn')],
+        ['ar', t('tafsirAr')],
+        ['ur', t('tafsirUr')],
+      ],
+      s.tafsir,
+      (v) => update({ tafsir: v }),
+    ),
     radioGroup(
       'theme',
       t('theme'),
@@ -1226,16 +1332,7 @@ function buildSettingsForm() {
       s.theme,
       (v) => update({ theme: v }),
     ),
-    radioGroup(
-      'ui',
-      t('uiLang'),
-      [
-        ['fr', 'Français'],
-        ['en', 'English'],
-      ],
-      s.ui,
-      (v) => update({ ui: v }, { rerender: true }),
-    ),
+    radioGroup('ui', t('uiLang'), LANGUAGES, s.ui, (v) => update({ ui: v }, { rerender: true })),
     el('p', { class: 'settings-note' }, t('savedNote')),
   );
 }

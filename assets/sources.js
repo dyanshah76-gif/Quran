@@ -8,8 +8,9 @@
 //   6,236 verses; Arabic = Uthmani text from QuranEnc.com, French = Muhammad
 //   Hamidullah (via Tanzil.net), English = Saheeh International (via Tanzil.net).
 // - spa5k/tafsir_api, commit eb82bb6 (30 Sep 2026): editions.json lists
-//   id 35 "en-tafisr-ibn-kathir" (English, abridged) and id 22
-//   "ar-tafsir-ibn-kathir" (Arabic); one JSON file per ayah: {surah, ayah, text}.
+//   id 35 "en-tafisr-ibn-kathir" (English, abridged), id 22
+//   "ar-tafsir-ibn-kathir" (Arabic) and id 30 "tafseer-ibn-e-kaseer-urdu"
+//   (Urdu); one JSON file per ayah: {surah, ayah, text}.
 // - fawazahmed0/quran-api, commit 93e6f64: copy of the KFGQPC HAFS Uthmanic
 //   Script font (King Fahd Complex), loaded in styles.css.
 
@@ -48,6 +49,36 @@ export const TRANSLATIONS = {
     via: 'Tanzil.net',
     url: 'https://tanzil.net/trans/en.sahih',
   },
+  ur: {
+    translator: 'Muhammad Junagarhi',
+    via: 'Tanzil.net',
+    url: 'https://tanzil.net/trans/',
+  },
+};
+
+// Urdu translation of Muhammad Junagarhi (Tanzil text), one JSON file per surah:
+// {"chapter": [{"chapter": n, "verse": i, "text": "…"}]}. Checked on
+// 3 November 2026: 6,236 verses, each under the right ayah.
+export const URDU = {
+  name: 'fawazahmed0/quran-api',
+  edition: 'urd-muhammadjunagar',
+  commit: '93e6f64925ae76273520d636fcaaf061129f2316',
+  bases: [
+    'https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@93e6f64925ae76273520d636fcaaf061129f2316/',
+    'https://raw.githubusercontent.com/fawazahmed0/quran-api/93e6f64925ae76273520d636fcaaf061129f2316/',
+  ],
+  chapterPath: (n) => `editions/urd-muhammadjunagar/${n}.json`,
+  url: 'https://github.com/fawazahmed0/quran-api/tree/93e6f64925ae76273520d636fcaaf061129f2316',
+};
+
+// Roman Urdu: NOT an official translation. Junagarhi's Urdu written in Latin
+// letters by Claude, word by word, at the user's request (see
+// data/roman-urdu/README.md). Stored in this repository because it exists
+// nowhere else; always shown with an "unofficial" label.
+export const ROMAN_URDU = {
+  bases: ['data/roman-urdu/'],
+  chapterPath: (n) => `${n}.json`,
+  readme: 'https://github.com/dyanshah76-gif/Quran/blob/main/data/roman-urdu/README.md',
 };
 
 export const TAFSIR = {
@@ -74,6 +105,13 @@ export const TAFSIR = {
       lang: 'ar',
       dir: 'rtl',
       qul: 'https://qul.tarteel.ai/resources/tafsir/22',
+    },
+    ur: {
+      id: 30,
+      slug: 'tafseer-ibn-e-kaseer-urdu',
+      lang: 'ur',
+      dir: 'rtl',
+      qul: 'https://qul.tarteel.ai/resources/tafsir/30',
     },
   },
 };

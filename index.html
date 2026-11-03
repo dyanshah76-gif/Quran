@@ -21,7 +21,9 @@
           if (s.theme === 'light' || s.theme === 'dark') r.setAttribute('data-theme', s.theme);
           if (typeof s.arSize === 'number') r.style.setProperty('--ar-size', s.arSize + 'px');
           if (typeof s.trSize === 'number') r.style.setProperty('--tr-size', s.trSize + 'px');
-          if (s.ui === 'fr' || s.ui === 'en') r.lang = s.ui;
+          if (s.ui === 'fr' || s.ui === 'en' || s.ui === 'ar') r.lang = s.ui;
+          if (s.ui === 'rur') r.lang = 'ur-Latn';
+          if (s.ui === 'ar') r.dir = 'rtl';
         } catch (e) {}
       })();
     </script>

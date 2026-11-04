@@ -1,8 +1,8 @@
 # Coran: lecture et tafsir
 
 A calm, mobile-first Quran reader. Pick a surah, read each ayah in Arabic with
-its translations underneath, and tap any ayah to open Tafsir Ibn Kathir for that
-exact ayah.
+its translations underneath, and tap any ayah to open its explanation
+(al-Mukhtasar fi Tafsir al-Qur'an al-Karim) and the authentic hadith that quote it.
 
 Live site: https://dyanshah76-gif.github.io/Quran/
 Link to an ayah: https://dyanshah76-gif.github.io/Quran/#2:255
@@ -12,7 +12,7 @@ Everything is chosen in Settings and saved in the browser.
 
 ## Where every word comes from
 
-The site downloads the Quran text, translations and tafsir at runtime,
+The site downloads the Quran text, translations, tafsir and hadith at runtime,
 unchanged, from these pinned sources (see `assets/sources.js`):
 
 | Content | Source | Pinned version | Licence / terms |
@@ -21,9 +21,10 @@ unchanged, from these pinned sources (see `assets/sources.js`):
 | French translation: Muhammad Hamidullah | [Tanzil.net](https://tanzil.net/trans/fr.hamidullah), via quran-json | same | Tanzil: non-commercial use |
 | English translation: Saheeh International | [Tanzil.net](https://tanzil.net/trans/en.sahih), via quran-json | same | Tanzil: non-commercial use |
 | Urdu translation: Muhammad Junagarhi | [Tanzil.net](https://tanzil.net/trans/), via [fawazahmed0/quran-api](https://github.com/fawazahmed0/quran-api) edition `urd-muhammadjunagar` | commit `93e6f64` | Tanzil: non-commercial use |
-| Tafsir Ibn Kathir, English (abridged) | QUL resource [35](https://qul.tarteel.ai/resources/tafsir/35), slug `en-tafisr-ibn-kathir`, via [spa5k/tafsir_api](https://github.com/spa5k/tafsir_api) | commit `eb82bb6` | dataset code MIT; texts belong to their publishers |
-| Tafsir Ibn Kathir, Arabic | QUL resource [22](https://qul.tarteel.ai/resources/tafsir/22), slug `ar-tafsir-ibn-kathir`, via spa5k/tafsir_api | commit `eb82bb6` | same |
-| Tafsir Ibn Kathir, Urdu | QUL resource [30](https://qul.tarteel.ai/resources/tafsir/30), slug `tafseer-ibn-e-kaseer-urdu`, via spa5k/tafsir_api | commit `eb82bb6` | same |
+| Tafsir: Al-Mukhtasar fi Tafsir al-Qur'an al-Karim, Arabic original | QUL resource [251](https://qul.tarteel.ai/resources/tafsir/251), slug `ar-tafsir-al-mukhtasar`, via [spa5k/tafsir_api](https://github.com/spa5k/tafsir_api) | commit `eb82bb6` | dataset code MIT; texts belong to their publisher |
+| Al-Mukhtasar, French translation | QUL resource [259](https://qul.tarteel.ai/resources/tafsir/259), slug `french-mokhtasar`, via spa5k/tafsir_api | commit `eb82bb6` | same |
+| Al-Mukhtasar, English translation | QUL resource [266](https://qul.tarteel.ai/resources/tafsir/266), slug `en-tafsir-al-mukhtasar`, via spa5k/tafsir_api | commit `eb82bb6` | same |
+| Hadith texts (Arabic, English, French, Urdu) and al-Albani's grades for the four Sunan | [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api) | commit `df57907` | public domain (Unlicense); grades taken by the dataset from al-maktaba.org |
 | Quran font: KFGQPC HAFS Uthmanic Script v13 | [King Fahd Complex](https://fonts.qurancomplex.gov.sa/), copy in fawazahmed0/quran-api | commit `93e6f64` | credited in the footer |
 
 **One exception, made on request: Roman Urdu.** No clean Roman Urdu edition
@@ -37,9 +38,18 @@ ayah numbers, and for the tafsir the surah and ayah inside the file must match
 what was asked. If a CDN address fails, the next one is tried (jsDelivr npm,
 jsDelivr GitHub, raw GitHub). If all fail, the page says so and offers a retry.
 
-When Ibn Kathir explains several ayahs together, the dataset repeats the same
-passage on each of them. The tafsir panel detects this and says which ayahs the
-passage covers (for example 112:1 to 112:4).
+Al-Mukhtasar was written by a group of tafsir scholars under the supervision of
+the Tafsir Center for Quranic Studies (Riyadh). It explains the meaning of each
+ayah and quotes no reports, so nothing in it needs grading. It has no Urdu
+edition in open data: the Urdu tab of the panel shows the hadith only. When it
+explains several ayahs together, the dataset repeats the same passage on each of
+them; the panel detects this and says which ayahs the passage covers.
+
+Under the explanation, the panel lists the authentic hadith that quote the ayah:
+Sahih al-Bukhari and Sahih Muslim, and from Abu Dawud, Tirmidhi, Nasa'i and Ibn
+Majah only the hadith that al-Albani graded sahih or hasan. Each one shows its
+grade, its reference and a link to sunnah.com. How the list was made, and why a
+hadith is placed under an ayah: `data/hadith/README.md` and `tools/hadith-map/`.
 
 The Tanzil Urdu file stores a few letters as Arabic "presentation forms"
 (for example ﻻ for لا). They are displayed as the same standard letters so that
@@ -53,11 +63,13 @@ favicon.svg            octagram icon
 .nojekyll              tells GitHub Pages to serve files as they are
 assets/
   styles.css           layout, light and dark themes, right-to-left, fonts
-  app.js               routing, loading, tafsir panel, settings
+  app.js               routing, loading, tafsir and hadith panel, settings
   sources.js           the pinned source addresses and IDs
   i18n.js              interface text: French, English, Arabic, Roman Urdu
 data/roman-urdu/       unofficial Roman Urdu (one file per surah) + README
+data/hadith/           which authentic hadith quote which ayah (one file per surah) + README
 tools/roman-urdu/      the script and hand-written spellings used to make it
+tools/hadith-map/      the script that builds data/hadith
 README.md
 ```
 

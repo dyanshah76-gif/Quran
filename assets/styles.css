@@ -112,6 +112,10 @@ select {
   border-radius: 6px;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -887,13 +891,6 @@ main {
   margin: 0 0 14px;
 }
 
-.tafsir-text p.tf-head {
-  margin-top: 22px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.tafsir-text p.tf-ar,
 .tafsir-text[lang='ar'] p {
   font-family: var(--font-arabic);
   font-size: calc(var(--tr-size) * 1.2);
@@ -901,20 +898,105 @@ main {
   text-align: right;
 }
 
-.tafsir-text p.tf-ar {
+/* Section titles inside the panel: "Explanation", "Authentic hadith" */
+.sheet-section {
+  margin: 18px 0 8px;
+  font: 600 13.5px/1.4 var(--font-ui);
+  color: var(--muted);
+}
+
+.hadith-section {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.hadith-rule {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.hadith-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hadith {
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.hadith-ref {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin: 0 0 8px;
+  font-size: 14px;
   color: var(--ink);
 }
 
-.tafsir-text[lang='ur'] p {
-  font-family: var(--font-urdu);
-  font-size: calc(var(--tr-size) * 1.1);
-  line-height: 2.4;
+.grade {
+  display: inline-block;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--tint);
+  color: var(--green);
+  font: 600 12px/1.8 var(--font-ui);
+}
+
+.hadith-text p {
+  margin: 0 0 10px;
+  font-family: var(--font-read);
+  font-size: calc(var(--tr-size) * 0.95);
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.hadith-text[lang='ar'] p {
+  font-family: var(--font-arabic);
+  font-size: calc(var(--tr-size) * 1.12);
+  line-height: 2;
   text-align: right;
 }
 
-.tafsir-text .tf-note {
+.hadith-text[lang='ur'] p {
+  font-family: var(--font-urdu);
+  font-size: calc(var(--tr-size) * 1.02);
+  line-height: 2.3;
+  text-align: right;
+}
+
+.hadith-notr {
+  margin: 0 0 8px;
+  font-size: 13px;
   color: var(--muted);
-  font-size: 0.85em;
+}
+
+.hadith-ar summary {
+  cursor: pointer;
+  margin: 2px 0 6px;
+  font-size: 13.5px;
+  color: var(--green);
+}
+
+.hadith-links {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.hadith-links a {
+  color: inherit;
+}
+
+.hadith-more {
+  margin: 2px 0 12px;
 }
 
 .sheet-foot {

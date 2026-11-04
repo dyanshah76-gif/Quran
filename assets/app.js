@@ -1,12 +1,12 @@
 // Quran reader: plain JavaScript, no build step, works on GitHub Pages.
 //
-// All Quran text, translations and tafsir are fetched at runtime, unchanged,
-// from the pinned sources in sources.js. This file only places them on the page;
-// it never writes, edits or translates any of that text. The one exception, made
-// at the user's request, is the Roman Urdu (data/roman-urdu), which is always
-// labelled as an unofficial transcription.
+// All Quran text, translations, tafsir and hadith are fetched at runtime,
+// unchanged, from the pinned sources in sources.js. This file only places them on
+// the page; it never writes, edits or translates any of that text. The one
+// exception, made at the user's request, is the Roman Urdu (data/roman-urdu),
+// which is always labelled as an unofficial transcription.
 
-import { QURAN_JSON, ARABIC_TEXT, TRANSLATIONS, URDU, ROMAN_URDU, TAFSIR, QURAN_FONT } from './sources.js';
+import { QURAN_JSON, ARABIC_TEXT, TRANSLATIONS, URDU, ROMAN_URDU, TAFSIR, PANEL_LANGS, HADITH, HADITH_INDEX, QURAN_FONT } from './sources.js';
 import { STRINGS, LANGUAGES, arabicDigits } from './i18n.js';
 
 const SURAH_COUNT = 114;
@@ -14,6 +14,7 @@ const SETTINGS_KEY = 'quran.settings.v1';
 const LAST_READ_KEY = 'quran.lastRead.v1';
 const FETCH_TIMEOUT_MS = 15000;
 const GROUP_SCAN_LIMIT = 20;
+const HADITH_BATCH = 5;
 const AR_DIGITS = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 
 /* ------------------------------------------------------------------ */
@@ -89,13 +90,16 @@ function browserLanguage() {
   return 'en';
 }
 
+// The tafsir opens in the interface language (English for Roman Urdu, since
+// al-Mukhtasar has no Urdu edition).
+const defaultTafsir = (ui) => ({ fr: 'fr', en: 'en', ar: 'ar', rur: 'en' })[ui] || 'fr';
+
 const DEFAULTS = {
   ui: browserLanguage(),
   showFr: true,
   showEn: false,
   showUr: false,
   showRur: false,
-  tafsir: 'en',
   arSize: 30,
   trSize: 17,
   theme: 'auto',
@@ -104,13 +108,14 @@ const DEFAULTS = {
 function loadSettings() {
   const saved = readStore(SETTINGS_KEY) || {};
   const flag = (key) => (typeof saved[key] === 'boolean' ? saved[key] : DEFAULTS[key]);
+  const ui = UI_LANGS.includes(saved.ui) ? saved.ui : DEFAULTS.ui;
   return {
-    ui: UI_LANGS.includes(saved.ui) ? saved.ui : DEFAULTS.ui,
+    ui,
     showFr: flag('showFr'),
     showEn: flag('showEn'),
     showUr: flag('showUr'),
     showRur: flag('showRur'),
-    tafsir: saved.tafsir in TAFSIR.editions ? saved.tafsir : DEFAULTS.tafsir,
+    tafsir: PANEL_LANGS.includes(saved.tafsir) ? saved.tafsir : defaultTafsir(ui),
     arSize: clampNumber(saved.arSize, 22, 46, DEFAULTS.arSize),
     trSize: clampNumber(saved.trSize, 14, 26, DEFAULTS.trSize),
     theme: ['auto', 'light', 'dark'].includes(saved.theme) ? saved.theme : DEFAULTS.theme,
@@ -317,6 +322,42 @@ const getUrdu = (n) => once(`urdu:${n}`, () => fetchVerified(URDU.bases, URDU.ch
 
 const getRoman = (n) => once(`roman:${n}`, () => fetchVerified(ROMAN_URDU.bases, ROMAN_URDU.chapterPath(n), validRoman(n)));
 
+// data/hadith/<surah>.json: {"surah": s, "ayat": {"255": [{b, n, no, ref, g?}, ...]}}
+const isSahihayn = (book) => book === 'bukhari' || book === 'muslim';
+const validHadithRef = (r) =>
+  r &&
+  Object.prototype.hasOwnProperty.call(HADITH.books, r.b) &&
+  Number.isInteger(r.n) &&
+  r.n > 0 &&
+  isText(r.no) &&
+  /^\d+\/\d+$/.test(r.ref) &&
+  (isSahihayn(r.b) ? r.g === undefined : HADITH_INDEX.grades.includes(r.g));
+
+const validHadithIndex = (s) => (data) =>
+  data &&
+  data.surah === s &&
+  data.ayat &&
+  typeof data.ayat === 'object' &&
+  !Array.isArray(data.ayat) &&
+  Object.entries(data.ayat).every(([a, list]) => /^\d+$/.test(a) && Array.isArray(list) && list.every(validHadithRef));
+
+const getHadithIndex = (s) => once(`hindex:${s}`, () => fetchVerified(HADITH_INDEX.bases, HADITH_INDEX.path(s), validHadithIndex(s)));
+
+// The file must hold this very hadith: same number and same book reference.
+// The Arabic text must not be empty; a translation may be missing in the source.
+const findHadith = (data, ref) =>
+  data && Array.isArray(data.hadiths)
+    ? data.hadiths.find((h) => h && h.hadithnumber === ref.n && h.reference && `${h.reference.book}/${h.reference.hadith}` === ref.ref && isText(h.text))
+    : undefined;
+
+const getHadith = (lang, ref) =>
+  once(`hadith:${lang}:${ref.b}:${ref.n}`, () =>
+    fetchVerified(HADITH.bases, HADITH.path(HADITH.edition[lang], ref.b, ref.n), (data) => {
+      const h = findHadith(data, ref);
+      return Boolean(h && (lang !== 'ar' || h.text.trim()));
+    }),
+  ).then(({ data, url }) => ({ text: findHadith(data, ref).text, url }));
+
 async function quranFontReady(timeoutMs) {
   if (!document.fonts || !document.fonts.load) return true;
   const spec = `32px ${QURAN_FONT.family}`;
@@ -409,7 +450,7 @@ function renderTopbar() {
 
 function renderFooter() {
   const footer = document.getElementById('site-footer');
-  const { en, ar, ur } = TAFSIR.editions;
+  const { ar, fr, en } = TAFSIR.editions;
   footer.replaceChildren(
     el(
       'div',
@@ -424,11 +465,17 @@ function renderFooter() {
         urdu: extLink(URDU.name, URDU.url),
       }),
       richText('p', 'footTafsir', {
-        en: extLink(`QUL ${en.id}`, en.qul),
         ar: extLink(`QUL ${ar.id}`, ar.qul),
-        ur: extLink(`QUL ${ur.id}`, ur.qul),
+        fr: extLink(`QUL ${fr.id}`, fr.qul),
+        en: extLink(`QUL ${en.id}`, en.qul),
         repo: extLink(TAFSIR.name, TAFSIR.url),
         mit: extLink(TAFSIR.license.name, TAFSIR.license.url),
+      }),
+      richText('p', 'footHadith', {
+        repo: extLink(HADITH.name, HADITH.url),
+        lic: extLink(HADITH.license.name, HADITH.license.url),
+        maktaba: extLink('al-maktaba.org', HADITH.gradesFrom),
+        more: extLink(t('sourceMore'), HADITH_INDEX.readme),
       }),
       richText('p', 'footRoman', { more: extLink(t('sourceMore'), ROMAN_URDU.readme) }),
       richText('p', 'footFont', {
@@ -920,14 +967,26 @@ function buildPanel() {
   panel.title = el('span', {});
   panel.sub = el('small', {});
   panel.closeButton = el('button', { class: 'icon-btn', type: 'button', onclick: () => closeTafsir() }, svgIcon(ICONS.close));
-  panel.tabs = Object.keys(TAFSIR.editions).map((edition) =>
+  panel.tabs = PANEL_LANGS.map((edition) =>
     el('button', { type: 'button', 'aria-pressed': 'false', dataset: { edition }, onclick: () => switchEdition(edition) }),
   );
   panel.tabGroup = el('div', { class: 'seg', role: 'group' }, ...panel.tabs);
   panel.ayah = el('p', { class: 'sheet-ayah', lang: 'ar', dir: 'rtl' });
+  panel.tafsirHead = el('h3', { class: 'sheet-section' });
   panel.notice = el('div', { class: 'sheet-notice' });
   panel.text = el('div', { class: 'tafsir-text' });
-  panel.body = el('div', { class: 'sheet-body', tabindex: '-1' }, panel.ayah, panel.notice, panel.text);
+  panel.hadithHead = el('h3', { class: 'sheet-section', id: 'hadith-head' });
+  panel.hadithRule = el('p', { class: 'hadith-rule' });
+  panel.hadithNotice = el('div', { class: 'hadith-notice' });
+  panel.hadithList = el('ol', { class: 'hadith-list', 'aria-labelledby': 'hadith-head' });
+  panel.hadithMore = el('button', { class: 'btn hadith-more', type: 'button', hidden: true, onclick: () => showMoreHadith() });
+  panel.body = el(
+    'div',
+    { class: 'sheet-body', tabindex: '-1' },
+    panel.ayah,
+    el('section', { class: 'tafsir-section' }, panel.tafsirHead, panel.notice, panel.text),
+    el('section', { class: 'hadith-section' }, panel.hadithHead, panel.hadithRule, panel.hadithNotice, panel.hadithList, panel.hadithMore),
+  );
   panel.source = el('p', { class: 'sheet-source' });
   panel.prevButton = el('button', { class: 'btn', type: 'button', onclick: () => goToPassage(panel.range.from - 1) });
   panel.nextButton = el('button', { class: 'btn', type: 'button', onclick: () => goToPassage(panel.range.to + 1) });
@@ -952,8 +1011,10 @@ function labelPanel() {
   panel.closeButton.setAttribute('aria-label', t('close'));
   panel.closeButton.title = t('close');
   panel.tabGroup.setAttribute('aria-label', t('tafsirLang'));
-  const tabLabels = { en: 'tabEn', ar: 'tabAr', ur: 'tabUr' };
+  const tabLabels = { ar: 'tabAr', fr: 'tabFr', en: 'tabEn', ur: 'tabUr' };
   panel.tabs.forEach((tab) => (tab.textContent = t(tabLabels[tab.dataset.edition])));
+  panel.tafsirHead.textContent = t('mukhtasarHead');
+  panel.hadithRule.textContent = t('hadithRule');
   panel.prevButton.textContent = t('prevPassage');
   panel.nextButton.textContent = t('nextPassage');
 }
@@ -1011,7 +1072,7 @@ function hidePanel({ restoreFocus = true } = {}) {
 }
 
 function switchEdition(edition) {
-  if (!TAFSIR.editions[edition] || edition === panel.edition) return;
+  if (!PANEL_LANGS.includes(edition) || edition === panel.edition) return;
   panel.edition = edition;
   state.settings.tafsir = edition; // remember the last choice
   saveSettings();
@@ -1042,67 +1103,19 @@ function updatePanelNav() {
   panel.nextButton.disabled = panel.range.to >= total;
 }
 
-const isMostlyArabic = (text) => {
-  const arabic = (text.match(/[؀-ۿ]/g) || []).length;
-  const latin = (text.match(/[A-Za-z]/g) || []).length;
-  return arabic > latin;
-};
-
-// A short line in Title Case with no final punctuation is shown in bold, as the
-// section titles of the English edition are. The words are not changed.
-const looksLikeHeading = (text) => {
-  if (text.length > 72 || !/^[A-Z]/.test(text) || /[.,;:!?…"'”’)\]]$/.test(text) || /[؀-ۿ]/.test(text)) return false;
-  const words = text.split(/\s+/).filter((word) => word.replace(/[^A-Za-z]/g, '').length > 3);
-  if (!words.length) return false;
-  const capitalised = words.filter((word) => /^[^A-Za-z]*[A-Z]/.test(word)).length;
-  return capitalised / words.length >= 0.75;
-};
-
-// Shows the tafsir text exactly as received. Only the layout is decided here:
-// paragraphs, direction of Arabic quotations, and a lighter tone for the
-// editor's [[...]] notes in the Arabic edition.
-function renderTafsirText(container, text, edition) {
-  const isArabic = edition === 'ar';
-  const { lang, dir } = TAFSIR.editions[edition];
-  container.setAttribute('lang', lang);
-  container.setAttribute('dir', dir);
-  if (edition === 'ur') {
-    const fragment = document.createDocumentFragment();
-    text
-      .split(/\n+/)
-      .map((line) => line.trim())
-      .filter(Boolean)
-      .forEach((line) => fragment.append(el('p', {}, displayUrdu(line))));
-    container.replaceChildren(fragment);
-    return;
-  }
-  const fragment = document.createDocumentFragment();
+const paragraphs = (text) =>
   text
     .split(/\n+/)
     .map((line) => line.trim())
-    .filter(Boolean)
-    .forEach((line) => {
-      const p = document.createElement('p');
-      if (isArabic) {
-        line.split(/(\[\[[\s\S]*?\]\])/).forEach((piece) => {
-          if (!piece) return;
-          if (piece.startsWith('[[') && piece.endsWith(']]')) p.append(el('span', { class: 'tf-note' }, piece));
-          else p.append(document.createTextNode(piece));
-        });
-      } else {
-        p.textContent = line;
-        if (isMostlyArabic(line)) {
-          p.className = 'tf-ar';
-          p.lang = 'ar';
-          p.dir = 'rtl';
-        } else {
-          p.dir = 'auto';
-          if (looksLikeHeading(line)) p.className = 'tf-head';
-        }
-      }
-      fragment.append(p);
-    });
-  container.replaceChildren(fragment);
+    .filter(Boolean);
+
+// Shows the tafsir text exactly as received. Only the layout is decided here:
+// one paragraph per line, in the edition's language and direction.
+function renderTafsirText(container, text, edition) {
+  const { lang, dir } = TAFSIR.editions[edition];
+  container.setAttribute('lang', lang);
+  container.setAttribute('dir', dir);
+  container.replaceChildren(...paragraphs(text).map((line) => el('p', {}, line)));
 }
 
 async function findPassageBefore(edition, s, a, token) {
@@ -1153,7 +1166,7 @@ async function detectRange(edition, s, start, text, token) {
 }
 
 function showPanelSource(url, edition) {
-  const label = t({ en: 'tafsirEditionEn', ar: 'tafsirEditionAr', ur: 'tafsirEditionUr' }[edition]);
+  const label = t({ ar: 'tafsirEditionAr', fr: 'tafsirEditionFr', en: 'tafsirEditionEn' }[edition]);
   const path = url.split('/tafsir/').pop();
   panel.source.replaceChildren(document.createTextNode(`${t('tafsirSource', { edition: label })} `), extLink(path, url));
 }
@@ -1174,8 +1187,17 @@ async function loadPanel() {
   panel.body.scrollTop = 0;
   updatePanelNav();
   markReading(a, a);
-  if (edition === 'ar') ensureFont('arabic');
+  ensureFont('arabic'); // Arabic tafsir, and the Arabic hadith text offered in every tab
   if (edition === 'ur') ensureFont('urdu');
+  loadHadith(token);
+
+  if (!TAFSIR.editions[edition]) {
+    // Urdu: no al-Mukhtasar in this language, the hadith below are in Urdu.
+    panel.text.replaceChildren();
+    panel.text.removeAttribute('lang');
+    panel.notice.replaceChildren(el('p', { class: 'notice' }, t('mukhtasarNoUrdu')));
+    return;
+  }
 
   try {
     const result = await getTafsir(edition, s, a);
@@ -1218,6 +1240,115 @@ async function loadPanel() {
     panel.text.replaceChildren();
     panel.notice.replaceChildren(errorView(error, error && error.kind === 'notfound' ? null : () => loadPanel(), message));
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* Authentic hadith that quote the ayah                                */
+/* ------------------------------------------------------------------ */
+
+async function loadHadith(token) {
+  const { s, a } = panel;
+  panel.hadithHead.textContent = t('hadithHead');
+  panel.hadithList.replaceChildren();
+  panel.hadithMore.hidden = true;
+  panel.hadithQueue = [];
+  panel.hadithNotice.replaceChildren(loadingView(t('hadithLoading')));
+  let list;
+  try {
+    const { data } = await getHadithIndex(s);
+    list = data.ayat[String(a)] || [];
+  } catch (error) {
+    if (token !== panel.token) return;
+    panel.hadithNotice.replaceChildren(errorView(error, () => loadHadith(panel.token), error && error.kind === 'invalid' ? t('errInvalid') : t('hadithUnreachable')));
+    return;
+  }
+  if (token !== panel.token) return;
+  if (!list.length) {
+    panel.hadithNotice.replaceChildren(el('p', { class: 'notice' }, t('hadithNone')));
+    return;
+  }
+  panel.hadithHead.textContent = `${t('hadithHead')} (${fmtNum(list.length)})`;
+  panel.hadithNotice.replaceChildren();
+  panel.hadithQueue = list.slice();
+  showMoreHadith();
+}
+
+function showMoreHadith() {
+  const token = panel.token;
+  panel.hadithQueue.splice(0, HADITH_BATCH).forEach((ref) => panel.hadithList.append(hadithCard(ref, token)));
+  const left = panel.hadithQueue.length;
+  panel.hadithMore.hidden = left === 0;
+  panel.hadithMore.textContent = left ? t('hadithMore', { n: fmtNum(Math.min(left, HADITH_BATCH)) }) : '';
+}
+
+const refNumber = (no) => (/^\d+$/.test(no) ? fmtNum(no) : no);
+
+function hadithTextBlock(text, lang) {
+  const isRtl = lang === 'ar' || lang === 'ur';
+  const lines = paragraphs(lang === 'ur' ? displayUrdu(text) : text);
+  return el('div', { class: 'hadith-text', lang, dir: isRtl ? 'rtl' : 'ltr' }, ...lines.map((line) => el('p', {}, line)));
+}
+
+// One hadith: reference and grade first, then the text in the panel's language,
+// with the Arabic text behind "Arabic text" (or shown at once when the source
+// has no translation in that language).
+function hadithCard(ref, token) {
+  const lang = panel.edition;
+  const books = raw('books');
+  const grades = raw('grades');
+  const grade = ref.g ? t('gradeBy', { grade: grades[ref.g] || ref.g }) : t('gradeSahihayn');
+  const body = el('div', { class: 'hadith-body' }, loadingView(t('hadithLoading')));
+  const links = el('p', { class: 'hadith-links' }, extLink(t('hadithCheck'), HADITH.link(ref.b, ref.n, ref.ref)));
+  const card = el(
+    'li',
+    { class: 'hadith', dataset: { book: ref.b, n: String(ref.n) } },
+    el('p', { class: 'hadith-ref' }, el('strong', {}, `${books[ref.b]} ${refNumber(ref.no)}`), ' ', el('span', { class: 'grade' }, grade)),
+    body,
+    links,
+  );
+  const addFile = (url) => links.append(' · ', extLink(t('hadithFile'), url));
+
+  const showArabicNow = async (before) => {
+    const { text, url } = await getHadith('ar', ref);
+    if (token !== panel.token) return;
+    body.replaceChildren(...before, hadithTextBlock(text, 'ar'));
+    addFile(url);
+  };
+
+  const load = async () => {
+    body.replaceChildren(loadingView(t('hadithLoading')));
+    try {
+      if (lang === 'ar') return await showArabicNow([]);
+      const noTr = () => el('p', { class: 'hadith-notr' }, t('hadithNoTr', { lang: raw('langName')[lang] }));
+      if (!HADITH.books[ref.b].includes(lang)) return await showArabicNow([noTr()]);
+      const { text, url } = await getHadith(lang, ref);
+      if (token !== panel.token) return;
+      if (!text.trim()) return await showArabicNow([noTr()]);
+      const arabic = el('details', { class: 'hadith-ar' }, el('summary', {}, t('hadithArabic')));
+      arabic.addEventListener(
+        'toggle',
+        async () => {
+          if (!arabic.open || arabic.dataset.loaded) return;
+          arabic.dataset.loaded = '1';
+          arabic.append(loadingView(t('hadithLoading')));
+          try {
+            const ar = await getHadith('ar', ref);
+            arabic.lastChild.replaceWith(hadithTextBlock(ar.text, 'ar'));
+          } catch (error) {
+            delete arabic.dataset.loaded;
+            arabic.lastChild.replaceWith(errorView(error, null, t('hadithUnreachable')));
+          }
+        },
+      );
+      body.replaceChildren(hadithTextBlock(text, lang), arabic);
+      addFile(url);
+    } catch (error) {
+      if (token !== panel.token) return;
+      body.replaceChildren(errorView(error, () => load(), error && error.kind === 'invalid' ? t('errInvalid') : t('hadithUnreachable')));
+    }
+  };
+  load();
+  return card;
 }
 
 /* ------------------------------------------------------------------ */
@@ -1314,9 +1445,10 @@ function buildSettingsForm() {
       'tafsir',
       t('tafsirDefault'),
       [
-        ['en', t('tafsirEn')],
-        ['ar', t('tafsirAr')],
-        ['ur', t('tafsirUr')],
+        ['ar', t('tafsirOptAr')],
+        ['fr', t('tafsirOptFr')],
+        ['en', t('tafsirOptEn')],
+        ['ur', t('tafsirOptUr')],
       ],
       s.tafsir,
       (v) => update({ tafsir: v }),

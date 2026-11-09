@@ -53,6 +53,8 @@ const ICONS = {
     '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
   search:
     '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></g></svg>',
+  horizon:
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 16a5 5 0 0 1 10 0"/><path d="M3 16h18M5 20h14M12 5v3M5.6 9.6l1.8 1.8M18.4 9.6l-1.8 1.8"/></g></svg>',
 };
 
 const toArabicDigits = (n) => String(n).replace(/\d/g, (d) => AR_DIGITS[Number(d)]);
@@ -556,6 +558,7 @@ async function renderHome(token) {
     el('p', { class: 'home-title-ar', lang: 'ar', dir: 'rtl', 'aria-hidden': 'true' }, t('homeTitleAr')),
     el('h1', { class: 'home-title', id: 'home-title', tabindex: '-1' }, t('homeTitle')),
     el('p', { class: 'home-lead' }, t('homeLead')),
+    el('p', { class: 'home-links' }, el('a', { class: 'btn', href: 'adhkar.html' }, svgIcon(ICONS.horizon), t('homeAdhkar'))),
   );
   const input = el('input', {
     type: 'search',

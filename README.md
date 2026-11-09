@@ -10,6 +10,26 @@ Link to an ayah: https://dyanshah76-gif.github.io/Quran/#2:255
 Interface languages: French, English, Arabic (right to left) and Roman Urdu.
 Everything is chosen in Settings and saved in the browser.
 
+## Adhkar page
+
+https://dyanshah76-gif.github.io/Quran/adhkar.html
+
+The adhkar of the morning, the day, the evening and the night, in the order of
+Hisn al-Muslim. Only adhkar whose hadith are in Sahih al-Bukhari or Sahih
+Muslim, or were graded sahih or hasan by al-Albani, are kept. Each one shows the
+Arabic, a translation with its source, the words of the hadith that give its
+time, its references and grades, and the full hadith. Each dhikr sits at the
+time its hadith gives (for example al-Mulk at bedtime, the end of al-Baqarah
+"in a night"). Tap counters keep the day's count in the browser.
+
+The background follows the sky in Paris: deep blue after Fajr, light at
+sunrise, blue by day, pink from Asr to Maghrib, dark at night. Prayer times are
+calculated on the phone (Muslim World League by default; UOIF and ISNA in
+Settings; or the reader's own location). How the texts were chosen and where
+each one comes from: `data/adhkar/README.md`.
+
+For testing another time of day: `adhkar.html?now=2026-11-09T17:00`.
+
 ## Where every word comes from
 
 The site downloads the Quran text, translations, tafsir and hadith at runtime,
@@ -59,6 +79,7 @@ Urdu fonts join them; no letter or word changes.
 
 ```
 index.html             page shell, early theme script
+adhkar.html            adhkar page shell
 favicon.svg            octagram icon
 .nojekyll              tells GitHub Pages to serve files as they are
 assets/
@@ -66,10 +87,15 @@ assets/
   app.js               routing, loading, tafsir and hadith panel, settings
   sources.js           the pinned source addresses and IDs
   i18n.js              interface text: French, English, Arabic, Roman Urdu
+  adhkar.js            adhkar page: texts, counters, sky, settings
+  adhkar.css           adhkar page styles
+  sky.js               prayer times and sky colours, computed on the phone
 data/roman-urdu/       unofficial Roman Urdu (one file per surah) + README
 data/hadith/           which authentic hadith quote which ayah (one file per surah) + README
+data/adhkar/           every text of the adhkar page, copied from pinned sources + README
 tools/roman-urdu/      the script and hand-written spellings used to make it
 tools/hadith-map/      the script that builds data/hadith
+tools/adhkar/          the script that builds data/adhkar
 README.md
 ```
 
@@ -78,6 +104,8 @@ README.md
 - `#` list of surahs
 - `#2` surah 2
 - `#2:255` surah 2, scrolled to ayah 255 (shareable)
+- `adhkar.html` adhkar, opening on the list for the time of day
+- `adhkar.html#morning`, `#day`, `#evening`, `#night` one list
 
 ## Put it on GitHub Pages
 

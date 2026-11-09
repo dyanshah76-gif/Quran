@@ -33,6 +33,7 @@ export const STRINGS = {
 
     homeTitleAr: 'القرآن الكريم',
     homeTitle: 'Le Coran',
+    homeAdhkar: 'Adhkar du matin et du soir',
     homeLead: 'Choisissez une sourate. Touchez un verset pour lire son explication (al-Mukhtasar) et les hadiths authentiques qui le citent.',
     searchLabel: 'Chercher une sourate',
     searchPlaceholder: 'Nom, sens ou numéro (ex. 2:255)',
@@ -165,6 +166,7 @@ export const STRINGS = {
 
     homeTitleAr: 'القرآن الكريم',
     homeTitle: 'The Quran',
+    homeAdhkar: 'Morning and evening adhkar',
     homeLead: 'Choose a surah. Tap any ayah to read its explanation (al-Mukhtasar) and the authentic hadith that quote it.',
     searchLabel: 'Search for a surah',
     searchPlaceholder: 'Name, meaning or number (e.g. 2:255)',
@@ -297,6 +299,7 @@ export const STRINGS = {
 
     homeTitleAr: 'القرآن الكريم',
     homeTitle: 'القراءة والتفسير',
+    homeAdhkar: 'أذكار الصباح والمساء',
     homeLead: 'اختر سورة، ثم اضغط على أي آية لقراءة تفسيرها (المختصر) والأحاديث الصحيحة التي تذكرها.',
     searchLabel: 'ابحث عن سورة',
     searchPlaceholder: 'اسم السورة أو رقمها (مثال: 2:255)',
@@ -429,6 +432,7 @@ export const STRINGS = {
 
     homeTitleAr: 'القرآن الكريم',
     homeTitle: 'Quran-e-Kareem',
+    homeAdhkar: 'Subah aur shaam ke azkaar',
     homeLead: 'Koi surah chunein. Kisi bhi ayat ko touch karen: us ki tafseer (al-Mukhtasar) aur us ka zikr karne wali sahih ahadees khul jayengi.',
     searchLabel: 'Surah talash karen',
     searchPlaceholder: 'Naam, mani ya number (maslan 2:255)',

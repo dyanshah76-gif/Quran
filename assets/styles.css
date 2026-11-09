@@ -373,6 +373,16 @@ main {
   font-size: 15.5px;
 }
 
+.home-links {
+  margin: 16px 0 0;
+}
+
+.home-links .btn svg {
+  width: 20px;
+  height: 20px;
+  color: var(--gold);
+}
+
 .search {
   position: relative;
   margin: 26px 0 8px;

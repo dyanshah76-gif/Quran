@@ -1,0 +1,3153 @@
+{
+ "about": "Built by tools/adhkar/build.py. Texts are copied unchanged from the sources; \"src\": \"mine\" marks translations written for this page.",
+ "sources": {
+  "hadith": {
+   "name": "fawazahmed0/hadith-api",
+   "commit": "df57907be35291c91ad6a6691180e22ca9920784",
+   "url": "https://github.com/fawazahmed0/hadith-api/tree/df57907be35291c91ad6a6691180e22ca9920784",
+   "note": "Arabic text, sunnah.com English translations and al-Albani grades"
+  },
+  "he": {
+   "name": "HadeethEnc.com (Encyclopedia of Translated Prophetic Hadiths)",
+   "versions": {
+    "ar": "1.8.0",
+    "en": "1.25.0",
+    "fr": "1.17.0"
+   },
+   "url": "https://hadeethenc.com/",
+   "mirror": "https://github.com/Younes12345698/hadeethenc-mirror/tree/429f7bd041246a943751121590287c7877b15372"
+  },
+  "hisn": {
+   "name": "Hisn al-Muslim (Sa'id ibn Wahf al-Qahtani), hisnmuslim.com",
+   "copy": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/tree/d793023e3b69c91674023f692425950c8ebbb64d",
+   "url": "https://sunnah.com/hisn"
+  }
+ },
+ "ext": {
+  "ubayy": {
+   "cite": "Ubayy ibn Ka'b, the jinn and the dates: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/562)",
+   "grade": "Sahih",
+   "where": "Sahih al-Targhib 662",
+   "url": "https://surahquran.com/Hadith-100968.html"
+  },
+  "fatimah": {
+   "cite": "Anas: the Prophet's advice to Fatimah: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/545)",
+   "grade": "Hasan",
+   "where": "Sahih al-Targhib 1/273 (no. 661), «إسناده حسن»",
+   "url": "https://kalemtayeb.com/safahat/item/115307"
+  },
+  "fitrah": {
+   "cite": "'Abd al-Rahman ibn Abza: Ahmad (al-Musnad 3/406), Ibn al-Sunni ('Amal al-Yawm wa al-Layla 34)",
+   "grade": "Sahih",
+   "where": "Sahih al-Jami' 4674",
+   "url": "https://surahquran.com/Hadith-96702.html"
+  },
+  "tahlil10": {
+   "cite": "Abu Ayyub al-Ansari: Ahmad, al-Nasa'i ('Amal al-Yawm wa al-Layla 24)",
+   "grade": "Hasan Sahih",
+   "where": "Sahih al-Targhib 474",
+   "url": "https://surahquran.com/Hadith-97535.html"
+  },
+  "turning": {
+   "cite": "'A'ishah: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/540), Ibn Hibban, Ibn al-Sunni",
+   "grade": "Sahih",
+   "where": "Sahih al-Jami' 4693, al-Silsila al-Sahiha 2066",
+   "url": "https://en.tohed.com/hadith/sahih-al-jami-al-saghir/4693/"
+  }
+ },
+ "times": {
+  "ar": [
+   {
+    "ar": "مِنْ صَلاَةِ الْغَدَاةِ حَتَّى تَطْلُعَ الشَّمْسُ",
+    "src": "hadith:abudawud:3667"
+   },
+   {
+    "ar": "مِنْ صَلاَةِ الْعَصْرِ إِلَى أَنْ تَغْرُبَ الشَّمْسُ",
+    "src": "hadith:abudawud:3667"
+   }
+  ],
+  "en": {
+   "text": "That I sit in the company of the people who remember Allah the Exalted from morning prayer till the sun rises is dearer to me than that I emancipate four slaves from the children of Isma`il, and that I sit with the people who remember Allah from afternoon prayer till the sun sets is dearer to me than that I emancipate four slaves",
+   "src": "hadith:abudawud:3667"
+  },
+  "fr": {
+   "text": "Que je m'assoie avec des gens qui évoquent Allah, depuis la prière du matin jusqu'au lever du soleil, m'est plus cher que d'affranchir quatre [esclaves] des descendants d'Ismâ'îl ; et que je m'assoie avec des gens qui évoquent Allah, depuis la prière du 'asr jusqu'au coucher du soleil, m'est plus cher que d'affranchir quatre [esclaves].",
+   "src": "mine"
+  },
+  "ref": {
+   "label": "Sunan Abi Dawud 3667",
+   "url": "https://sunnah.com/abudawud:3667",
+   "book": "abudawud",
+   "grade": "Hasan",
+   "grader": "al-Albani"
+  }
+ },
+ "items": [
+  {
+   "id": "h75",
+   "hisn": 75,
+   "hisnUrl": "https://sunnah.com/hisn:75",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "morning_evening",
+   "name": "ayat_kursi",
+   "recite": [
+    {
+     "ar": "أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ",
+     "src": "hisn:75"
+    },
+    {
+     "quran": [
+      2,
+      255,
+      255
+     ]
+    }
+   ],
+   "meaning": "quran",
+   "whenAr": [
+    {
+     "ar": "مَنْ قالَها حِينَ يُمسِي أُجِيرَ مِنَّا حتَى يُصْبِحَ … ومَن قالَها حينَ يصبحُ أُجِيرَ مِنَّا حتى يُمسِي",
+     "src": "ext:ubayy"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Whoever says it in the evening is protected from us [the jinn] until the morning, and whoever says it in the morning is protected from us until the evening.",
+     "src": "mine"
+    },
+    "fr": {
+     "text": "Celui qui la dit le soir est protégé de nous [les djinns] jusqu'au matin, et celui qui la dit le matin est protégé de nous jusqu'au soir.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "مَنْ قالَها حِينَ يُمسِي أُجِيرَ مِنَّا حتَى يُصْبِحَ … ومَن قالَها حينَ يصبحُ أُجِيرَ مِنَّا حتى يُمسِي",
+    "arSrc": "ext:ubayy",
+    "url": "https://surahquran.com/Hadith-100968.html",
+    "excerpt": true
+   },
+   "refs": [
+    {
+     "label": "Ubayy ibn Ka'b, the jinn and the dates: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/562)",
+     "grade": "Sahih",
+     "grader": "al-Albani",
+     "where": "Sahih al-Targhib 662",
+     "url": "https://surahquran.com/Hadith-100968.html"
+    }
+   ]
+  },
+  {
+   "id": "h76",
+   "hisn": 76,
+   "hisnUrl": "https://sunnah.com/hisn:76",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 3,
+   "when": "morning_evening",
+   "name": "muawwidhat",
+   "recite": [
+    {
+     "ar": "بسم الله الرحمن الرحيم",
+     "src": "hisn:76"
+    },
+    {
+     "quran": [
+      112,
+      1,
+      4
+     ]
+    },
+    {
+     "ar": "بسم الله الرحمن الرحيم",
+     "src": "hisn:76"
+    },
+    {
+     "quran": [
+      113,
+      1,
+      5
+     ]
+    },
+    {
+     "ar": "بسم الله الرحمن الرحيم",
+     "src": "hisn:76"
+    },
+    {
+     "quran": [
+      114,
+      1,
+      6
+     ]
+    }
+   ],
+   "meaning": "quran",
+   "whenAr": [
+    {
+     "ar": "حِينَ تُمْسِي وَتُصْبِحُ ثَلَاثَ مَرَّاتٍ",
+     "src": "he:6082"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "{Say: \"He is Allah, the One\"} and Al-Mu'awwidhatān (Surat al-Falaq and Surat an-Nās) thrice in the evening and the morning, they will grant you protection from everything.",
+     "src": "he:6082"
+    },
+    "fr": {
+     "text": "{\" Dis : Il est Allah, Unique ! \"} et récite : « Les Deux Protectrices » trois fois, matin et soir, elles te suffiront pour tout !",
+     "src": "he:6082"
+    }
+   },
+   "hadith": {
+    "ar": "عَن عبدِ اللهِ بن خُبَيب رضي الله عنه أنه قال: خَرَجْنَا فِي لَيْلَةٍ مَطِيرَةٍ وَظُلْمَةٍ شَدِيدَةٍ، نَطْلُبُ رَسُولَ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ؛ يُصَلِّي لَنَا، قَالَ: فَأَدْرَكْتُهُ، فَقَالَ: «قُلْ»، فَلَمْ أَقُلْ شَيْئًا، ثُمَّ قَالَ: «قُلْ»، فَلَمْ أَقُلْ شَيْئًا، قَالَ: «قُلْ»، فَقُلْتُ: مَا أَقُولُ؟ قَالَ: «{قُلْ هُوَ اللهُ أَحَدٌ} وَالْمُعَوِّذَتَيْنِ حِينَ تُمْسِي وَتُصْبِحُ ثَلَاثَ مَرَّاتٍ، تَكْفِيكَ مِنْ كُلِّ شَيْءٍ».",
+    "arSrc": "he:6082",
+    "url": "https://hadeethenc.com/ar/browse/hadith/6082",
+    "en": {
+     "text": "‘Abdullah ibn Khubayb (may Allah be pleased with him) reported: We went out on a rainy and extremely dark night looking for the Messenger of Allah (may Allah's peace and blessings be upon him) to lead us in prayer. He said: I caught up with him, and he said: \"Say,\" but I did not say anything. Then, he said: \"Say,\" and again, I said nothing. He said: \"Say.\" I replied: What should I say? He said:  \"{Say: \"He is Allah, the One\"} and Al-Mu'awwidhatān (Surat al-Falaq and Surat an-Nās) thrice in the evening and the morning, they will grant you protection from everything.\"",
+     "src": "he:6082",
+     "url": "https://hadeethenc.com/en/browse/hadith/6082"
+    },
+    "enExplain": {
+     "text": "'Abdullah ibn Khubayb (may Allah be pleased with him), the great Companion, reports that they went out one night when it was raining heavily and it was extremely dark, looking for the Messenger of Allah (may Allah's peace and blessings be upon him) to lead them in prayer and they found him. The Prophet (may Allah's peace and blessings be upon him) said to him: \"Say,\" i.e., recite, but he recited nothing. The Prophet (may Allah's peace and blessings be upon him) repeated his words to him, so, ‘Abdullah said: What should I recite, O Messenger of Allah? Thereupon, the Prophet (may Allah's peace and blessings be upon him) said: Recite Surat al-Ikhlās {Say: “He is Allah, the One”} and Al-Mu‘awwidhatān: Surat {Say, “I seek refuge with the Lord of the daybreak} and Surat {Say, “I seek refuge with the Lord of mankind} in the evening and morning three times and they will protect you from all evils and guard you against all harms.",
+     "src": "he:6082",
+     "url": "https://hadeethenc.com/en/browse/hadith/6082"
+    },
+    "fr": {
+     "text": "D'après AbdaLlah ibn Khubayb (qu’Allah l’agrée) qui a dit : Nous sommes sortis par une nuit pluvieuse et profondément ténébreuse. Nous cherchions le Messager d'Allah ﷺ pour qu'il nous dirige en prière. Il a dit : \" Je l'ai finalement rencontré, il m'a alors dit : \" Dis ! \" Je n'ai alors rien dit. Il a répété : \" Dis ! \" Je n'ai toujours rien dit. Il répéta de nouveau : \" Dis ! \" J'ai alors demandé : \" Que dois-je dire ? \" Il a alors dit :  {\" Dis : Il est Allah, Unique ! \"} et récite : « Les Deux Protectrices » trois fois, matin et soir, elles te suffiront pour tout ! »",
+     "src": "he:6082",
+     "url": "https://hadeethenc.com/fr/browse/hadith/6082"
+    },
+    "frExplain": {
+     "text": "Le noble Compagnon 'AbdaLlah ibn Khubayb (qu'Allah l'agrée) informe qu'au cours d'une nuit abondamment pluvieuse et profondément ténébreuse, ils sortirent à la recherche du Messager d'Allah ﷺ pour qu'il les dirige en prière. Ils finirent par le trouver, alors le Prophète ﷺ lui a dit : \" Dis ! \" C'est-à-dire : \" Lis ! \" Mais, il n'a rien lu. Le Prophète ﷺ lui a alors répété sa parole : \" Dis ! \" Alors, 'AbdaLlah a demandé : \" Que dois-je lire, ô Messager d'Allah ? \" Alors, le Prophète ﷺ a dit : \" Lis : sourate : La Sincérité : {\" Dis : Il est Allah, Unique. \"} et : Les Deux Protectrices : {\" Dis : Je me réfugie auprès du Seigneur de l'aube. \"} et : {\" Dis : Je me réfugie auprès du Seigneur des hommes. \"}. Lis-les trois fois, matin et soir, elles te préserveront de tout mal et te prémuniront de tout méfait. \"",
+     "src": "he:6082",
+     "url": "https://hadeethenc.com/fr/browse/hadith/6082"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5082",
+     "url": "https://sunnah.com/abudawud:5082",
+     "book": "abudawud",
+     "grade": "Hasan",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Jami' at-Tirmidhi 3575",
+     "url": "https://sunnah.com/tirmidhi:3575",
+     "book": "tirmidhi",
+     "grade": "Hasan",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h77",
+   "hisn": 77,
+   "hisnUrl": "https://sunnah.com/hisn:77",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيرَ مَا بَعْدَهُ ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي  هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+     "src": "hisn:77"
+    }
+   ],
+   "reciteEvening": [
+    {
+     "ar": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ",
+     "src": "hadith:muslim:6908"
+    },
+    {
+     "ar": "لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+     "src": "hadith:muslim:6908"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "We have reached the morning and at this very time unto Allaah, belongs all sovereignty , and all praise is for Allaah. None has the right to be worshipped except Allaah, alone, without any partner, to Him belong all sovereignty and praise and He is over all things omnipotent. My Lord, I ask You for the good of this day and the good of what follows it and I take refuge in You from the evil of this day and the evil of what follows it . My Lord, I take refuge in You from laziness and senility. My Lord, I take refuge in You from torment in the Fire and punishment in the grave.",
+     "src": "hisn:77"
+    },
+    "fr": {
+     "text": "Nous nous retrouvons au matin, ainsi que la royauté, appartenant à Allah ; les louanges sont pour Allah, il n'est de divinité [digne d'adoration] excepté Allah, Lui Seul, Il n'a point d'associé. À Lui la royauté, à Lui les louanges et Il est capable de toute chose. Ô Seigneur ! Je Te demande le meilleur de ce qui se trouve dans ce jour et le meilleur de ce qui vient après. Et je cherche protection auprès de Toi contre le mal de ce qui se trouve dans ce jour et le mal de ce qui vient après. Ô Seigneur ! Je cherche protection auprès de Toi contre la paresse et les maux de la vieillesse. Ô Seigneur ! Je cherche protection auprès de Toi contre le châtiment du Feu et le châtiment de la tombe.",
+     "src": "mine"
+    }
+   },
+   "meaningEvening": {
+    "en": {
+     "text": "The evening has reached, and all the dominion belongs to Allah and praise be to Allah. There is no god but Allah, alone without any partner. To Him belongs the dominion, and to Him belongs praise, and He is Omnipotent over all things. My Lord, I ask You for the good of this night and the good of what follows it, and I seek refuge with You from the evil of this night and the evil of what follows it. My Lord, I seek refuge with You from laziness and woeful aging. My Lord, I seek refuge with You from torment of the fire and torment in the grave.",
+     "src": "he:3008"
+    },
+    "fr": {
+     "text": "Nous nous retrouvons au soir, ainsi que la royauté, appartenant à Allah ; les louanges sont pour Allah, il n'est de divinité [digne d'adoration] excepté Allah, Lui Seul, Il n’a point d’associé. A Lui la royauté, à Lui les louanges et Il est capable de toute chose. Ô Seigneur ! Je Te demande le meilleur de ce qui se trouve dans cette nuit et le meilleur de ce qui vient après. Et je cherche protection auprès de Toi contre le mal de ce qui se trouve dans cette nuit et le mal de ce qui vient après. Ô Seigneur ! Je cherche protection auprès de Toi contre la paresse et les maux de la vieillesse. Ô Seigneur ! Je cherche protection auprès de Toi contre le châtiment du Feu et le châtiment de la tombe.",
+     "src": "he:3008"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إِذَا أَمْسَى قَالَ",
+     "src": "hadith:muslim:6908"
+    },
+    {
+     "ar": "وَإِذَا أَصْبَحَ قَالَ ذَلِكَ أَيْضًا",
+     "src": "hadith:muslim:6908"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "In the evening, the Prophet (may Allah's peace and blessings be upon him) used to say",
+     "src": "he:3008"
+    },
+    "fr": {
+     "text": "Lorsque le Prophète (sur lui la paix et le salut) se trouvait au soir, il disait",
+     "src": "he:3008"
+    }
+   },
+   "hadith": {
+    "ar": "عن عبد الله بن مسعود رضي الله عنه قال: كان نبي الله صلى الله عليه وسلم إذا أمسى قال: «أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له» قال الراوي: أَرَاهُ قال فِيهِنَّ: «له الملك وله الحمد وهو على كل شيء قدير، ربِّ أسألك خير ما في هذه الليلة وخير ما بعدها، وأعوذ بك من شر ما في هذه الليلة وشر ما بعدها، رب أعوذ بك من الكسل، وسُوءِ الكِبَرِ، رب أعوذ بك من عذاب في النار، وعذاب في القبر»، وإذا أصبح قال ذلك أيضا «أصبحنا وأصبح الملك لله».",
+    "arSrc": "he:3008",
+    "url": "https://hadeethenc.com/ar/browse/hadith/3008",
+    "en": {
+     "text": "‘Abdullāh ibn Mas‘ūd (may Allah be pleased with him) reported: In the evening, the Prophet (may Allah's peace and blessings be upon him) used to say: \"The evening has reached, and all the dominion belongs to Allah and praise be to Allah. There is no god but Allah, alone without any partner.\" The narrator said: \"I believe he said along with them: 'To Him belongs the dominion, and to Him belongs praise, and He is Omnipotent over all things. My Lord, I ask You for the good of this night and the good of what follows it, and I seek refuge with You from the evil of this night and the evil of what follows it. My Lord, I seek refuge with You from laziness and woeful aging. My Lord, I seek refuge with You from torment of the fire and torment in the grave.' In the morning, he used to say: 'The morning has reached and all the dominion belongs to Allah.'\"",
+     "src": "he:3008",
+     "url": "https://hadeethenc.com/en/browse/hadith/3008"
+    },
+    "enExplain": {
+     "text": "It was from the guidance of the Prophet (may Allah’s peace and blessings be upon him) to say these blessed supplications in the morning and evening. \"The evening has reached and the dominion belongs to Allah\"; that's the time of evening has entered and the dominion continues therein to be for Allah exclusively. \"And praise be to Allah\"; that is we realize that the dominion therein belongs to Allah and all praise is due to Allah alone. \"There is no god but Allah\"; that is divinity belongs exclusively to Him. \"O Allah, I ask You for the good of this night\"; that is the goodness of it, as well as the goodness that occurs in it, and the goodness that rests in it. \"And I seek refuge with You from the evil of this night and the evil (therein)\"; that is from the nights and what lies therein of evil concerning religion and worldly affairs. \"O Allah, I seek refuge with You from laziness\"; that is from sluggishness in obedience while having the ability. \"Senility\" means aging that leads to the loss and weakness of some abilities, which is reversal to the most decrepit old age, because the purpose of life, represented in knowledge and action, are missed in such a stage. \"And woeful aging\"; that is senility and feeble-mindedness, and it was narrated with a different pronunciation meaning vanity. The meaning intended by \"woeful aging\" is the loss of reason that aging results in, as well as confusion and disorder in judgment, and the incapability to perform acts of obedience and other such things that worsen the condition. \"And the torment in the grave\"; that is from its punishment or from whatever causes it. \"In the morning, he used to say that as well\"; that's what he said in the evening. However, he would replace \"the evening\" with \"the morning\" and \"the night\" with \"the day\" saying: \"O Allah, I ask You for the good of this day.\"",
+     "src": "he:3008",
+     "url": "https://hadeethenc.com/en/browse/hadith/3008"
+    },
+    "fr": {
+     "text": "Abdullâh ibn Mas’ûd (qu’Allah l’agrée) dit : Lorsque le Prophète (sur lui la paix et le salut) se trouvait au soir, il disait : « Nous nous retrouvons au soir, ainsi que la royauté, appartenant à Allah ; les louanges sont pour Allah, il n'est de divinité [digne d'adoration] excepté Allah, Lui Seul, Il n’a point d’associé. », le rapporteur dit : Je pense qu’il disait avec cela : « A Lui la royauté, à Lui les louanges et Il est capable de toute chose. Ô Seigneur ! Je Te demande le meilleur de ce qui se trouve dans cette nuit et le meilleur de ce qui vient après. Et je cherche protection auprès de Toi contre le mal de ce qui se trouve dans cette nuit et le mal de ce qui vient après. Ô Seigneur ! Je cherche protection auprès de Toi contre la paresse et les maux de la vieillesse. Ô Seigneur ! Je cherche protection auprès de Toi contre le châtiment du Feu et le châtiment de la tombe. » Et lorsqu’il se trouvait au matin, il faisait la même chose [mais en disant] « Nous nous retrouvons au matin, ainsi que la royauté, appartenant à Allah. »",
+     "src": "he:3008",
+     "url": "https://hadeethenc.com/fr/browse/hadith/3008"
+    },
+    "frExplain": {
+     "text": "Prononcer des invocations bénies faisait partie de la tradition du Prophète (sur lui la paix et le salut) lorsqu’arrivait le matin ou le soir. Ainsi lorsqu’il dit : « Nous nous retrouvons au soir, ainsi que la royauté, appartenant à Allah », cela signifie : Nous sommes parvenus au soir, et la royauté d’Allah continue et Lui appartient exclusivement. « Les louanges sont à Allah. », c'est à dire : Nous sommes, dans notre état, parfaitement conscients que la royauté revient à Allah et que les louanges Lui reviennent exclusivement. « Il n'est de divinité [digne d'adoration] excepté Allah », c'est à dire qu'Il est Le Seul digne d’être adoré. « Ô Seigneur ! Je Te demande le meilleur de ce qui se trouve dans cette nuit » : de la nuit elle-même, « et le meilleur de ce qui vient après » : de ce qui pourrait s’y produire ainsi que de ce qui en découle. « Et je cherche protection auprès de Toi contre le mal de ce qui se trouve dans cette nuit et le mal de ce qui vient après. » : Tout ce qui peut se trouver de mal durant les nuits et qui pourrait toucher ma vie mondaine ainsi que ma religion. « Ô Seigneur ! Je cherche protection auprès de Toi contre la paresse. » : Faire preuve de lourdeur lorsque l’on accomplit un acte de piété, alors qu’on a la capacité [de le faire normalement], en raison d’un manque de motivation à faire le bien lorsqu’on en est capable ; « et les maux de la vieillesse » : Arriver à l’âge où la force physique n’est plus et qui correspond à l’âge de la sénilité ; dans cet état l’objectif de la vie, d’apprendre et d’appliquer est dépassé. Le mot « kibr » a également été rapporté [avec une absence de voyelle qui le différencie du mot « kibar », la vieillesse] et, dans ce cas-là, il signifie : l’ingratitude lorsqu’un bienfait est accordé et le sentiment de supériorité envers les gens. « Les maux de la vieillesse » concernent tout ce qui accompagne la vieillesse comme la sénilité, l'indécision, l'incapacité à raisonner, la négligence dans l'accomplissement des adorations ainsi que d'autres choses déplaisantes à l’œil. « contre le châtiment de la tombe. » : Le châtiment lui-même ou ses conséquences. « Et lorsqu’il se trouvait au matin » : C’est-à-dire le Prophète (sur lui la paix et le salut), « il faisait la même chose. » : Il répétait ce qu’il disait pour le soir, mais au lieu de dire : « Nous nous retrouvons au soir, ainsi que la royauté, appartenant à Allah », il disait : « Nous nous retrouvons au matin, ainsi que la royauté, appartenant à Allah. » De même, il changeait le mot « nuit », par le mot « jour ». Il disait donc : « Ô Allah, je Te demande le meilleur de cette journée… », et utilisait les pronoms qui lui correspondent par la suite.",
+     "src": "he:3008",
+     "url": "https://hadeethenc.com/fr/browse/hadith/3008"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih Muslim 2723b",
+     "url": "https://sunnah.com/muslim/48/101",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h78",
+   "hisn": 78,
+   "hisnUrl": "https://sunnah.com/hisn:78",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا ، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
+     "src": "hisn:78"
+    }
+   ],
+   "reciteEvening": [
+    {
+     "ar": "اللَّهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير.",
+     "src": "hisn:78"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, by You we have reached the morning, and by You we have reached the evening; by You we live, and by You we die, and to You is the Resurrection.",
+     "src": "he:5490"
+    },
+    "fr": {
+     "text": "Ô Allah ! C'est par Toi que nous nous retrouvons au matin, par Toi que nous nous retrouvons au soir, par Toi que nous vivons, par Toi que nous mourons, et vers Toi est la résurrection.",
+     "src": "mine"
+    }
+   },
+   "meaningEvening": {
+    "en": {
+     "text": "O Allah, by Your leave we have reached the evening and by Your leave we have reached the morning, by Your leave we live and die and unto You is our return.",
+     "src": "hisn:78"
+    },
+    "fr": {
+     "text": "Ô Allah ! C'est par Toi que nous nous retrouvons au soir, par Toi que nous nous retrouvons au matin, par Toi que nous vivons, par Toi que nous mourons, et vers Toi est le retour.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إِذَا أَصْبَحَ",
+     "src": "he:5490"
+    },
+    {
+     "ar": "وَإِذَا أَمْسَى قَالَ",
+     "src": "he:5490"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Upon reaching the morning, he used to say",
+     "src": "he:5490"
+    },
+    "fr": {
+     "text": "Il disait cela lorsqu'il se retrouvait au matin, et il disait la formule du soir lorsqu'il se retrouvait au soir.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "عَنْ أَبِي هُرَيْرَةَ رضي الله عنه عَنِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ: أَنَّهُ كَانَ يَقُولُ إِذَا أَصْبَحَ: «اللهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ» وَإِذَا أَمْسَى قَالَ: «بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ» قَالَ: وَمَرَّةً أُخْرَى: «وَإِلَيْكَ الْمَصِيرُ».",
+    "arSrc": "he:5490",
+    "url": "https://hadeethenc.com/ar/browse/hadith/5490",
+    "en": {
+     "text": "Abu Hurayrah (may Allah be pleased with him) reported that the Prophet (may Allah's peace and blessings be upon him): Upon reaching the morning, he used to say: \"O Allah, by You we have reached the morning, and by You we have reached the evening; by You we live, and by You we die, and to You is the Resurrection.\" Upon reaching the evening, he would say: \"By You we have reached the evening, and by You we have reached the morning, by You we live, and by You we die, and to You is the resurrection.\" He said: And another time: \"And to You is the final destination.\".",
+     "src": "he:5490",
+     "url": "https://hadeethenc.com/en/browse/hadith/5490"
+    },
+    "enExplain": {
+     "text": "Upon reaching the morning, i.e., the early part of the day, with the break of dawn, the Prophet (may Allah's peace and blessings be upon him) used to say:\n\n(O Allah, by You we have reached the morning) enjoying Your protection, overwhelmed with Your Favor, preoccupied with remembering You, seeking help with Your name, encompassed by Your guidance, and proceeding with Your might and strength. (And by You we have reached the evening, by You we live, and by You we die), i.e., like the previous wording along with reciting it in the evening saying: O Allah, by You we have reached the evening. So, by Your name, the Bestower of Life, we live, and by Your name, the Bringer of Death, we die. (And to You is the Resurrection), the return to life after death, and the separation after assembly. We continue like this at all times and in all situations, and I will never stop or leave it.\n\nUpon reaching the evening, right after ‘Asr, he would say: (O Allah, by You we have reached the evening, and by You we have reached the morning, by You we live, and by You we die, and to You is the final destination), the return in this world, and the return in the Hereafter, as it is You Who give me life and it is You Who cause me to die.",
+     "src": "he:5490",
+     "url": "https://hadeethenc.com/en/browse/hadith/5490"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5068",
+     "url": "https://sunnah.com/abudawud:5068",
+     "book": "abudawud",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Jami' at-Tirmidhi 3391",
+     "url": "https://sunnah.com/tirmidhi:3391",
+     "book": "tirmidhi",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Sunan Ibn Majah 3868",
+     "url": "https://sunnah.com/ibnmajah:3868",
+     "book": "ibnmajah",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h79",
+   "hisn": 79,
+   "hisnUrl": "https://sunnah.com/hisn:79",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "day_night",
+   "name": "sayyid_istighfar",
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لاَ يَغْفِرُ الذُّنوبَ إِلاَّ أَنْتَ",
+     "src": "hisn:79"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, You are my Lord, none has the right to be worshipped except You, You created me and I am Your servant and I abide to Your covenant and promise as best I can, I take refuge in You from the evil of which I have committed.  I acknowledge Your favour upon me and I acknowledge my sin, so forgive me, for verily none can forgive sin except You.",
+     "src": "hisn:79"
+    },
+    "fr": {
+     "text": "Ô Allah ! Tu es mon Seigneur, il n'y a de divinité [digne d'adoration] que Toi. Tu m'as créé et je suis Ton serviteur. Je reste fidèle à Ton engagement et à Ta promesse autant que je le peux. Je cherche protection auprès de Toi contre le mal de ce que j'ai fait. Je reconnais devant Toi Ton bienfait envers moi, et je reconnais mon péché. Pardonne-moi donc, car nul ne pardonne les péchés à part Toi.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "وَمَنْ قَالَهَا مِنَ النَّهَارِ",
+     "src": "he:5503"
+    },
+    {
+     "ar": "وَمَنْ قَالَهَا مِنَ اللَّيْلِ",
+     "src": "he:5503"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "And whoever says this during the day while being certain of its meaning, then he dies before the evening, he will be from the people of Paradise, and whoever says it at night while being certain of its meaning then he dies before the morning, he will be from the people of Paradise.\"",
+     "src": "he:5503"
+    },
+    "fr": {
+     "text": "Celui qui la dit pendant la journée en étant convaincu de son contenu, puis meurt ce jour-là avant le soir, fait partie des gens du Paradis ; et celui qui la dit pendant la nuit en étant convaincu de son contenu, puis meurt avant le matin, fait partie des gens du Paradis.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "عَنْ شَدَّادِ بْنِ أَوْسٍ رَضِيَ اللَّهُ عَنْهُ عَنِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ: «سَيِّدُ الِاسْتِغْفَارِ أَنْ تَقُولَ: اللَّهُمَّ أَنْتَ رَبِّي لاَ إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ لَكَ بِذَنْبِي فَاغْفِرْ لِي، فَإِنَّهُ لاَ يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ» قَالَ: «وَمَنْ قَالَهَا مِنَ النَّهَارِ مُوقِنًا بِهَا، فَمَاتَ مِنْ يَوْمِهِ قَبْلَ أَنْ يُمْسِيَ، فَهُوَ مِنْ أَهْلِ الجَنَّةِ، وَمَنْ قَالَهَا مِنَ اللَّيْلِ وَهُوَ مُوقِنٌ بِهَا، فَمَاتَ قَبْلَ أَنْ يُصْبِحَ، فَهُوَ مِنْ أَهْلِ الجَنَّةِ».",
+    "arSrc": "he:5503",
+    "url": "https://hadeethenc.com/ar/browse/hadith/5503",
+    "en": {
+     "text": "Shaddād ibn Aws (may Allah be pleased with him) reported from the Prophet (may Allah's peace and blessings be upon him): \"The best way of seeking Allah's forgiveness is to say: 'Allāhumma anta rabbi la ilāha illa ant khalaqtani wa ana ‘abduk wa ana ‘ala ‘ahdika wa wa‘dika mastata‘t a‘ūdhu bika min sharri ma sana‘t abū’u laka bini‘matika ‘alayya wa abū’u bidhanbi faghfir li fa innahu la yaghfiru adh-dhunūba illa ant (O Allah, You are my Lord. You created me, and I am Your slave. I will remain faithful to Your covenant and promise as much as possible. I seek refuge with You from the evil of what I have done. I acknowledge Your favor upon me, and I admit my sin. So, forgive me. Indeed, none can forgive sins but You).'\" He (may Allah's peace and blessings be upon him) added: \"And whoever says this during the day while being certain of its meaning, then he dies before the evening, he will be from the people of Paradise, and whoever says it at night while being certain of its meaning then he dies before the morning, he will be from the people of Paradise.\"",
+     "src": "he:5503",
+     "url": "https://hadeethenc.com/en/browse/hadith/5503"
+    },
+    "enExplain": {
+     "text": "The Prophet (may Allah's peace and blessings be upon him) informs that seeking forgiveness has certain wordings, the greatest of which is to say: \"Allāhumma anta rabbi la ilāha illa ant khalaqtani wa ana ‘abduk wa ana ‘ala ‘ahdika wa wa‘dika mastata‘t a‘ūdhu bika min sharri ma sana‘t abū’u laka bini‘matika ‘alayya wa abū’u bidhanbi faghfir li fa innahu la yaghfiru adh-dhunūba illa ant (O Allah, You are my Lord. You created me, and I am Your slave. I will remain faithful to Your covenant and promise as much as possible. I seek refuge with You from the evil of what I have done. I acknowledge Your favor upon me, and I admit my sin. So, forgive me. Indeed, none can forgive sins but You).\" Here, the slave first acknowledges the oneness of Allah and that Allah is his Creator and God, with no partner. He states that he adheres to his covenant with Allah Almighty, to believe in Him and obey Him as much as he can because no matter what the slave offers of worship, he cannot carry out all of Allah's commands or show sufficient gratitude for the blessings He has bestowed upon him. The slave, then, seeks refuge with Allah and holds fast to Him, as He is the One with Whom refuge is sought against the evil he committed. He willingly admits and acknowledges the favor of Allah upon him, and again admits and acknowledges his sins and misdeeds. After imploring Allah, he supplicates his Lord to forgive him by concealing his sins and protecting him from dire consequences through His pardon, favor, and mercy, as none can forgive sins but Allah Almighty. Then, the Prophet (may Allah's peace and blessings be upon him) stated that this supplication is from the morning and evening Adhkār (regular supplications), and whoever recites it with certainty while recalling its meanings and believing in them at the beginning of his day, from sunrise till the sun's decline, i.e., at daytime, and he dies, he will enter Paradise. And whoever recites it at night, from sunset till the break of dawn, and dies before the morning, he will enter Paradise.",
+     "src": "he:5503",
+     "url": "https://hadeethenc.com/en/browse/hadith/5503"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 6306",
+     "url": "https://sunnah.com/bukhari:6306",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h82",
+   "hisn": 82,
+   "hisnUrl": "https://sunnah.com/hisn:82",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 3,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لاَ إِلَهَ إِلاَّ أَنْتَ. اللَّهُمَّ  إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ، وَالفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ القَبْرِ، لاَ إِلَهَ إِلاَّ أَنْتَ",
+     "src": "hisn:82"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, grant my body health, O Allah, grant my hearing health, O Allah, grant my sight health.  None has the right to be worshipped except You. O Allah, I take refuge with You from disbelief and poverty, and I take refuge with You from the punishment of the grave.  None has the right to be worshipped except You.",
+     "src": "hisn:82"
+    },
+    "fr": {
+     "text": "Ô Allah ! Accorde la santé à mon corps. Ô Allah ! Accorde la santé à mon ouïe. Ô Allah ! Accorde la santé à ma vue. Il n'y a de divinité [digne d'adoration] que Toi. Ô Allah ! Je cherche protection auprès de Toi contre la mécréance et la pauvreté, et je cherche protection auprès de Toi contre le châtiment de la tombe. Il n'y a de divinité [digne d'adoration] que Toi.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "تُعِيدُهَا ثَلاَثًا حِينَ تُصْبِحُ وَثَلاَثًا حِينَ تُمْسِي",
+     "src": "hadith:abudawud:5090"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "You repeat them three times in the morning and three times in the evening. He said: I heard the Messenger of Allah (ﷺ) using these words as a supplication and I like to follow his practice.",
+     "src": "hadith:abudawud:5090"
+    },
+    "fr": {
+     "text": "'Abd ar-Rahmân ibn Abî Bakrah dit à son père : « Je t'entends les répéter trois fois le matin et trois fois le soir. » Il répondit : « J'ai entendu le Messager d'Allah ﷺ invoquer par ces paroles, et j'aime suivre sa sunna. »",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنَا الْعَبَّاسُ بْنُ عَبْدِ الْعَظِيمِ، وَمُحَمَّدُ بْنُ الْمُثَنَّى، قَالاَ حَدَّثَنَا عَبْدُ الْمَلِكِ بْنُ عَمْرٍو، عَنْ عَبْدِ الْجَلِيلِ بْنِ عَطِيَّةَ، عَنْ جَعْفَرِ بْنِ مَيْمُونٍ، قَالَ حَدَّثَنِي عَبْدُ الرَّحْمَنِ بْنُ أَبِي بَكْرَةَ، أَنَّهُ قَالَ لأَبِيهِ يَا أَبَةِ إِنِّي أَسْمَعُكَ تَدْعُو كُلَّ غَدَاةٍ اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي لاَ إِلَهَ إِلاَّ أَنْتَ تُعِيدُهَا ثَلاَثًا حِينَ تُصْبِحُ وَثَلاَثًا حِينَ تُمْسِي ‏.‏ فَقَالَ إِنِّي سَمِعْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَدْعُو بِهِنَّ فَأَنَا أُحِبُّ أَنْ أَسْتَنَّ بِسُنَّتِهِ ‏.‏ قَالَ عَبَّاسٌ فِيهِ وَتَقُولُ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ لاَ إِلَهَ إِلاَّ أَنْتَ تُعِيدُهَا ثَلاَثًا حِينَ تُصْبِحُ وَثَلاَثًا حِينَ تُمْسِي فَتَدْعُو بِهِنَّ فَأُحِبُّ أَنْ أَسْتَنَّ بِسُنَّتِهِ قَالَ وَقَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ \"‏ دَعَوَاتُ الْمَكْرُوبِ اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ وَأَصْلِحْ لِي شَأْنِي كُلَّهُ لاَ إِلَهَ إِلاَّ أَنْتَ ‏\"‏ ‏.‏ وَبَعْضُهُمْ يَزِيدُ عَلَى صَاحِبِهِ ‏.‏",
+    "arSrc": "hadith:abudawud:5090",
+    "url": "https://sunnah.com/abudawud:5090",
+    "en": {
+     "text": "Narrated AbuBakrah: AbdurRahman ibn AbuBakrah said that he told his father: O my father! I hear you supplicating every morning: \"O Allah! Grant me health in my body. O Allah! Grant me good hearing. O Allah! Grant me good eyesight. There is no god but Thou.\" You repeat them three times in the morning and three times in the evening. He said: I heard the Messenger of Allah (ﷺ) using these words as a supplication and I like to follow his practice. The transmitter, Abbas, said in this version: And you say: \"O Allah! I seek refuge in Thee from infidelity and poverty. O Allah! I seek refuge in Thee from punishment in the grave. There is no god but Thee\". You repeat them three times in the morning and three times in the evening, and use them as a supplication. I like to follow his practice. He said: The Messenger of Allah (ﷺ) said: The supplications to be used by one who is distressed are: \"O Allah! Thy mercy is what I hope for. Do not abandon me to myself for an instant, but put all my affairs in good order for me. There is no god but Thou.\" Some transmitters added more than others",
+     "src": "hadith:abudawud:5090",
+     "url": "https://sunnah.com/abudawud:5090"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5090",
+     "url": "https://sunnah.com/abudawud:5090",
+     "book": "abudawud",
+     "grade": "Hasan Isnaad",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h84",
+   "hisn": 84,
+   "hisnUrl": "https://sunnah.com/hisn:84",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ: فِي دِينِي وَدُنْيَايَ وَأَهْلِي، وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي، وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَينِ يَدَيَّ، وَمِنْ خَلْفِي، وَعَنْ يَمِينِي، وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+     "src": "hisn:84"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, I ask You for pardon and well-being in this life and the next. O Allah, I ask You for pardon and well-being in my religious and worldly affairs, and my family and my wealth. O Allah, veil my weaknesses and set at ease my dismay. O Allah, preserve me from the front and from behind and on my right and on my left and from above, and I take refuge with You lest I be swallowed up by the earth.",
+     "src": "hisn:84"
+    },
+    "fr": {
+     "text": "Ô Allah ! Je Te demande le pardon et la préservation dans ce monde et dans l'au-delà. Ô Allah ! Je Te demande le pardon et la préservation dans ma religion, ma vie d'ici-bas, ma famille et mes biens. Ô Allah ! Couvre mes défauts et rassure-moi dans mes frayeurs. Ô Allah ! Protège-moi par devant, par derrière, à ma droite, à ma gauche et au-dessus de moi, et je cherche refuge auprès de Ta grandeur contre le fait d'être pris par surprise par en dessous.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "حِينَ يُمْسِي وَحِينَ يُصْبِحُ",
+     "src": "he:5485"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "The Messenger of Allah (may Allah's peace and blessings be upon him) never abandoned these supplications in the evening and the morning",
+     "src": "he:5485"
+    },
+    "fr": {
+     "text": "Le Messager d'Allah ﷺ ne délaissait jamais ces invocations, le soir et le matin.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "عَنِ ابنِ عُمَرَ رضي الله عنهما قَالَ: لَمْ يَكُنْ رَسُولُ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ يَدَعُ هَؤُلَاءِ الدَّعَوَاتِ، حِينَ يُمْسِي وَحِينَ يُصْبِحُ: «اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَتِي -أَو: عَوْرَاتِي- وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ، وَمِنْ خَلْفِي، وَعَنْ يَمِينِي، وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي».",
+    "arSrc": "he:5485",
+    "url": "https://hadeethenc.com/ar/browse/hadith/5485",
+    "en": {
+     "text": "Ibn ‘Umar (may Allah be pleased with him and his father) reported: The Messenger of Allah (may Allah's peace and blessings be upon him) never abandoned these supplications in the evening and the morning: \"O Allah, I ask You for well-being in this world and the Hereafter. O Allah, I ask You for pardon and well-being in my religion, my worldly life, my family, and my wealth. O Allah, conceal my imperfection—or  my imperfections—and secure my fears. O Allah, protect me from before me, from behind me, from my right, from my left, and from above me, and I seek refuge with Your greatness from being suddenly killed from beneath me.\"",
+     "src": "he:5485",
+     "url": "https://hadeethenc.com/en/browse/hadith/5485"
+    },
+    "enExplain": {
+     "text": "The Prophet (may Allah's peace and blessings be upon him) never abandoned these supplications in the evening and the morning:\n\n(O Allah, I ask You for well-being) and freedom from diseases, misfortunes, worldly adversities, desires, and religious trials (in this world and the Hereafter), i.e., in this life and the next.\n\n(O Allah, I ask You for pardon) and the elimination and forgiveness of sins (and well-being) and freedom from defects (in my religion), namely Shirk (polytheism), religious innovations, and sins; (my worldly life), namely calamities, harm, and evils; (my family) my wives, children, and relatives; (and my wealth) and my properties and my work.\n\n(O Allah, conceal my imperfections) and my defects, flaws, and negligence and erase my sins (secure my fears), my dread, and my terror.\n\n(O Allah, protect me) and ward off distress and whatever is harmful away from me (from before me, from behind me, from my right, from my left, and from above me), asking Allah to protect him from all directions since adversities and misfortunes can affect and approach man only from one of these directions.\n\n(and I seek refuge with Your greatness from being suddenly killed) and unexpectedly taken and destroyed (from beneath me) by being swallowed up by the earth.",
+     "src": "he:5485",
+     "url": "https://hadeethenc.com/en/browse/hadith/5485"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5074",
+     "url": "https://sunnah.com/abudawud:5074",
+     "book": "abudawud",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Sunan Ibn Majah 3871",
+     "url": "https://sunnah.com/ibnmajah:3871",
+     "book": "ibnmajah",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h85",
+   "hisn": 85,
+   "hisnUrl": "https://sunnah.com/hisn:85",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ عَالِمَ الغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ الشَّيْطانِ وَشَرَكِهِ، وَأَنْ أَقْتَرِفَ عَلَى  نَفْسِي سُوءاً، أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",
+     "src": "hisn:85"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, Knower of the unseen and the seen, Creator of the heavens and the Earth, Lord and Sovereign of all things, I bear witness that none has the right to be worshipped except You. I take refuge in You from the evil of my soul and from the evil and shirk of the devil, and from committing wrong against my soul or bringing such upon another Muslim.",
+     "src": "hisn:85"
+    },
+    "fr": {
+     "text": "Ô Allah ! Créateur des cieux et de la terre, Connaisseur de l'invisible et du visible, Seigneur et Maître de toute chose, je témoigne qu'il n'est de divinité [qui soit digne d'adoration] à part Toi, je me réfugie auprès de Toi contre mon propre mal, contre le mal du diable et son polythéisme, et contre le fait de me causer du tort à moi-même ou d'en causer à un musulman.",
+     "src": "he:3006"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "قلها إذا أصبحت، وإذا أمسيت، وإذا أخذْتَ مَضْجَعَك",
+     "src": "he:3006"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Recite them in the morning, in the evening, and when you go to bed.",
+     "src": "he:3006"
+    },
+    "fr": {
+     "text": "Dis-le le matin, ajouta le Prophète (sur lui la paix et le salut), le soir et quand tu te couches",
+     "src": "he:3006"
+    }
+   },
+   "hadith": {
+    "ar": "عن أبي هريرة رضي الله عنه أن أبا بكر الصديق رضي الله عنه قال: يا رسول الله مُرني بكلمات أقُولُهُنَّ إذا أصبَحتُ وإذا أمسَيتُ، قال: «قل: اللهم فاطِرَ السماوات والأرض عالم الغيبِ والشهادة، ربَّ كُلِّ شَيءٍ ومَلِيكَه، أَشْهد أن لا إله إلا أنت، أعوذ بك من شرِّ نفسي وشرِّ الشيطان وشِرْكِهِ وأن أقترف على نفسي سوءًا أو أجرُّه إلى مسلم» قال: «قلها إذا أصبحت، وإذا أمسيت، وإذا أخذْتَ مَضْجَعَك».",
+    "arSrc": "he:3006",
+    "url": "https://hadeethenc.com/ar/browse/hadith/3006",
+    "en": {
+     "text": "Abu Hurayrah (may Allah be pleased with him) reported that Abu Bakr (may Allah be pleased with him) said: \"O Messenger of Allah, teach me some words to recite in the morning and in the evening.\" He said: \"Say: 'O Allah, Creator of the heavens and the earth, Knower of the hidden and the apparent, Lord of everything and its Possessor. I bear witness that there is no god but You. I seek refuge in You from the evil of my own self and from the evil of the devil and the evil of polytheism to which he calls, and from incurring any sin upon myself or upon any other Muslim.'\" He added: \"Recite them in the morning, in the evening, and when you go to bed.\"",
+     "src": "he:3006",
+     "url": "https://hadeethenc.com/en/browse/hadith/3006"
+    },
+    "enExplain": {
+     "text": "This Dhikr is one of the supplications that are recited in the morning and in the evening, which the Prophet (may Allah’s peace and blessings be upon him) taught Abu Bakr (may Allah be pleased with him), who said: \"Teach me!\" So, the Prophet (may Allah's peace and blessings be upon him) taught him a Dhikr and a supplication that he could recite every morning and every evening. He ordered him to say: O Allah, the Creator of the heavens and the earth in an unprecedented manner, Who originated them and brought them into existence from non-existence. Knower of what is hidden from the creatures and what is apparent to them, because Allah, the Almighty, knows the present, the past, and the future. Lord of everything and its Possessor, as Allah, the Almighty, is the Lord of everything and the Owner of everything. I testify with my tongue and heart that there is no god but You. Everything worshiped other than Allah is a false deity that has no right to be worshiped, and none has the right to be worshiped but Allah alone, may He be Glorified. I seek refuge in You from the evil of my own self, because the self has evils, as a verse reads: {And I do not acquit myself. Indeed, the soul is a persistent enjoiner of evil, except those upon whom my Lord has mercy} [Yusuf: 53]. So, if Allah does not protect you from the evils of your own self, then it will harm you and order you to do evil things. If He protects you from its evil, then He has guided you to all goodness. The Prophet (may Allah's peace and blessings be upon him) concluded his supplication with: and from the evil of the devil and the evil of polytheism to which he calls, or from the evil of his trap which he sets for people through desires, doubts, or other means of temptation. The completion of the supplication is to say: I seek refuge in Allah from committing evil against myself or causing evil to another Muslim. This supplication is what the Prophet (may Allah's peace and blessings be upon him) taught Abu Bakr to say in the morning, evening, and before going to bed.",
+     "src": "he:3006",
+     "url": "https://hadeethenc.com/en/browse/hadith/3006"
+    },
+    "fr": {
+     "text": "Abû Hurayra (qu'Allah l'agrée) relate : « Abû Bakr As-Siddîq (qu'Allah l'agrée) demanda : Ô Messager d'Allah ! Conseille-moi des paroles à dire le matin et le soir ! [Le Prophète] dit : Dis : « Ô Allah ! Créateur des cieux et de la terre, Connaisseur de l'invisible et du visible, Seigneur et Maître de toute chose, je témoigne qu'il n'est de divinité [qui soit digne d'adoration] à part Toi, je me réfugie auprès de Toi contre mon propre mal, contre le mal du diable et son polythéisme, et contre le fait de me causer du tort à moi-même ou d'en causer à un musulman. » - Dis-le le matin, ajouta le Prophète (sur lui la paix et le salut), le soir et quand tu te couches ».",
+     "src": "he:3006",
+     "url": "https://hadeethenc.com/fr/browse/hadith/3006"
+    },
+    "frExplain": {
+     "text": "Cette formule fait partie des formules d'évocation d'Allah que l'on dit le matin et le soir. Le Prophète (sur lui la paix et le salut) l'a enseignée à Abû Bakr (qu'Allah l'agrée) quand ce dernier lui demanda : apprends-moi ! Il lui enseigna alors une formule d'évocation et d'invocation qu'il pouvait dire le matin et le soir. Il lui a donc ordonné de dire : « Ô, Allah ! Créateur des cieux et de la terre », c’est-à-dire : Ô Allah ! Toi qui as créé les cieux et la terre sans modèle préalable, Toi qui les as inventés et les as fait sortir du néant. « Connaisseur de l'invisible et du visible », c’est-à-dire : Toi qui connais ce qui échappe aux créatures et qu'elles ne peuvent percevoir. En effet, Allah, Exalté soit-Il, connaît le passé, le présent et le futur. « Seigneur et Maître de toute chose », c’est-à-dire : Ô Seigneur et Maître de toute chose ! Allah est le Seigneur de toute chose ainsi que le Maître de toute chose. « J'atteste qu'il n'est de divinité [qui soit digne d'adoration] à part Toi », c’est-à-dire : je reconnais par la parole et par le cœur que Toi seul mérites d'être adoré. Tout ce qui est adoré en dehors d'Allah est nul et ne mérite pas d'être adoré. Allah Seul mérite l'adoration. « Je me réfugie auprès de Toi contre mon propre mal », car l’âme comporte différents maux comme il est dit dans le Coran : {( et je ne m'innocente pas, car l'âme ordonne certes le mal, sauf pour celui à qui mon Seigneur a fait miséricorde )} [Coran : 12/53]. Ainsi, si Allah ne te préserve pas de tes propres maux, ton âme te nuira et t'ordonnera le mal. Au contraire, s'Il te protège de son mal, Il te mènera à tout ce qui t'est bénéfique. « Et contre le mal du diable et son polythéisme », c’est-à-dire que tu demandes à Allah de te protéger du mal du diable et du polythéisme auquel il appelle. Le terme « shirk » traduit ici par polythéisme peut être lu « sharak » et il signifie dans ce cas : son filet, son piège, comme l’accessoire à l'aide duquel on chasse les oiseaux, les poissons, etc. En effet, le diable tend des pièges par lesquels il s'empare des êtres humains, comme les plaisirs, les idéologies erronées et autres... « et contre le fait de me causer du tort à moi-même », c’est-à-dire : de m'attirer du mal, « ou d'en causer à un musulman. » Le Prophète (sur lui la paix et le salut) a donc ordonné à Abû Bakr (qu’Allah l’agrée) de prononcer ces paroles le matin, le soir et en se couchant.",
+     "src": "he:3006",
+     "url": "https://hadeethenc.com/fr/browse/hadith/3006"
+    }
+   },
+   "refs": [
+    {
+     "label": "Jami' at-Tirmidhi 3392",
+     "url": "https://sunnah.com/tirmidhi:3392",
+     "book": "tirmidhi",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Sunan Abi Dawud 5067",
+     "url": "https://sunnah.com/abudawud:5067",
+     "book": "abudawud",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h86",
+   "hisn": 86,
+   "hisnUrl": "https://sunnah.com/hisn:86",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 3,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+     "src": "hisn:86"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "In the name of Allah, with Whose name nothing in the earth or the heaven can cause harm, and He is the All-Hearing, the All-Knowing",
+     "src": "he:6093"
+    },
+    "fr": {
+     "text": "Au nom d'Allah, avec le nom duquel rien ne peut nuire, ni sur la terre ni dans le ciel, et Il est Celui qui entend tout, l'Omniscient.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "فِي صَبَاحِ كُلِّ يَوْمٍ وَمَسَاءِ كُلِّ لَيْلَةٍ",
+     "src": "hadith:tirmidhi:3388"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Whoever says three times: 'In the name of Allah, with Whose name nothing in the earth or the heaven can cause harm, and He is the All-Hearing, the All-Knowing' will not suffer sudden affliction until the morning; and whoever says it in the morning three times will not suffer sudden affliction until the evening.",
+     "src": "he:6093"
+    },
+    "fr": {
+     "text": "Celui qui la dit trois fois ne sera pas frappé par un malheur soudain jusqu'au matin, et celui qui la dit trois fois le matin ne sera pas frappé par un malheur soudain jusqu'au soir.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "عَنْ أَبَانَ بْنِ عُثْمَانَ قَالَ: سَمِعْتُ عُثْمَانَ ابْنِ عَفَّانَ رضي الله عنه يَقُولُ: سَمِعْتُ رَسُولَ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ يَقُولُ: «مَنْ قَالَ بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ، فِي الْأَرْضِ، وَلَا فِي السَّمَاءِ، وَهُوَ السَّمِيعُ الْعَلِيمُ، ثَلَاثَ مَرَّاتٍ، لَمْ تُصِبْهُ فَجْأَةُ بَلَاءٍ، حَتَّى يُصْبِحَ، وَمَنْ قَالَهَا حِينَ يُصْبِحُ ثَلَاثُ مَرَّاتٍ، لَمْ تُصِبْهُ فَجْأَةُ بَلَاءٍ حَتَّى يُمْسِيَ»، قَالَ: فَأَصَابَ أَبَانَ بْنَ عُثْمَانَ الْفَالِجُ، فَجَعَلَ الرَّجُلُ الَّذِي سَمِعَ مِنْهُ الْحَدِيثَ يَنْظُرُ إِلَيْهِ، فَقَالَ لَهُ: مَا لَكَ تَنْظُرُ إِلَيَّ؟ فَوَاللَّهِ مَا كَذَبْتُ عَلَى عُثْمَانَ، وَلَا كَذَبَ عُثْمَانُ عَلَى النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، وَلَكِنَّ الْيَوْمَ الَّذِي أَصَابَنِي فِيهِ مَا أَصَابَنِي غَضِبْتُ فَنَسِيتُ أَنْ أَقُولَهَا.",
+    "arSrc": "he:6093",
+    "url": "https://hadeethenc.com/ar/browse/hadith/6093",
+    "en": {
+     "text": "Abān ibn ‘Uthmān reported: I heard ‘Uthmān ibn ‘Affān (may Allah be pleased with him) say: I heard the Messenger of Allah (may Allah's peace and blessings be upon him) say: \"Whoever says three times: 'In the name of Allah, with Whose name nothing in the earth or the heaven can cause harm, and He is the All-Hearing, the All-Knowing' will not suffer sudden affliction until the morning; and whoever says it in the morning three times will not suffer sudden affliction until the evening.\" He said: Abān ibn ‘Uthmān was struck with paralysis, and the man who heard the Hadīth from him started looking at him, so, he said to him: Why are you looking at me? By Allah, I did not tell a lie about 'Uthmān, nor did ‘Uthmān tell a lie about the Prophet (may Allah's peace and blessings be upon him), but the day I was afflicted with this, I got angry and forgot to say it.",
+     "src": "he:6093",
+     "url": "https://hadeethenc.com/en/browse/hadith/6093"
+    },
+    "enExplain": {
+     "text": "The Prophet (may Allah's peace and blessings be upon him) clarified that whoever says three times every morning, after the break of dawn, and every evening, before sunset: (In the name of Allah with Whose name) I seek help and protection against whatever is harmful that can cause no harm no matter how great it is along with mentioning His name, (in the earth) and the afflictions coming thereof (and the heaven) and the afflictions descending therefrom, (and He is the All-Hearing) of what we say (the All-Knowing) of our conditions.\n\nWhoever says it in the evening will not be overtaken by calamity until the morning comes, and whoever says it in the morning will not be overtaken by calamity until the evening comes.\n\nThe Hadīth narrator, Abān ibn ‘Uthmān, was then afflicted with paralysis, i.e., loss of control over one half of the body, so the man who heard the Hadīth from him kept looking at Abān in wonder. Thereupon, Abān said to the man: Why are you looking at me?! By Allah, I did not tell a lie about 'Uthmān, nor did ‘Uthmān tell a lie about the Prophet (may Allah's peace and blessings be upon him). However, that day when I was afflicted by this, Allah did not decree for me to say it; I got angry, and I forgot to say the aforementioned words.",
+     "src": "he:6093",
+     "url": "https://hadeethenc.com/en/browse/hadith/6093"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5088",
+     "url": "https://sunnah.com/abudawud:5088",
+     "book": "abudawud",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Jami' at-Tirmidhi 3388",
+     "url": "https://sunnah.com/tirmidhi:3388",
+     "book": "tirmidhi",
+     "grade": "Hasan Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Sunan Ibn Majah 3869",
+     "url": "https://sunnah.com/ibnmajah:3869",
+     "book": "ibnmajah",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h88",
+   "hisn": 88,
+   "hisnUrl": "https://sunnah.com/hisn:88",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ أَصْلِحْ لِي شَأْنِيَ كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",
+     "src": "hisn:88"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Ever Living, O Self-Subsisting and Supporter of all, by Your mercy I seek assistance, rectify for me all of my affairs and do not leave me to myself, even for the blink of an eye.",
+     "src": "hisn:88"
+    },
+    "fr": {
+     "text": "Ô Vivant ! Ô Toi qui subsistes par Toi-même et fais subsister toute chose ! C'est par Ta miséricorde que je demande secours : arrange pour moi toutes mes affaires et ne me confie pas à moi-même, ne serait-ce que le temps d'un clin d'œil.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "أن تقولي إذا أصبحتِ وإذا أمسيتِ",
+     "src": "ext:fatimah"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "The Prophet ﷺ told Fatimah: \"That you say, when you reach the morning and when you reach the evening: …\"",
+     "src": "mine"
+    },
+    "fr": {
+     "text": "Le Prophète ﷺ dit à Fâtimah : « Que tu dises, quand tu te retrouves au matin et quand tu te retrouves au soir : … »",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "أن تقولي إذا أصبحتِ وإذا أمسيتِ",
+    "arSrc": "ext:fatimah",
+    "url": "https://kalemtayeb.com/safahat/item/115307",
+    "excerpt": true
+   },
+   "refs": [
+    {
+     "label": "Anas: the Prophet's advice to Fatimah: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/545)",
+     "grade": "Hasan",
+     "grader": "al-Albani",
+     "where": "Sahih al-Targhib 1/273 (no. 661), «إسناده حسن»",
+     "url": "https://kalemtayeb.com/safahat/item/115307"
+    }
+   ]
+  },
+  {
+   "id": "h90",
+   "hisn": 90,
+   "hisnUrl": "https://sunnah.com/hisn:90",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "أَصْبَحْنا عَلَى فِطْرَةِ الْإِسْلاَمِ، وَعَلَى كَلِمَةِ الْإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صلى الله عليه وسلم، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ، حَنِيفاً مُسْلِماً وَمَا كَانَ مِنَ الْمُشرِكِينَ",
+     "src": "hisn:90"
+    }
+   ],
+   "reciteEveningNote": {
+    "ar": "أمسينا على فطرة الإسلام...",
+    "src": "hisn:90"
+   },
+   "meaning": {
+    "en": {
+     "text": "We rise upon the fitrah of Islam, and the word of pure faith, and upon the religion of our Prophet Muhammad  and the religion of our forefather Ibraheem, who was a Muslim and of true faith and was not of those who associate others with Allah.",
+     "src": "hisn:90"
+    },
+    "fr": {
+     "text": "Nous nous retrouvons au matin sur la saine nature (fitra) de l'islam, sur la parole de la sincérité, sur la religion de notre Prophète Muhammad ﷺ et sur la voie de notre père Ibrâhîm, monothéiste pur, soumis [à Allah], et qui n'était pas du nombre des associateurs.",
+     "src": "mine"
+    }
+   },
+   "eveningNote": {
+    "en": {
+     "text": "Note: for the evening, one reads amsayna instead of asbahna.",
+     "src": "hisn:90"
+    },
+    "fr": {
+     "text": "Le soir, on dit « amsaynâ » (nous nous retrouvons au soir) au lieu de « asbahnâ ».",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "كان إذا أصبحَ و إذا أَمْسَى قال",
+     "src": "ext:fitrah"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "When morning came and when evening came, he ﷺ would say: …",
+     "src": "mine"
+    },
+    "fr": {
+     "text": "Lorsqu'il se retrouvait au matin et lorsqu'il se retrouvait au soir, il ﷺ disait : …",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "كان إذا أصبحَ و إذا أَمْسَى قال : أَصْبَحْنا على فِطْرَةِ الإسلامِ و كَلِمَةِ الإِخْلاصِ ، و دِينِ نبيِّنا محمدٍ ، و مِلَّةِ أَبينا إبراهيمَ حَنِيفًا مسلمًا و ما كان مِنَ المُشْرِكِينَ",
+    "arSrc": "ext:fitrah",
+    "url": "https://surahquran.com/Hadith-96702.html",
+    "excerpt": true
+   },
+   "refs": [
+    {
+     "label": "'Abd al-Rahman ibn Abza: Ahmad (al-Musnad 3/406), Ibn al-Sunni ('Amal al-Yawm wa al-Layla 34)",
+     "grade": "Sahih",
+     "grader": "al-Albani",
+     "where": "Sahih al-Jami' 4674",
+     "url": "https://surahquran.com/Hadith-96702.html"
+    }
+   ]
+  },
+  {
+   "id": "h91",
+   "hisn": 91,
+   "hisnUrl": "https://sunnah.com/hisn:91",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 100,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+     "src": "hisn:91"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "How perfect Allah is and I praise Him.",
+     "src": "hisn:91"
+    },
+    "fr": {
+     "text": "Gloire et pureté à Allah, et par Sa louange.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "حِينَ يُصْبِحُ وَحِينَ يُمْسِي",
+     "src": "hadith:muslim:6843"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "He who recites in the morning and in the evening (these words):\" Hallowed be Allah and all praise is due to Him\" one hundred times, he would not bring on the Day of Resurrection anything excellent than this except one who utters these words or utters more than these words",
+     "src": "hadith:muslim:6843"
+    },
+    "fr": {
+     "text": "Celui qui dit le matin et le soir « Subhâna Llâhi wa bi-hamdih » cent fois, personne ne viendra le Jour de la Résurrection avec quelque chose de meilleur que ce qu'il apportera, sauf quelqu'un qui aura dit la même chose ou davantage.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنِي مُحَمَّدُ بْنُ عَبْدِ الْمَلِكِ الأُمَوِيُّ، حَدَّثَنَا عَبْدُ الْعَزِيزِ بْنُ الْمُخْتَارِ، عَنْ سُهَيْلٍ، عَنْ سُمَىٍّ، عَنْ أَبِي صَالِحٍ، عَنْ أَبِي هُرَيْرَةَ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ \"‏ مَنْ قَالَ حِينَ يُصْبِحُ وَحِينَ يُمْسِي سُبْحَانَ اللَّهِ وَبِحَمْدِهِ مِائَةَ مَرَّةٍ ‏.‏ لَمْ يَأْتِ أَحَدٌ يَوْمَ الْقِيَامَةِ بِأَفْضَلَ مِمَّا جَاءَ بِهِ إِلاَّ أَحَدٌ قَالَ مِثْلَ مَا قَالَ أَوْ زَادَ عَلَيْهِ ‏\"‏ ‏.‏",
+    "arSrc": "hadith:muslim:6843",
+    "url": "https://sunnah.com/muslim/48/39",
+    "en": {
+     "text": "Abu Huraira reported Allah's Messenger (ﷺ) as saying:He who recites in the morning and in the evening (these words):\" Hallowed be Allah and all praise is due to Him\" one hundred times, he would not bring on the Day of Resurrection anything excellent than this except one who utters these words or utters more than these words",
+     "src": "hadith:muslim:6843",
+     "url": "https://sunnah.com/muslim/48/39"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih Muslim 2692",
+     "url": "https://sunnah.com/muslim/48/39",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h92",
+   "hisn": 92,
+   "hisnUrl": "https://sunnah.com/hisn:92",
+   "tabs": [
+    "morning",
+    "evening"
+   ],
+   "group": null,
+   "count": 10,
+   "when": "morning_evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+     "src": "hisn:92"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise, and He is over all things omnipotent.",
+     "src": "hisn:92"
+    },
+    "fr": {
+     "text": "Il n'y a de divinité [digne d'adoration] qu'Allah, Seul, sans associé. À Lui la royauté et à Lui la louange, et Il est capable de toute chose.",
+     "src": "mine"
+    }
+   },
+   "countNote": {
+    "en": {
+     "text": "[ten times or once if lazy]",
+     "src": "hisn:92"
+    },
+    "fr": {
+     "text": "10 fois, ou une seule fois en cas de paresse (Hisn al-Muslim).",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "مَنْ قَالَ إِذَا أَصْبَحَ",
+     "src": "hadith:abudawud:5077"
+    },
+    {
+     "ar": "وَإِنْ قَالَهَا إِذَا أَمْسَى",
+     "src": "hadith:abudawud:5077"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "If anyone says in the morning: \"There is no god but Allah alone Who has no partner; to Him belong the dominions, to Him praise is due, and He is Omnipotent,\" he will have a reward equivalent to that for setting free a slave from among the descendants of Isma'il. He will have ten good deeds recorded for him, ten evil deeds deducted from him, he will be advanced ten degrees, and will be guarded from the Devil till the evening. If he says them in the evening, he will have a similar recompense till the morning.",
+     "src": "hadith:abudawud:5077"
+    },
+    "fr": {
+     "text": "Celui qui la dit le matin aura l'équivalent [de la récompense] de l'affranchissement d'un esclave parmi les descendants d'Ismâ'îl ; dix bonnes actions lui seront inscrites, dix mauvaises actions lui seront effacées, il sera élevé de dix degrés et il sera protégé du diable jusqu'au soir. Et s'il la dit le soir, il aura la même chose jusqu'au matin.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنَا مُوسَى بْنُ إِسْمَاعِيلَ، حَدَّثَنَا حَمَّادٌ، وَوُهَيْبٌ، نَحْوَهُ عَنْ سُهَيْلٍ، عَنْ أَبِيهِ، عَنِ ابْنِ أَبِي عَائِشٍ، - وَقَالَ حَمَّادٌ عَنْ أَبِي عَيَّاشٍ، - أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ ‏\"‏ مَنْ قَالَ إِذَا أَصْبَحَ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ كَانَ لَهُ عِدْلُ رَقَبَةٍ مِنْ وَلَدِ إِسْمَاعِيلَ وَكُتِبَ لَهُ عَشْرُ حَسَنَاتٍ وَحُطَّ عَنْهُ عَشْرُ سَيِّئَاتٍ وَرُفِعَ لَهُ عَشْرُ دَرَجَاتٍ وَكَانَ فِي حِرْزٍ مِنَ الشَّيْطَانِ حَتَّى يُمْسِيَ وَإِنْ قَالَهَا إِذَا أَمْسَى كَانَ لَهُ مِثْلُ ذَلِكَ حَتَّى يُصْبِحَ ‏\"‏ ‏.‏ قَالَ فِي حَدِيثِ حَمَّادٍ فَرَأَى رَجُلٌ رَسُولَ اللَّهِ صلى الله عليه وسلم فِيمَا يَرَى النَّائِمُ فَقَالَ يَا رَسُولَ اللَّهِ إِنَّ أَبَا عَيَّاشٍ يُحَدِّثُ عَنْكَ بِكَذَا وَكَذَا قَالَ ‏\"‏ صَدَقَ أَبُو عَيَّاشٍ ‏\"‏ ‏.‏ قَالَ أَبُو دَاوُدَ رَوَاهُ إِسْمَاعِيلُ بْنُ جَعْفَرٍ وَمُوسَى الزَّمْعِيُّ وَعَبْدُ اللَّهِ بْنُ جَعْفَرٍ عَنْ سُهَيْلٍ عَنْ أَبِيهِ عَنِ ابْنِ عَائِشٍ ‏.‏",
+    "arSrc": "hadith:abudawud:5077",
+    "url": "https://sunnah.com/abudawud:5077",
+    "en": {
+     "text": "Narrated AbuAyyash: The Messenger of Allah (ﷺ) said: If anyone says in the morning: \"There is no god but Allah alone Who has no partner; to Him belong the dominions, to Him praise is due, and He is Omnipotent,\" he will have a reward equivalent to that for setting free a slave from among the descendants of Isma'il. He will have ten good deeds recorded for him, ten evil deeds deducted from him, he will be advanced ten degrees, and will be guarded from the Devil till the evening. If he says them in the evening, he will have a similar recompense till the morning. The version of Hammad says: A man saw the Messenger of Allah (ﷺ) in a dream and said: Messenger of Allah! AbuAyyash is relating such and such on your authority. He said: AbuAyyash has spoken the truth. Abu Dawud said: Isma'il b. Ja'far, Musa al-Zim'i and 'Adb Allah b. Ja'far transmitted it from Suhail, from his father on the authority of Ibn 'A'ish",
+     "src": "hadith:abudawud:5077",
+     "url": "https://sunnah.com/abudawud:5077"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5077",
+     "url": "https://sunnah.com/abudawud:5077",
+     "book": "abudawud",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Sunan Ibn Majah 3867",
+     "url": "https://sunnah.com/ibnmajah:3867",
+     "book": "ibnmajah",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Abu Ayyub al-Ansari: Ahmad, al-Nasa'i ('Amal al-Yawm wa al-Layla 24)",
+     "grade": "Hasan Sahih",
+     "grader": "al-Albani",
+     "where": "Sahih al-Targhib 474",
+     "url": "https://surahquran.com/Hadith-97535.html"
+    }
+   ]
+  },
+  {
+   "id": "h94",
+   "hisn": 94,
+   "hisnUrl": "https://sunnah.com/hisn:94",
+   "tabs": [
+    "morning"
+   ],
+   "group": null,
+   "count": 3,
+   "when": "morning",
+   "name": null,
+   "recite": [
+    {
+     "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ",
+     "src": "hisn:94"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "How perfect Allah is and I praise Him by the number of His creation and His pleasure, and by the weight of His throne, and the ink of His words.",
+     "src": "hisn:94"
+    },
+    "fr": {
+     "text": "Gloire et pureté à Allah, et par Sa louange, autant que le nombre de Ses créatures, autant qu'il Lui plaît, autant que le poids de Son Trône et autant que l'encre de Ses paroles.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "بُكْرَةً حِينَ صَلَّى الصُّبْحَ",
+     "src": "he:5508"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "I said four words three times after I had left you; if they were to be weighed against what you have been saying since morning, they would outweigh them",
+     "src": "he:5508"
+    },
+    "fr": {
+     "text": "J'ai dit après toi quatre paroles, trois fois ; si on les pesait contre tout ce que tu as dit depuis ce matin, elles l'emporteraient.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "عَنْ جُوَيْرِيَةَ أُمِّ المؤْمنينَ رَضيَ اللهُ عنها: أَنَّ النَّبِيَّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ خَرَجَ مِنْ عِنْدِهَا بُكْرَةً حِينَ صَلَّى الصُّبْحَ، وَهِيَ فِي مَسْجِدِهَا، ثُمَّ رَجَعَ بَعْدَ أَنْ أَضْحَى، وَهِيَ جَالِسَةٌ، فَقَالَ: «مَا زِلْتِ عَلَى الْحَالِ الَّتِي فَارَقْتُكِ عَلَيْهَا؟» قَالَتْ: نَعَمْ، قَالَ النَّبِيُّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ: «لَقَدْ قُلْتُ بَعْدَكِ أَرْبَعَ كَلِمَاتٍ، ثَلَاثَ مَرَّاتٍ، لَوْ وُزِنَتْ بِمَا قُلْتِ مُنْذُ الْيَوْمِ لَوَزَنَتْهُنَّ: سُبْحَانَ اللهِ وَبِحَمْدِهِ، عَدَدَ خَلْقِهِ وَرِضَا نَفْسِهِ وَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ».",
+    "arSrc": "he:5508",
+    "url": "https://hadeethenc.com/ar/browse/hadith/5508",
+    "en": {
+     "text": "Juwayriyah, Mother of the Believers, (may Allah be pleased with her) reported: The Prophet (may Allah's peace and blessings be upon him) went out from her house in the early morning when he prayed the Morning prayer, while she was in her prayer place. Then he returned after offering the Forenoon prayer while she was still sitting. He said: \"Are you still in the state I left you in?\" She said: Yes. The Prophet (may Allah's peace and blessings be upon him) said: \"I said four words three times after I had left you; if they were to be weighed against what you have been saying since morning, they would outweigh them: Subhānallāh wa bihamdih, ‘adada khalqih, wa rida nafsih, a zinata ‘arshih, wa midāda kalimātih (Glory be to Allah and all praise is due to Him by the number of His creation, by His own pleasure, by the weight of His Throne, and by the ink of His words.).\"",
+     "src": "he:5508",
+     "url": "https://hadeethenc.com/en/browse/hadith/5508"
+    },
+    "enExplain": {
+     "text": "The Prophet (may Allah's peace and blessings be upon him) left the house of his wife Juwayriyah, Mother of the Believers, (may Allah be pleased with her) early in the morning after performing the Fajr prayer, while she was sitting in her place of prayer. He returned after the sun had passed its zenith, during the time of Duha, and she was still sitting in the same spot. He then said: Are you still in the state I left you in? She replied: Yes. The Prophet (may Allah's peace and blessings be upon him) said: I said four words after I had left you, and I repeated them three times. If they were to be weighed in terms of reward against all that you have been saying during the time you have been sitting here, they would outweigh them. (Glory be to Allah) and may He be Exalted above all imperfections (and all praise is due to Him). For to Him belongs the beautiful praise for having guided to that (by the number of His creation) whom none can count but Allah, (by His own pleasure) as much as pleases Him with those of His slaves with whom Allah is pleased—something that cannot be encompassed, (by the weight of His Throne), which is the greatest and heaviest of the whole creation, (and by the ink of His words) and the words of Allah are countless and endless. This encompasses and includes the three aspects, as the ink of His words, exalted is He, is limitless in its extent, description, and number. However, the intent here is to emphasize the great abundance. First, a countable measure is mentioned—the number of His creations. Then, it progresses to something even greater, expressed as \"His own pleasure.\" Next is the weight of the greatest creation, the Throne. The first relates to number and quantity, the second to description and quality, and the third to greatness and weight.",
+     "src": "he:5508",
+     "url": "https://hadeethenc.com/en/browse/hadith/5508"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih Muslim 2726a",
+     "url": "https://sunnah.com/muslim/48/106",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h95",
+   "hisn": 95,
+   "hisnUrl": "https://sunnah.com/hisn:95",
+   "tabs": [
+    "morning"
+   ],
+   "group": null,
+   "count": 1,
+   "when": "after_fajr",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْماً نَافِعاً، وَرِزْقاً طَيِّباً، وَعَمَلاً مُتَقَبَّلاً",
+     "src": "hisn:95"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, I ask You for knowledge which is beneficial and sustenance which is good, and deeds which are acceptable.",
+     "src": "hisn:95"
+    },
+    "fr": {
+     "text": "Ô Allah ! Je Te demande une science utile, une subsistance bonne et des œuvres acceptées.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إِذَا صَلَّى الصُّبْحَ حِينَ يُسَلِّمُ",
+     "src": "hadith:ibnmajah:925"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "It was narrated from Umm Salamah that when the Prophet (ﷺ) performed the Subh (morning prayer), while he said the Salam, he would say",
+     "src": "hadith:ibnmajah:925"
+    },
+    "fr": {
+     "text": "Lorsque le Prophète ﷺ priait la prière du matin (Subh), au moment du salut final, il disait : …",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنَا أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ، حَدَّثَنَا شَبَابَةُ، حَدَّثَنَا شُعْبَةُ، عَنْ مُوسَى بْنِ أَبِي عَائِشَةَ، عَنْ مَوْلًى، لأُمِّ سَلَمَةَ عَنْ أُمِّ سَلَمَةَ، أَنَّ النَّبِيَّ ـ صلى الله عليه وسلم ـ كَانَ يَقُولُ إِذَا صَلَّى الصُّبْحَ حِينَ يُسَلِّمُ ‏ \"‏ اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلاً مُتَقَبَّلاً ‏\"‏ ‏.‏",
+    "arSrc": "hadith:ibnmajah:925",
+    "url": "https://sunnah.com/ibnmajah:925",
+    "en": {
+     "text": "It was narrated from Umm Salamah that when the Prophet (ﷺ) performed the Subh (morning prayer), while he said the Salam, he would say:‘Allahumma inni as’aluka ‘ilman nafi’an, wa rizqan tayyiban, wa ‘amalan mutaqabbalan (O Allah, I ask You for beneficial knowledge, goodly provision and acceptable deeds).’”",
+     "src": "hadith:ibnmajah:925",
+     "url": "https://sunnah.com/ibnmajah:925"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Ibn Majah 925",
+     "url": "https://sunnah.com/ibnmajah:925",
+     "book": "ibnmajah",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h97",
+   "hisn": 97,
+   "hisnUrl": "https://sunnah.com/hisn:97",
+   "tabs": [
+    "evening"
+   ],
+   "group": null,
+   "count": 3,
+   "when": "evening",
+   "name": null,
+   "recite": [
+    {
+     "ar": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+     "src": "hisn:97"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "I take refuge in Allah’s perfect words from the evil He has created.",
+     "src": "hisn:97"
+    },
+    "fr": {
+     "text": "Je cherche refuge auprès des paroles parfaites d'Allah contre le mal de ce qu'Il a créé.",
+     "src": "mine"
+    }
+   },
+   "countSource": {
+    "text": "Whoever says three times when he reaches the evening: ‘I seek refuge in Allah’s Perfect Words from the evil of what he created, (A`ūdhu bikalimātillāhit-tāmmāti min sharri mā khalaq)’ no poisonous sting shall harm him that night.",
+    "src": "hadith:tirmidhi:3604.02"
+   },
+   "whenAr": [
+    {
+     "ar": "حِينَ أَمْسَيْتَ",
+     "src": "hadith:muslim:6880"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Had you recited these words in the evening:\" I seek refuge in the Perfect Word of Allah from the evil of what He created,\" it would not have done any harm to you",
+     "src": "hadith:muslim:6880"
+    },
+    "fr": {
+     "text": "Si tu avais dit, en arrivant au soir : « Je cherche refuge auprès des paroles parfaites d'Allah contre le mal de ce qu'Il a créé », il [le scorpion] ne t'aurait pas nui.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "وَحَدَّثَنَا هَارُونُ بْنُ مَعْرُوفٍ، وَأَبُو الطَّاهِرِ، كِلاَهُمَا عَنِ ابْنِ وَهْبٍ، - وَاللَّفْظُ لِهَارُونَ - حَدَّثَنَا عَبْدُ اللَّهِ بْنُ وَهْبٍ، قَالَ وَأَخْبَرَنَا عَمْرٌو، - وَهُوَ ابْنُ الْحَارِثِ - أَنَّ يَزِيدَ بْنَ أَبِي، حَبِيبٍ وَالْحَارِثَ بْنَ يَعْقُوبَ حَدَّثَاهُ عَنْ يَعْقُوبَ بْنِ عَبْدِ اللَّهِ بْنِ الأَشَجِّ، عَنْ بُسْرِ بْنِ سَعِيدٍ، عَنْ سَعْدِ بْنِ أَبِي وَقَّاصٍ، عَنْ خَوْلَةَ بِنْتِ حَكِيمٍ السُّلَمِيَّةِ، أَنَّهَا سَمِعَتْ رَسُولَ اللَّهِ صلى الله عليه وسلم يَقُولُ ‏\"‏ إِذَا نَزَلَ أَحَدُكُمْ مَنْزِلاً فَلْيَقُلْ أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ ‏.‏ فَإِنَّهُ لاَ يَضُرُّهُ شَىْءٌ حَتَّى يَرْتَحِلَ مِنْهُ ‏\"‏ ‏.‏ قَالَ يَعْقُوبُ وَقَالَ الْقَعْقَاعُ بْنُ حَكِيمٍ عَنْ ذَكْوَانَ أَبِي صَالِحٍ، عَنْ أَبِي هُرَيْرَةَ، أَنَّهُ قَالَ جَاءَ رَجُلٌ إِلَى النَّبِيِّ صلى الله عليه وسلم فَقَالَ يَا رَسُولَ اللَّهِ مَا لَقِيتُ مِنْ عَقْرَبٍ لَدَغَتْنِي الْبَارِحَةَ قَالَ ‏\"‏ أَمَا لَوْ قُلْتَ حِينَ أَمْسَيْتَ أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ لَمْ تَضُرُّكَ ‏\"‏ ‏.‏",
+    "arSrc": "hadith:muslim:6880",
+    "url": "https://sunnah.com/muslim/48/73",
+    "en": {
+     "text": "Khaula bint Hakim Sulamiyya reported:I heard Allah's Messenger (ﷺ) as saying: When any one of you stays at a place, he should say:\" I seek refuge in the Perfect Word of Allah from the evil of that He created.\" Nothing would then do him any harm until he moves from that place. Abu Huraira reported that a person came to Allah's Messenger (ﷺ) and said:\" Allah's Messenger, I was stung by a scorpion during the night. Thereupon he said: Had you recited these words in the evening:\" I seek refuge in the Perfect Word of Allah from the evil of what He created,\" it would not have done any harm to you",
+     "src": "hadith:muslim:6880",
+     "url": "https://sunnah.com/muslim/48/73"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih Muslim 2709a",
+     "url": "https://sunnah.com/muslim/48/73",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sunan Ibn Majah 3518",
+     "url": "https://sunnah.com/ibnmajah:3518",
+     "book": "ibnmajah",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Jami' at-Tirmidhi 3604b",
+     "url": "https://sunnah.com/tirmidhi/48/236",
+     "book": "tirmidhi",
+     "grade": "Sahih",
+     "where": "Sahih al-Tirmidhi 3/187, as cited in Hisn al-Muslim",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h93",
+   "hisn": 93,
+   "hisnUrl": "https://sunnah.com/hisn:93",
+   "tabs": [
+    "day"
+   ],
+   "group": null,
+   "count": 100,
+   "when": "day",
+   "name": null,
+   "recite": [
+    {
+     "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ، وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+     "src": "hisn:93"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise, and He is over all things omnipotent.",
+     "src": "hisn:93"
+    },
+    "fr": {
+     "text": "Il n'y a de divinité [digne d'adoration] qu'Allah, Seul, sans associé. À Lui la royauté et à Lui la louange, et Il est capable de toute chose.",
+     "src": "mine"
+    }
+   },
+   "hisnNote": {
+    "en": {
+     "text": "Hisn al-Muslim lists it with the morning adhkar («مائة مرة إذا أصبح»); the hadith says «فِي يَوْمٍ», \"in a day\".",
+     "src": "mine"
+    },
+    "fr": {
+     "text": "Hisn al-Muslim le place avec les adhkar du matin («مائة مرة إذا أصبح») ; le hadith dit «فِي يَوْمٍ», « dans une journée ».",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "فِي يَوْمٍ مِائَةَ مَرَّةٍ",
+     "src": "he:65905"
+    },
+    {
+     "ar": "يَوْمَهُ ذَلِكَ حَتَّى يُمْسِيَ",
+     "src": "he:65905"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Whoever says a hundred times in a day: \"La ilāha illallāhu wahdahu la sharīka lah, lahu al-mulku wa lahu al-hamdu wa huwa ‘ala kulli shay’in qadīr\" (There is no god but Allah. He is One, and He has no partner with Him; to Him belong the sovereignty and praise, and He is competent over all things); he will have a reward equivalent to that of emancipating ten slaves; a hundred good deeds will be added to his record; a hundred of his sins will be erased; and he will be shielded against the devil on that day till the evening; and no one will exceed him in doing good deeds except someone who says more than that.",
+     "src": "he:65905"
+    },
+    "fr": {
+     "text": "Celui qui la dit cent fois dans une journée aura l'équivalent de l'affranchissement de dix esclaves ; cent bonnes actions lui seront inscrites, cent mauvaises actions lui seront effacées, et ce sera pour lui une protection contre le diable ce jour-là jusqu'au soir ; et personne n'apportera mieux que ce qu'il a apporté, sauf quelqu'un qui en aura fait davantage.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ أَنَّ رَسُولَ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، قَالَ: «مَنْ قَالَ: لاَ إِلَهَ إِلَّا اللَّهُ، وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، فِي يَوْمٍ مِائَةَ مَرَّةٍ، كَانَتْ لَهُ عَدْلَ عَشْرِ رِقَابٍ، وَكُتِبَتْ لَهُ مِائَةُ حَسَنَةٍ، وَمُحِيَتْ عَنْهُ مِائَةُ سَيِّئَةٍ، وَكَانَتْ لَهُ حِرْزًا مِنَ الشَّيْطَانِ يَوْمَهُ ذَلِكَ حَتَّى يُمْسِيَ، وَلَمْ يَأْتِ أَحَدٌ بِأَفْضَلَ مِمَّا جَاءَ بِهِ إِلَّا أَحَدٌ عَمِلَ أَكْثَرَ مِنْ ذَلِكَ».",
+    "arSrc": "he:65905",
+    "url": "https://hadeethenc.com/ar/browse/hadith/65905",
+    "en": {
+     "text": "Abu Hurayrah (may Allah be pleased with him) reported that the Messenger of Allah (may Allah's peace and blessings be upon him) said: \"Whoever says a hundred times in a day: \"La ilāha illallāhu wahdahu la sharīka lah, lahu al-mulku wa lahu al-hamdu wa huwa ‘ala kulli shay’in qadīr\" (There is no god but Allah. He is One, and He has no partner with Him; to Him belong the sovereignty and praise, and He is competent over all things); he will have a reward equivalent to that of emancipating ten slaves; a hundred good deeds will be added to his record; a hundred of his sins will be erased; and he will be shielded against the devil on that day till the evening; and no one will exceed him in doing good deeds except someone who says more than that.\"",
+     "src": "he:65905",
+     "url": "https://hadeethenc.com/en/browse/hadith/65905"
+    },
+    "enExplain": {
+     "text": "The Prophet (may Allah's peace and blessings be upon him) informed that whoever says: (There is no god) or true deity (but Allah. He is One, and He has no partner with Him) in His divinity, lordship, names, and attributes, (to Him belong sovereignty), control, and management, (and praise) for everything He creates and decrees, (and He is competent over all things) with no one to resist or oppose Him; and whatever He does not will, cannot be. Whoever recites this Dhikr (remembrance) in a day and repeats it one hundred times will receive a reward equivalent to that of freeing ten slaves; a hundred good deeds and ranks will be recorded for him in Paradise; a hundred sins will be erased from his record; it will serve as a shield, protection, and fortress from the devil and his misguidance for the entire day until evening (sunset); no one will come on the Day of Judgment with something better than what he brought, except someone who did more than this and exceeded it.",
+     "src": "he:65905",
+     "url": "https://hadeethenc.com/en/browse/hadith/65905"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 3293",
+     "url": "https://sunnah.com/bukhari:3293",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih Muslim 2691",
+     "url": "https://sunnah.com/muslim/48/38",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h96",
+   "hisn": 96,
+   "hisnUrl": "https://sunnah.com/hisn:96",
+   "tabs": [
+    "day"
+   ],
+   "group": null,
+   "count": 100,
+   "when": "day",
+   "name": null,
+   "recite": [
+    {
+     "ar": "أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",
+     "src": "hisn:96"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "I ask Allah for forgiveness and repent to Him",
+     "src": "he:4808"
+    },
+    "fr": {
+     "text": "Je demande certes pardon à Allah et me repens à Lui",
+     "src": "he:4808"
+    }
+   },
+   "countSource": {
+    "text": "I seek forgiveness from Allah a hundred times a day",
+    "src": "hadith:muslim:6858"
+   },
+   "whenAr": [
+    {
+     "ar": "فِي الْيَوْمِ مِائَةَ مَرَّةٍ",
+     "src": "hadith:muslim:6858"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "By Allah! I ask Allah for forgiveness and repent to Him more than seventy times a day.",
+     "src": "he:4808"
+    },
+    "fr": {
+     "text": "Par Allah ! Je demande certes pardon à Allah et me repens à Lui plus de soixante-dix fois dans la journée.",
+     "src": "he:4808"
+    }
+   },
+   "hadith": {
+    "ar": "عن أبي هريرة رضي الله عنه قال: سمعت رسول الله صلى الله عليه وسلم يقول: «وَاللهِ إني لأَسْتَغْفِرُ اللهَ وأَتُوبُ إليهِ في اليومِ أَكْثَرَ من سَبْعِينَ مَرَّةً».",
+    "arSrc": "he:4808",
+    "url": "https://hadeethenc.com/ar/browse/hadith/4808",
+    "en": {
+     "text": "Abu Hurayrah (may Allah be pleased with him) reported that he heard the Prophet (may Allah's peace and blessings be upon him) say: \"By Allah! I ask Allah for forgiveness and repent to Him more than seventy times a day.\"",
+     "src": "he:4808",
+     "url": "https://hadeethenc.com/en/browse/hadith/4808"
+    },
+    "enExplain": {
+     "text": "The Prophet (may Allah's peace and blessings be upon him), whose past and future sins had been forgiven by Allah, swore that he would seek Allah's forgiveness and repent to Him over seventy times every day. The Prophet's pursuit of forgiveness was not necessarily for sins that he had committed, but it was part of his complete servitude to Allah, deep attachment to His remembrance, and the feeling of the tremendous duty towards Him and the shortcoming of His servants no matter how much they show gratitude. His act does also serve the purpose of prescribing the religious deeds for the Ummah.",
+     "src": "he:4808",
+     "url": "https://hadeethenc.com/en/browse/hadith/4808"
+    },
+    "fr": {
+     "text": "Abû Hurayrah (qu’Allah l’agrée) : « J'ai entendu le Messager d’Allah (sur lui la paix et le salut) a dit : \" Par Allah ! Je demande certes pardon à Allah et me repens à Lui plus de soixante-dix fois dans la journée. \" »",
+     "src": "he:4808",
+     "url": "https://hadeethenc.com/fr/browse/hadith/4808"
+    },
+    "frExplain": {
+     "text": "للترجمة",
+     "src": "he:4808",
+     "url": "https://hadeethenc.com/fr/browse/hadith/4808"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 6307",
+     "url": "https://sunnah.com/bukhari:6307",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih Muslim 2702a",
+     "url": "https://sunnah.com/muslim/48/52",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h101",
+   "hisn": 101,
+   "hisnUrl": "https://sunnah.com/hisn:101",
+   "tabs": [
+    "night"
+   ],
+   "group": "night",
+   "count": 1,
+   "when": "night",
+   "name": "baqarah_end",
+   "recite": [
+    {
+     "quran": [
+      2,
+      285,
+      286
+     ]
+    }
+   ],
+   "meaning": "quran",
+   "hisnNote": {
+    "en": {
+     "text": "Hisn al-Muslim lists it with the sleep adhkar; the hadith says «فِي لَيْلَةٍ», \"in a night\".",
+     "src": "mine"
+    },
+    "fr": {
+     "text": "Hisn al-Muslim le place avec les adhkar du coucher ; le hadith dit «فِي لَيْلَةٍ», « dans une nuit ».",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "فِي لَيْلَةٍ",
+     "src": "he:6274"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Whoever recites the last two verses of Sūrat al-Baqarah at a night, they will suffice him.",
+     "src": "he:6274"
+    },
+    "fr": {
+     "text": "Quiconque récite les deux derniers versets de la sourate : Al-Baqarah (la Vache) lors d'une nuit,  ils lui suffiront.",
+     "src": "he:6274"
+    }
+   },
+   "hadith": {
+    "ar": "عن أبي مسعود رضي الله عنه قال: قال النبي صلى الله عليه وسلم: «مَنْ قَرَأَ بِالْآيَتَيْنِ مِنْ آخِرِ سُورَةِ الْبَقَرَةِ فِي لَيْلَةٍ كَفَتَاهُ».",
+    "arSrc": "he:6274",
+    "url": "https://hadeethenc.com/ar/browse/hadith/6274",
+    "en": {
+     "text": "Abu Mas‘ūd (may Allah be pleased with him) reported: The Prophet (may Allah’s peace and blessings be upon him) said: \"Whoever recites the last two verses of Sūrat al-Baqarah at a night, they will suffice him.\"",
+     "src": "he:6274",
+     "url": "https://hadeethenc.com/en/browse/hadith/6274"
+    },
+    "enExplain": {
+     "text": "The Prophet (may Allah's peace and blessings be upon him) informed that whoever recites the last two verses of Surat al-Baqarah at night, Allah will protect him from evil and harm. It is also said that they are sufficient for him in place of qiyām al-layl (supererogatory prayer at night). They are also said to suffice him in place of all regular dhikrs. Others say that they are the least sufficient amount of Qur'anic recitation in qiyām al-layl. Other opinions were also expressed. Perhaps all those views are correct and consistent with the Hadīth's wording.",
+     "src": "he:6274",
+     "url": "https://hadeethenc.com/en/browse/hadith/6274"
+    },
+    "fr": {
+     "text": "D'après Aboû Mas'oûd (qu'Allah l'agrée) qui a dit : Le Prophète (qu'Allah le couvre d'éloges et le préserve) a dit : \" Quiconque récite les deux derniers versets de la sourate : Al-Baqarah (la Vache) lors d'une nuit,  ils lui suffiront. \"",
+     "src": "he:6274",
+     "url": "https://hadeethenc.com/fr/browse/hadith/6274"
+    },
+    "frExplain": {
+     "text": "Le Prophète (qu'Allah le couvre d'éloges et le préserve) a informé que quiconque lit les deux derniers versets de la sourate : Al-Baqarah (La Vache ) dans la nuit, Allah lui suffira contre tout mal et désagrément ; il a été dit : cette lecture lui suffira en guise de veillée en prière pour la nuit ; il a aussi été dit : cette lecture lui suffira en guise des rappels à dire ; il a encore été dit : cette lecture est le minimum qui est dû concernant la lecture du Coran dans la prière de nuit ; et il a été dit d'autres choses encore. Il se peut que tout ce qui a été mentionné soit correct et compris dans l'expression du hadith.",
+     "src": "he:6274",
+     "url": "https://hadeethenc.com/fr/browse/hadith/6274"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 5009",
+     "url": "https://sunnah.com/bukhari:5009",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih Muslim 808a",
+     "url": "https://sunnah.com/muslim/6/308",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h99",
+   "hisn": 99,
+   "hisnUrl": "https://sunnah.com/hisn:99",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 3,
+   "when": "bed",
+   "name": "muawwidhat_bed",
+   "recite": [
+    {
+     "ar": "بسم الله الرحمن الرحيم",
+     "src": "hisn:99"
+    },
+    {
+     "quran": [
+      112,
+      1,
+      4
+     ]
+    },
+    {
+     "ar": "بسم الله الرحمن الرحيم",
+     "src": "hisn:99"
+    },
+    {
+     "quran": [
+      113,
+      1,
+      5
+     ]
+    },
+    {
+     "ar": "بسم الله الرحمن الرحيم",
+     "src": "hisn:99"
+    },
+    {
+     "quran": [
+      114,
+      1,
+      6
+     ]
+    }
+   ],
+   "meaning": "quran",
+   "whenAr": [
+    {
+     "ar": "كان إذا أَوَى إلى فِرَاشِهِ كل ليلة",
+     "src": "he:5879"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Whenever the Prophet (may Allah's peace and blessings be upon him) went to his bed every night, he would join his hands together, blow into them, and recite in them Sūrat al-Ikhlās, Sūrat al-Falaq, and Sūrat An-Nās. He would then pass his hands over as much of his body as he could reach, beginning from his head, face, and the front of his body. He would do this three times.",
+     "src": "he:5879"
+    },
+    "fr": {
+     "text": "Chaque nuit, lorsque le Prophète (sur lui la paix et le salut) se mettait au lit, il plaçait ses mains jointes devant sa bouche, puis soufflait dedans et y récitait les trois dernières sourates protectrices : {(Dis : Il est Allah, L’Unique…)} ; {(Dis : Je me réfugie auprès du Seigneur de l’aube…)} ; {(Dis : Je me réfugie auprès du Seigneur des hommes…)}. Ensuite, il passait ses mains sur son corps, autant qu’il le pouvait en passant sur sa tête, son visage et en terminant par le reste de son corps, et il répétait cela trois fois.",
+     "src": "he:5879"
+    }
+   },
+   "hadith": {
+    "ar": "عن عائشة رضي الله عنها أن النبي صلى الله عليه وسلم كان إذا أخذ مَضْجَعَهُ نَفَثَ في يديه، وقرأ بالمُعَوِّذَاتِ، ومسح بهما جسده. \nوفي رواية: أن النبي صلى الله عليه وسلم كان إذا أَوَى إلى فِرَاشِهِ كل ليلة جَمَعَ كَفَّيْهِ، ثم نَفَثَ فيهما فقرأ فيهما: «قل هو الله أحد، وقل أعوذ برب الفلق، وقل أعوذ برب الناس» ثم مسح بهما ما استطاع من جسده، يبدأ بهما على رأسه ووجهه، وما أَقْبَلَ من جسده، يفعل ذلك ثلاث مرات.",
+    "arSrc": "he:5879",
+    "url": "https://hadeethenc.com/ar/browse/hadith/5879",
+    "en": {
+     "text": "‘Ā’ishah (may Allah be pleased with her) reported: Whenever the Messenger of Allah (may Allah’s peace and blessings be upon him) went to his bed, he would blow into his hands, recite the Mu‘awwidhāt (Sūrat al-Ikhlās, Sūrat al-Falaq, and Sūrat An-Nās), and then pass his hands over his body.\nIn another narration: “Whenever the Prophet (may Allah's peace and blessings be upon him) went to his bed every night, he would join his hands together, blow into them, and recite in them Sūrat al-Ikhlās, Sūrat al-Falaq, and Sūrat An-Nās. He would then pass his hands over as much of his body as he could reach, beginning from his head, face, and the front of his body. He would do this three times.”",
+     "src": "he:5879",
+     "url": "https://hadeethenc.com/en/browse/hadith/5879"
+    },
+    "enExplain": {
+     "text": "‘Ā’ishah, the Mother of the Believers, and the wife of our Prophet (may Allah's peace and blessings be upon him) in this world and in the Hereafter, related to us this noble act of Sunnah. She told us that every night, when the Prophet (may Allah's peace and blessings be upon him) went to bed, he would blow into his hands mildly, short of spitting, and recite into them Sūrat al-Ikhlās, Sūrat al-Falaq, and Sūrat An-Nās. As the Hadīth does not clearly indicate which should be done first, one may blow first and then recite, or recite first and then blow. Then, he would pass his hands over as much of his body as he could reach, beginning from his head, face, and the front of his body. He would do all this three times.",
+     "src": "he:5879",
+     "url": "https://hadeethenc.com/en/browse/hadith/5879"
+    },
+    "fr": {
+     "text": "ʽÂ’ishah (qu’Allah l’agrée) relate que lorsque le Messager d’Allah (sur lui la paix et le salut) se couchait [pour dormir], il soufflait dans ses mains, récitait les [sourates] protectrices du Coran, puis passait ses deux mains sur son corps. Et dans une autre version, [celle de Al-Bukhârî] : « Chaque nuit, lorsque le Prophète (sur lui la paix et le salut) se mettait au lit, il plaçait ses mains jointes devant sa bouche, puis soufflait dedans et y récitait les trois dernières sourates protectrices : {(Dis : Il est Allah, L’Unique…)} ; {(Dis : Je me réfugie auprès du Seigneur de l’aube…)} ; {(Dis : Je me réfugie auprès du Seigneur des hommes…)}. Ensuite, il passait ses mains sur son corps, autant qu’il le pouvait en passant sur sa tête, son visage et en terminant par le reste de son corps, et il répétait cela trois fois.",
+     "src": "he:5879",
+     "url": "https://hadeethenc.com/fr/browse/hadith/5879"
+    },
+    "frExplain": {
+     "text": "ʽÂ’ishah, la mère des croyants et l’épouse de notre Prophète dans ce bas monde et dans l’au-delà (qu’Allah l’agrée), nous rapporte cette noble tradition prophétique : chaque nuit, lorsque le Messager d’Allah (sur lui la paix et le salut) se mettait au lit, il plaçait ses mains jointes devant sa bouche, puis soufflait légèrement dedans sans y déposer de la salive et y récitait les trois dernières sourates protectrices : {( Dis : Il est Allah, L’Unique…)} ; {( Dis : Je me réfugie auprès du Seigneur de l’aube…)} ; {( Dis : Je me réfugie auprès du Seigneur des hommes…)} Soit, il soufflait puis récitait ou bien l’inverse, peu importe car le hadith ne met pas en évidence un ordre quelconque ou un acte consécutif. Ensuite, il passait ses mains sur son corps, autant qu’il le pouvait en commençant par la tête, le visage et en terminant par le reste du corps, et il répétait cela trois fois, c’est-à-dire : la lecture, le soufflement et l’essuyage.",
+     "src": "he:5879",
+     "url": "https://hadeethenc.com/fr/browse/hadith/5879"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 5017",
+     "url": "https://sunnah.com/bukhari:5017",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h100",
+   "hisn": 100,
+   "hisnUrl": "https://sunnah.com/hisn:100",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": "ayat_kursi_bed",
+   "recite": [
+    {
+     "quran": [
+      2,
+      255,
+      255
+     ]
+    }
+   ],
+   "meaning": "quran",
+   "confirm": {
+    "en": {
+     "text": "He really spoke the truth, although he is an absolute liar.",
+     "src": "hadith:bukhari:2311"
+    },
+    "fr": {
+     "text": "Il t'a dit la vérité, alors qu'il est un grand menteur.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إِذَا أَوَيْتَ إِلَى فِرَاشِكَ فَاقْرَأْ آيَةَ الْكُرْسِيِّ",
+     "src": "hadith:bukhari:2311"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Whenever you go to bed, recite \"Ayat-al-Kursi\"-- 'Allahu la ilaha illa huwa-l-Haiy-ul Qaiyum' till you finish the whole verse. (If you do so), Allah will appoint a guard for you who will stay with you and no satan will come near you till morning.",
+     "src": "hadith:bukhari:2311"
+    },
+    "fr": {
+     "text": "Lorsque tu te mets au lit, récite le Verset du Trône jusqu'à la fin du verset : un gardien de la part d'Allah ne cessera d'être auprès de toi, et aucun diable ne s'approchera de toi jusqu'au matin.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "وَقَالَ عُثْمَانُ بْنُ الْهَيْثَمِ أَبُو عَمْرٍو حَدَّثَنَا عَوْفٌ، عَنْ مُحَمَّدِ بْنِ سِيرِينَ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ وَكَّلَنِي رَسُولُ اللَّهِ صلى الله عليه وسلم بِحِفْظِ زَكَاةِ رَمَضَانَ، فَأَتَانِي آتٍ فَجَعَلَ يَحْثُو مِنَ الطَّعَامِ، فَأَخَذْتُهُ، وَقُلْتُ وَاللَّهِ لأَرْفَعَنَّكَ إِلَى رَسُولِ اللَّهِ صلى الله عليه وسلم‏.‏ قَالَ إِنِّي مُحْتَاجٌ، وَعَلَىَّ عِيَالٌ، وَلِي حَاجَةٌ شَدِيدَةٌ‏.‏ قَالَ فَخَلَّيْتُ عَنْهُ فَأَصْبَحْتُ فَقَالَ النَّبِيُّ صلى الله عليه وسلم ‏\"‏ يَا أَبَا هُرَيْرَةَ مَا فَعَلَ أَسِيرُكَ الْبَارِحَةَ ‏\"‏‏.‏ قَالَ قُلْتُ يَا رَسُولَ اللَّهِ شَكَا حَاجَةً شَدِيدَةً وَعِيَالاً فَرَحِمْتُهُ، فَخَلَّيْتُ سَبِيلَهُ‏.‏ قَالَ ‏\"‏ أَمَا إِنَّهُ قَدْ كَذَبَكَ وَسَيَعُودُ ‏\"‏‏.‏ فَعَرَفْتُ أَنَّهُ سَيَعُودُ لِقَوْلِ رَسُولِ اللَّهِ صلى الله عليه وسلم إِنَّهُ سَيَعُودُ‏.‏ فَرَصَدْتُهُ فَجَاءَ يَحْثُو مِنَ الطَّعَامِ فَأَخَذْتُهُ فَقُلْتُ لأَرْفَعَنَّكَ إِلَى رَسُولِ اللَّهِ صلى الله عليه وسلم‏.‏ قَالَ دَعْنِي فَإِنِّي مُحْتَاجٌ، وَعَلَىَّ عِيَالٌ لاَ أَعُودُ، فَرَحِمْتُهُ، فَخَلَّيْتُ سَبِيلَهُ فَأَصْبَحْتُ، فَقَالَ لِي رَسُولُ اللَّهِ صلى الله عليه وسلم ‏\"‏ يَا أَبَا هُرَيْرَةَ، مَا فَعَلَ أَسِيرُكَ ‏\"‏‏.‏ قُلْتُ يَا رَسُولَ اللَّهِ شَكَا حَاجَةً شَدِيدَةً وَعِيَالاً، فَرَحِمْتُهُ فَخَلَّيْتُ سَبِيلَهُ‏.‏ قَالَ ‏\"‏ أَمَا إِنَّهُ قَدْ كَذَبَكَ وَسَيَعُودُ ‏\"‏‏.‏ فَرَصَدْتُهُ الثَّالِثَةَ فَجَاءَ يَحْثُو مِنَ الطَّعَامِ، فَأَخَذْتُهُ فَقُلْتُ لأَرْفَعَنَّكَ إِلَى رَسُولِ اللَّهِ صلى الله عليه وسلم، وَهَذَا آخِرُ ثَلاَثِ مَرَّاتٍ أَنَّكَ تَزْعُمُ لاَ تَعُودُ ثُمَّ تَعُودُ‏.‏ قَالَ دَعْنِي أُعَلِّمْكَ كَلِمَاتٍ يَنْفَعُكَ اللَّهُ بِهَا‏.‏ قُلْتُ مَا هُوَ قَالَ إِذَا أَوَيْتَ إِلَى فِرَاشِكَ فَاقْرَأْ آيَةَ الْكُرْسِيِّ ‏{‏اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ الْحَىُّ الْقَيُّومُ‏}‏ حَتَّى تَخْتِمَ الآيَةَ، فَإِنَّكَ لَنْ يَزَالَ عَلَيْكَ مِنَ اللَّهِ حَافِظٌ وَلاَ يَقْرَبَنَّكَ شَيْطَانٌ حَتَّى تُصْبِحَ‏.‏ فَخَلَّيْتُ سَبِيلَهُ فَأَصْبَحْتُ، فَقَالَ لِي رَسُولُ اللَّهِ صلى الله عليه وسلم ‏\"‏ مَا فَعَلَ أَسِيرُكَ الْبَارِحَةَ ‏\"‏‏.‏ قُلْتُ يَا رَسُولَ اللَّهِ زَعَمَ أَنَّهُ يُعَلِّمُنِي كَلِمَاتٍ، يَنْفَعُنِي اللَّهُ بِهَا، فَخَلَّيْتُ سَبِيلَهُ‏.‏ قَالَ ‏\"‏ مَا هِيَ ‏\"‏‏.‏ قُلْتُ قَالَ لِي إِذَا أَوَيْتَ إِلَى فِرَاشِكَ فَاقْرَأْ آيَةَ الْكُرْسِيِّ مِنْ أَوَّلِهَا حَتَّى تَخْتِمَ ‏{‏اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ الْحَىُّ الْقَيُّومُ‏}‏ وَقَالَ لِي لَنْ يَزَالَ عَلَيْكَ مِنَ اللَّهِ حَافِظٌ وَلاَ يَقْرَبَكَ شَيْطَانٌ حَتَّى تُصْبِحَ، وَكَانُوا أَحْرَصَ شَىْءٍ عَلَى الْخَيْرِ‏.‏ فَقَالَ النَّبِيُّ صلى الله عليه وسلم ‏\"‏ أَمَا إِنَّهُ قَدْ صَدَقَكَ وَهُوَ كَذُوبٌ، تَعْلَمُ مَنْ تُخَاطِبُ مُنْذُ ثَلاَثِ لَيَالٍ يَا أَبَا هُرَيْرَةَ ‏\"‏‏.‏ قَالَ لاَ‏.‏ قَالَ ‏\"‏ ذَاكَ شَيْطَانٌ ‏\"‏‏.‏",
+    "arSrc": "hadith:bukhari:2311",
+    "url": "https://sunnah.com/bukhari:2311",
+    "en": {
+     "text": "Narrated Abu Huraira: Allah's Messenger (ﷺ) deputed me to keep Sadaqat (al-Fitr) of Ramadan. A comer came and started taking handfuls of the foodstuff (of the Sadaqa) (stealthily). I took hold of him and said, \"By Allah, I will take you to Allah's Messenger (ﷺ) .\" He said, \"I am needy and have many dependents, and I am in great need.\" I released him, and in the morning Allah's Messenger (ﷺ) asked me, \"What did your prisoner do yesterday?\" I said, \"O Allah's Messenger (ﷺ)! The person complained of being needy and of having many dependents, so, I pitied him and let him go.\" Allah's Messenger (ﷺ) said, \"Indeed, he told you a lie and he will be coming again.\" I believed that he would show up again as Allah's Messenger (ﷺ) had told me that he would return. So, I waited for him watchfully. When he (showed up and) started stealing handfuls of foodstuff, I caught hold of him again and said, \"I will definitely take you to Allah's Messenger (ﷺ). He said, \"Leave me, for I am very needy and have many dependents. I promise I will not come back again.\" I pitied him and let him go. In the morning Allah's Messenger (ﷺ) asked me, \"What did your prisoner do.\" I replied, \"O Allah's Messenger (ﷺ)! He complained of his great need and of too many dependents, so I took pity on him and set him free.\" Allah's Apostle said, \"Verily, he told you a lie and he will return.\" I waited for him attentively for the third time, and when he (came and) started stealing handfuls of the foodstuff, I caught hold of him and said, \"I will surely take you to Allah's Messenger (ﷺ) as it is the third time you promise not to return, yet you break your promise and come.\" He said, \"(Forgive me and) I will teach you some words with which Allah will benefit you.\" I asked, \"What are they?\" He replied, \"Whenever you go to bed, recite \"Ayat-al-Kursi\"-- 'Allahu la ilaha illa huwa-l-Haiy-ul Qaiyum' till you finish the whole verse. (If you do so), Allah will appoint a guard for you who will stay with you and no satan will come near you till morning. \" So, I released him. In the morning, Allah's Apostle asked, \"What did your prisoner do yesterday?\" I replied, \"He claimed that he would teach me some words by which Allah will benefit me, so I let him go.\" Allah's Messenger (ﷺ) asked, \"What are they?\" I replied, \"He said to me, 'Whenever you go to bed, recite Ayat-al-Kursi from the beginning to the end ---- Allahu la ilaha illa huwa-lHaiy-ul-Qaiyum----.' He further said to me, '(If you do so), Allah will appoint a guard for you who will stay with you, and no satan will come near you till morning.' (Abu Huraira or another sub-narrator) added that they (the companions) were very keen to do good deeds. The Prophet (ﷺ) said, \"He really spoke the truth, although he is an absolute liar. Do you know whom you were talking to, these three nights, O Abu Huraira?\" Abu Huraira said, \"No.\" He said, \"It was Satan",
+     "src": "hadith:bukhari:2311",
+     "url": "https://sunnah.com/bukhari:2311"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 2311",
+     "url": "https://sunnah.com/bukhari:2311",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ],
+   "muallaq": true
+  },
+  {
+   "id": "h102",
+   "hisn": 102,
+   "hisnUrl": "https://sunnah.com/hisn:102",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": null,
+   "recite": [
+    {
+     "ar": "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، فَإِن أَمْسَكْتَ نَفْسِي فارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا، بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ",
+     "src": "hisn:102"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "In Your Name, O my Lord, I place my side (on the bed), and by You I will lift it. If You take my soul, then have mercy on it, and if You send it, then protect it as You protect Your righteous slaves.",
+     "src": "he:6034"
+    },
+    "fr": {
+     "text": "C’est en Ton nom, mon Seigneur, que je pose mon flanc et c’est par Toi que je me relève. Si Tu retiens mon âme, fais-lui miséricorde et si Tu la retournes, alors préserve-la comme Tu préserves Tes serviteurs vertueux !",
+     "src": "he:6034"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إذا أوى أحدكم إلى فراشه",
+     "src": "he:6034"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "When any one of you goes to his bed, let him dust off his bed with the end of his lower garment, for indeed he does not know what came unto it after he had left it.",
+     "src": "he:6034"
+    },
+    "fr": {
+     "text": "Lorsque l’un d'entre vous se couche, qu’il frotte sa couche avec l’intérieur de son pagne car il ne sait pas ce qui lui a succédé sur celle-ci.",
+     "src": "he:6034"
+    }
+   },
+   "hadith": {
+    "ar": "عن أبي هريرة رضي الله عنه مرفوعاً: «إذا أوى أحدكم إلى فراشه فَليَنْفُضْ فِرَاشَهُ بِدَاخِلَةِ إزَارِهِ فإنَّهُ لا يدري ما خلفه عليه، ثم يقول: باسمك ربي وضعت جنبي، وبك أرفعه، إن أمسكت نفسي فارحمها، وإن أرسلتها، فاحفظها بما تحفظ به عبادك الصالحين».",
+    "arSrc": "he:6034",
+    "url": "https://hadeethenc.com/ar/browse/hadith/6034",
+    "en": {
+     "text": "Abu Hurayrah (may Allah be pleased with him) reported that the Prophet (may Allah's peace and blessings be upon him) said: \"When any one of you goes to his bed, let him dust off his bed with the end of his lower garment, for indeed he does not know what came unto it after he had left it. Then one should say: 'In Your Name, O my Lord, I place my side (on the bed), and by You I will lift it. If You take my soul, then have mercy on it, and if You send it, then protect it as You protect Your righteous slaves.'\"",
+     "src": "he:6034",
+     "url": "https://hadeethenc.com/en/browse/hadith/6034"
+    },
+    "enExplain": {
+     "text": "This Hadīth talks about the Dhikrs at the time of sleep. It is the moment when one submits his soul to his Lord, a moment in which he possesses neither might nor power. So he leaves it in the hand of its Creator to protect it and return it, as he entrusts his affairs completely to Allah, the Exalted. \nScholars stated that the wisdom behind the Dhikr and supplication at the time of sleeping and waking up is to make both the conclusion and commencement of one's deeds an act of obedience. \nIn this blessed Hadīth, the Prophet (may Allah's peace and blessings be upon him) explains to us the actions and statements which the slave should perform as an act of the Sunnah at the time of sleeping. The Prophet (may Allah's peace and blessings be upon him) instructed us on the action to be done in that situation when he said: “When any one of you goes to his bed, let him dust off,” and this is because the Arabs used to leave their beds as they were, and it was possible that some harmful insects would enter the bed after one had left it, or it became polluted with dust or the like. So, the Prophet (may Allah's peace and blessings be upon him) ordered that the bed should be dusted off before sleeping. Then he referred to the dusting and cleaning tool saying: “Then let him dust off his bed with the end of his lower garment”, i.e. the end of the under clothes, because it is easier in dusting, and to prevent the external part of the clothes from getting dirty, in addition to the fact that this is a better way for concealing one's private parts. \nThen the Prophet (may Allah's peace and blessings be upon him) explains the reason for this dusting and cleaning: “for indeed he does not know what came unto it after he had left it”, and this indicates the keenness of the Shariah on ensuring the wellness of the body, because the body is the element on which religion is established. This way the explanation of the practical Sunnah, along with its reason, are concluded. \nSecond: The verbal Sunnah:\nThen the Prophet (may Allah's peace and blessings be upon him) said: \"Then one should say: 'In Your Name, O my Lord’”, i.e. in the name of Allah the Most High, the Magnificent, I place this dormant body on the bed. This indicates that it is recommended for a person to remember his Lord at all times. Then he said: “I place my side (on the bed), and by You I will lift it”, i.e. I will not place this body or lift it except accompanied by Your remembrance. \nThen he said: \"If You take  my soul, then have mercy on it,” as an allusion to death. \nHis statement, may Allah’s peace and blessings be upon him: “And if You send it,” as an allusion to life.\nHis statement: “Then protect it as You protect Your righteous slaves”, i.e. protect me and my soul with whatever You protect Your slaves with. It is a general protection from all sins, grave offenses and evils. As he said: “Be mindful of Allah, and Allah will protect you.” This is a general protection, and that is why he made it specific to the righteous. Because the Exalted Lord's protection is attained by righteousness only. Therefore, there is no share for the excessively negligent person concerning Allah’s protection, a special protection that Allah, Exalted, grants His allies and loved ones. However, it is possible that part of the general protection could reach such a negligent person.",
+     "src": "he:6034",
+     "url": "https://hadeethenc.com/en/browse/hadith/6034"
+    },
+    "fr": {
+     "text": "Abû Hurayrah (qu’Allah l’agrée) relate que le Messager d’Allah (sur lui la paix et le salut) a dit : « Lorsque l’un d'entre vous se couche, qu’il frotte sa couche avec l’intérieur de son pagne car il ne sait pas ce qui lui a succédé sur celle-ci. Qu’il dise ensuite : \" C’est en Ton nom, mon Seigneur, que je pose mon flanc et c’est par Toi que je me relève. Si Tu retiens mon âme, fais-lui miséricorde et si Tu la retournes, alors préserve-la comme Tu préserves Tes serviteurs vertueux ! \" »",
+     "src": "he:6034",
+     "url": "https://hadeethenc.com/fr/browse/hadith/6034"
+    },
+    "frExplain": {
+     "text": "Ce hadith tourne autour de l’explication des invocations à dire avant de dormir, au moment où l’individu confie son âme à Allah, Exalté soit-Il, pour une durée lors de laquelle il ne détient aucune force et ne peut se mouvoir. Il la laisse donc dans la main de son Créateur, avec une confiance absolue, afin qu’Il la protège et la Lui rende. Les savants disent que la raison pour laquelle on évoque et invoque Allah avant de dormir ainsi qu'en se réveillant, c’est afin que les actions commencent et se concluent par l’adoration. Dans ce hadith béni, le Prophète (sur lui la paix et le salut) nous apprend ce qu’il est bon de dire et de faire avant de dormir. Il nous a montré ce qu’il fallait faire en disant : « Lorsque l’un d'entre vous se couche, qu’il frotte sa couche. » En effet, les Arabes avaient l’habitude de laisser la couche telle qu’elle était et il arrivait donc que des insectes nuisibles y pénètrent, ou que de la poussière y entre et la salisse. Il a donc ordonné de frotter la couche avant de dormir. Ensuite, il a montré ce avec quoi il fallait la frotter en disant : « … avec l’intérieur de son pagne. » Le pagne est le vêtement porté sur la partie inférieure du corps. Ce qui est visé ici est l’intérieur du pagne, car c’est plus facile pour frotter et cela aide à garder propre l’extérieur du pagne. De même, cette façon est plus à même de cacher ses parties intimes. Puis, il a montré la raison pour laquelle il faut frotter la couche, en disant : « car il ne sait pas ce qui lui a succédé sur celle-ci. ». Cela nous montre à quel point la loi islamique veille à préserver le corps et la santé. En effet, c’est par le biais du corps que l’on peut pratiquer la Religion. L’aspect pratique de cette tradition prophétique se termine ici et sa sagesse nous a donc été expliquée. Ensuite, vient l’aspect oral. Le Prophète (sur lui la paix et le salut) a dit : « Puis, qu’il dise : C’est en Ton nom, mon Seigneur... » C’est-à-dire : au nom d’Allah, le Très-Haut, le Très Grand, je pose ce corps inerte sur la couche. Cela nous apprend qu’il est recommandé que l’individu évoque son Seigneur à chaque instant. Il a dit : « que je pose mon flanc et c’est par Toi que je me relève » C’est-à-dire : je ne pose et je ne relève ce corps qu’en mentionnant Ton Nom. Il (sur lui la paix et le salut) a ensuite dit : « Si Tu retiens mon âme, alors fais-lui miséricorde. » C’est-à-dire : si je meurs. « Et si Tu la retournes… » : si je vis. « Alors préserve-la comme Tu préserves Tes serviteurs vertueux ! » : préserve mon âme comme Tu préserves Tes serviteurs, en la protégeant de façon générale, de tous les péchés, de tous les dangers, de tous les maux, etc. Ceci est semblable à la parole du Prophète (sur lui la paix et le salut) : « Préserve Allah, Il te préservera ! ». C’est une préservation générale. Voilà pourquoi, il a précisé qu’il s’agissait des « serviteurs vertueux », car la protection d’Allah ne se gagne que par la vertu. Ainsi, celui qui se montre négligent et insouciant ne gagnera aucune part de la protection divine particulière, celle qu’Allah réserve à Ses alliés et à ceux qu’Il aime. Il pourra cependant gagner une part de la protection générale.",
+     "src": "he:6034",
+     "url": "https://hadeethenc.com/fr/browse/hadith/6034"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 6320",
+     "url": "https://sunnah.com/bukhari:6320",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih Muslim 2714a",
+     "url": "https://sunnah.com/muslim/48/85",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h103",
+   "hisn": 103,
+   "hisnUrl": "https://sunnah.com/hisn:103",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ إِنَّكَ خَلَقْتَ نَفْسِي وَأَنْتَ تَوَفَّاهَا، لَكَ مَمَاتُهَا وَمَحْياهَا، إِنْ أَحْيَيْتَهَا فَاحْفَظْهَا، وَإِنْ أَمَتَّهَا فَاغْفِرْ لَهَا. اللَّهُمَّ إِنِّي أَسْأَلُكَ العَافِيَةَ",
+     "src": "hisn:103"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, verily You have created my soul and You shall take it’s life, to You belongs it’s life and death. If You should keep my soul alive then protect it, and if You should take it’s life then forgive it. O Allah, I ask You to grant me good health.",
+     "src": "hisn:103"
+    },
+    "fr": {
+     "text": "Ô Allah ! C'est Toi qui as créé mon âme et c'est Toi qui la reprends ; à Toi sa mort et sa vie. Si Tu la fais vivre, protège-la, et si Tu la fais mourir, pardonne-lui. Ô Allah ! Je Te demande la préservation.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إِذَا أَخَذَ مَضْجَعَهُ",
+     "src": "hadith:muslim:6888"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Abdullah b. 'Umar commanded a person that as he went to bed, he should say:\" O Allah, Thou created my being and it is for Thee to take it to its ultimate goal. And its death and life is due to Thee, and if Thou givest it life, safeguard it; and if Thou bringst death, grant it pardon. O Allah, I beg of Thee safety.\" A person said to him: Did you hear it from Umar? Thereupon he said: (I have heard from one) who is better than Umar, viz. from Allah's Messenger (ﷺ)",
+     "src": "hadith:muslim:6888"
+    },
+    "fr": {
+     "text": "'Abdullâh ibn 'Umar ordonna à un homme de dire ceci en se couchant. On lui demanda : « L'as-tu entendu de 'Umar ? » Il répondit : « De quelqu'un de meilleur que 'Umar : du Messager d'Allah ﷺ. »",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنَا عُقْبَةُ بْنُ مُكْرَمٍ الْعَمِّيُّ، وَأَبُو بَكْرِ بْنُ نَافِعٍ قَالاَ حَدَّثَنَا غُنْدَرٌ، حَدَّثَنَا شُعْبَةُ، عَنْ خَالِدٍ، قَالَ سَمِعْتُ عَبْدَ اللَّهِ بْنَ الْحَارِثِ، يُحَدِّثُ عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، أَنَّهُ أَمَرَ رَجُلاً إِذَا أَخَذَ مَضْجَعَهُ قَالَ ‏ \"‏ اللَّهُمَّ خَلَقْتَ نَفْسِي وَأَنْتَ تَوَفَّاهَا لَكَ مَمَاتُهَا وَمَحْيَاهَا إِنْ أَحْيَيْتَهَا فَاحْفَظْهَا وَإِنْ أَمَتَّهَا فَاغْفِرْ لَهَا اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ ‏\"‏ ‏.‏ فَقَالَ لَهُ رَجُلٌ أَسَمِعْتَ هَذَا مِنْ عُمَرَ فَقَالَ مِنْ خَيْرٍ مِنْ عُمَرَ مِنْ رَسُولِ اللَّهِ صلى الله عليه وسلم ‏.‏ قَالَ ابْنُ نَافِعٍ فِي رِوَايَتِهِ عَنْ عَبْدِ اللَّهِ بْنِ الْحَارِثِ ‏.‏ وَلَمْ يَذْكُرْ سَمِعْتُ ‏.‏",
+    "arSrc": "hadith:muslim:6888",
+    "url": "https://sunnah.com/muslim/48/81",
+    "en": {
+     "text": "Abdullah b. 'Umar commanded a person that as he went to bed, he should say:\" O Allah, Thou created my being and it is for Thee to take it to its ultimate goal. And its death and life is due to Thee, and if Thou givest it life, safeguard it; and if Thou bringst death, grant it pardon. O Allah, I beg of Thee safety.\" A person said to him: Did you hear it from Umar? Thereupon he said: (I have heard from one) who is better than Umar, viz. from Allah's Messenger (ﷺ). Ibn Nafi, reported this on the authority of Abdullah b. Harith but he did not make mention of this\" that he heard it himself",
+     "src": "hadith:muslim:6888",
+     "url": "https://sunnah.com/muslim/48/81"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih Muslim 2712",
+     "url": "https://sunnah.com/muslim/48/81",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h104",
+   "hisn": 104,
+   "hisnUrl": "https://sunnah.com/hisn:104",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 3,
+   "when": "bed",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+     "src": "hisn:104"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, protect me from Your punishment on the day Your servants are resurrected.",
+     "src": "hisn:104"
+    },
+    "fr": {
+     "text": "Ô Allah ! Préserve-moi de Ton châtiment le jour où Tu ressusciteras Tes serviteurs.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "كَانَ إِذَا أَرَادَ أَنْ يَرْقُدَ وَضَعَ يَدَهُ الْيُمْنَى تَحْتَ خَدِّهِ",
+     "src": "hadith:abudawud:5045"
+    },
+    {
+     "ar": "ثَلاَثَ مِرَارٍ",
+     "src": "hadith:abudawud:5045"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "When the Messenger of Allah (ﷺ) wanted to go to sleep, he put his right hand under his cheek and would then say three times",
+     "src": "hadith:abudawud:5045"
+    },
+    "fr": {
+     "text": "Lorsque le Messager d'Allah ﷺ voulait dormir, il plaçait sa main droite sous sa joue puis disait trois fois : …",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنَا مُوسَى بْنُ إِسْمَاعِيلَ، حَدَّثَنَا أَبَانُ، حَدَّثَنَا عَاصِمٌ، عَنْ مَعْبَدِ بْنِ خَالِدٍ، عَنْ سَوَاءٍ، عَنْ حَفْصَةَ، زَوْجِ النَّبِيِّ صلى الله عليه وسلم أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم كَانَ إِذَا أَرَادَ أَنْ يَرْقُدَ وَضَعَ يَدَهُ الْيُمْنَى تَحْتَ خَدِّهِ ثُمَّ يَقُولُ ‏ \"‏ اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ ‏\"‏ ‏.‏ ثَلاَثَ مِرَارٍ ‏.‏",
+    "arSrc": "hadith:abudawud:5045",
+    "url": "https://sunnah.com/abudawud:5045",
+    "en": {
+     "text": "Narrated Hafsah, Ummul Mu'minin: When the Messenger of Allah (ﷺ) wanted to go to sleep, he put his right hand under his cheek and would then say three times: O Allah, guard me from Thy punishment on the day when Thou raisest up Thy servants",
+     "src": "hadith:abudawud:5045",
+     "url": "https://sunnah.com/abudawud:5045"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5045",
+     "url": "https://sunnah.com/abudawud:5045",
+     "book": "abudawud",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Jami' at-Tirmidhi 3399",
+     "url": "https://sunnah.com/tirmidhi:3399",
+     "book": "tirmidhi",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h105",
+   "hisn": 105,
+   "hisnUrl": "https://sunnah.com/hisn:105",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": null,
+   "recite": [
+    {
+     "ar": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+     "src": "hisn:105"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "With Your name, O Allah, I die and I live",
+     "src": "hadith:bukhari:6324"
+    },
+    "fr": {
+     "text": "C'est en Ton nom, ô Allah, que je meurs et que je vis.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إِذَا أَرَادَ أَنْ يَنَامَ",
+     "src": "hadith:bukhari:6324"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Whenever the Prophet (ﷺ) intended to go to bed, he would recite",
+     "src": "hadith:bukhari:6324"
+    },
+    "fr": {
+     "text": "Lorsque le Prophète ﷺ voulait dormir, il disait : …",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنَا أَبُو نُعَيْمٍ، حَدَّثَنَا سُفْيَانُ، عَنْ عَبْدِ الْمَلِكِ بْنِ عُمَيْرٍ، عَنْ رِبْعِيِّ بْنِ حِرَاشٍ، عَنْ حُذَيْفَةَ، قَالَ كَانَ النَّبِيُّ صلى الله عليه وسلم إِذَا أَرَادَ أَنْ يَنَامَ قَالَ ‏\"‏ بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا ‏\"‏‏.‏ وَإِذَا اسْتَيْقَظَ مِنْ مَنَامِهِ قَالَ ‏\"‏ الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا، وَإِلَيْهِ النُّشُورُ ‏\"‏‏.‏",
+    "arSrc": "hadith:bukhari:6324",
+    "url": "https://sunnah.com/bukhari:6324",
+    "en": {
+     "text": "Narrated Hudhaifa:Whenever the Prophet (ﷺ) intended to go to bed, he would recite: \"Bismika Allahumma amutu wa ahya (With Your name, O Allah, I die and I live).\" And when he woke up from his sleep, he would say: \"Al-hamdu lil-lahil-ladhi ahyana ba'da ma amatana; wa ilaihi an-nushur (All the Praises are for Allah Who has made us alive after He made us die (sleep) and unto Him is the Resurrection",
+     "src": "hadith:bukhari:6324",
+     "url": "https://sunnah.com/bukhari:6324"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 6324",
+     "url": "https://sunnah.com/bukhari:6324",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih Muslim 2711",
+     "url": "https://sunnah.com/muslim/48/80",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h106",
+   "hisn": 106,
+   "hisnUrl": "https://sunnah.com/hisn:106",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": [
+    33,
+    33,
+    34
+   ],
+   "when": "bed",
+   "name": "tasbih_fatimah",
+   "recite": [
+    {
+     "ar": "سُبْحَانَ اللَّهِ (ثلاثاً وثلاثين) وَالْحَمْدُ لِلَّهِ (ثلاثاً وثلاثين) وَاللَّهُ أَكْبَرُ (أربعاً وثلاثينَ)",
+     "src": "hisn:106"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "‘Subhān Allah' (glory be to Allah) thirty-three times, ‘Alhamdulillāh' (praise be to Allah) thirty-three times, and ‘Allāhu Akbar' (Allah is the Most Great) thirty-four times",
+     "src": "he:6076"
+    },
+    "fr": {
+     "text": "Gloire et pureté à Allah (33 fois), louange à Allah (33 fois), Allah est le plus Grand (34 fois).",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إِذَا أَخَذْتُمَا مَضَاجِعَكُمَا -أَوْ أَوَيْتُمَا إِلَى فِرَاشِكُمَا",
+     "src": "he:6076"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "This is better for you than a servant.",
+     "src": "he:6076"
+    },
+    "fr": {
+     "text": "Cela est meilleur pour vous qu’un serviteur.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "عَنْ عَلِيٍّ رضي الله عنه: أَنَّ فَاطِمَةَ رَضيَ اللهُ عنْها أَتَتِ النَّبِيَّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ تَشْكُو إِلَيْهِ مَا تَلْقَى فِي يَدِهَا مِنَ الرَّحَى، وَبَلَغَهَا أَنَّهُ جَاءَهُ رَقِيقٌ، فَلَمْ تُصَادِفْهُ، فَذَكَرَتْ ذَلِكَ لِعَائِشَةَ، فَلَمَّا جَاءَ أَخْبَرَتْهُ عَائِشَةُ، قَالَ: فَجَاءَنَا وَقَدْ أَخَذْنَا مَضَاجِعَنَا، فَذَهَبْنَا نَقُومُ، فَقَالَ: «عَلَى مَكَانِكُمَا» فَجَاءَ فَقَعَدَ بَيْنِي وَبَيْنَهَا، حَتَّى وَجَدْتُ بَرْدَ قَدَمَيْهِ عَلَى بَطْنِي، فَقَالَ: «أَلاَ أَدُلُّكُمَا عَلَى خَيْرٍ مِمَّا سَأَلْتُمَا؟ إِذَا أَخَذْتُمَا مَضَاجِعَكُمَا -أَوْ أَوَيْتُمَا إِلَى فِرَاشِكُمَا- فَسَبِّحَا ثَلاَثًا وَثَلاَثِينَ، وَاحْمَدَا ثَلاَثًا وَثَلاَثِينَ، وَكَبِّرَا أَرْبَعًا وَثَلاَثِينَ، فَهُوَ خَيْرٌ لَكُمَا مِنْ خَادِمٍ».",
+    "arSrc": "he:6076",
+    "url": "https://hadeethenc.com/ar/browse/hadith/6076",
+    "en": {
+     "text": "‘Ali (may Allah be pleased with him) reported: Fātimah (may Allah be pleased with her) went to the Prophet (may Allah's peace and blessings be upon him) to complain about the effect of the grinding-stone on her hand, as she heard that he had acquired some slaves. She did not find him. So, she mentioned the matter to ‘Ā’ishah. When he came, ‘Ā’ishah informed him. He related: So, he visited us when we had gone to bed, and as we were about to get up, he said: \"Stay where you are.\" He came and sat down between her and me, and I felt the coldness of his feet on my belly. He said: \"Let me guide you to something better than what you asked for. When you go to bed, say ‘Subhān Allah' (glory be to Allah) thirty-three times, ‘Alhamdulillāh' (praise be to Allah) thirty-three times, and ‘Allāhu Akbar' (Allah is the Most Great) thirty-four times. This is better for you than a servant.\"",
+     "src": "he:6076",
+     "url": "https://hadeethenc.com/en/browse/hadith/6076"
+    },
+    "enExplain": {
+     "text": "Fātimah (may Allah be pleased with her), the Prophet's daughter, complained about the effect of the grinding-stone on her hand. When captives were brought to the Prophet (may Allah's peace and blessings be upon him), she rushed to ask him for a servant from these captives so as to do the household chores on her behalf. She, however, did not find him and found ‘Ā’ishah (may Allah be pleased with her). She told her about the matter. When he (may Allah's peace and blessings be upon him) came, ‘Ā’ishah told him that Fātimah had come to ask him for a servant. So, the Prophet (may Allah's peace and blessings be upon him) came to Fātimah and ‘Ali (may Allah be pleased with both of them) at their house while they were in bed, preparing to sleep. He sat down between them, and ‘Ali (may Allah be pleased with him) felt the coldness of the Prophet's feet on his belly. He said: Shall I teach you something better than what you have asked me for giving you a servant? They replied in the affirmative. So, he (may Allah's peace and blessings be upon him) said: When you go to bed for sleep in the night, say Takbīr thirty-four times: Allāhu Akbar. Glorify Allah thirty-three times, saying: Subhān Allah. And praise Allah thirty-three times, saying: Alhamdulillāh. This Dhikr is better for you than having a servant.",
+     "src": "he:6076",
+     "url": "https://hadeethenc.com/en/browse/hadith/6076"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 6318",
+     "url": "https://sunnah.com/bukhari:6318",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih al-Bukhari 3705",
+     "url": "https://sunnah.com/bukhari:3705",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih Muslim 2727a",
+     "url": "https://sunnah.com/muslim/48/108",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h107",
+   "hisn": 107,
+   "hisnUrl": "https://sunnah.com/hisn:107",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ رَبَّ السَّمَوَاتِ السَّبْعِ وَرَبَّ الأَرْضِ، وَرَبَّ الْعَرْشِ الْعَظِيمِ، رَبَّنَا وَرَبَّ كُلِّ شَيْءٍ، فَالِقَ الْحَبِّ وَالنَّوَى، وَمُنْزِلَ التَّوْرَاةِ وَالْإِنْجِيلِ، وَالْفُرْقَانِ، أَعُوذُ بِكَ مِنْ شَرِّ كُلِّ شَيْءٍ أَنْتَ آخِذٌ بِنَاصِيَتِهِ. اللَّهُمَّ أَنْتَ الأَوَّلُ فَلَيْسَ قَبْلَكَ شَيْءٌ، وَأَنْتَ الآخِرُ فَلَيسَ بَعْدَكَ شَيْءٌ، وَأَنْتَ الظَّاهِرُ فَلَيْسَ فَوْقَكَ شَيْءٌ، وَأَنْتَ الْبَاطِنُ فَلَيْسَ دُونَكَ شَيْءٌ، اقْضِ عَنَّا الدَّيْنَ وَأَغْنِنَا مِنَ الْفَقْرِ",
+     "src": "hisn:107"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, Lord of the heavens and Lord of the earth and Lord of the Magnificent Throne! Our Lord, and the Lord of everything, the Cleaver of grains and date seeds, the Revealer of the Torah, the Gospel, and the Criterion (the Qur'an), I seek refuge with You from the evil of everything that You have grasp of its forelock (You have full control over it). O Allah, You are the First, there is nothing before You, You are the Last and there is nothing after You, You are the Highest and there is nothing above You, and You are the Nearest and there is nothing nearer than You. Remove the burden of debt from us and relieve us of poverty.",
+     "src": "he:6335"
+    },
+    "fr": {
+     "text": "Ô Allah ! Seigneur des Cieux, Seigneur de la Terre et Seigneur du Trône immense ! Notre Seigneur et Seigneur de toute chose ! Toi qui fends le grain et le noyau ! Toi qui as fait descendre la Thorah, l’Évangile et le Discernement ! Je me réfugie auprès de toi contre toute chose que tu tiens par le toupet. Ô Allah ! Tu es le Premier, rien n’est avant Toi ! Tu es le Dernier, rien n’est après Toi ! Tu es l’Apparent, rien n’est au-dessus de Toi, Tu es le Caché, rien n’est au-dessous de Toi. Acquitte nos dettes et affranchis-nous de la pauvreté !",
+     "src": "he:6335"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إذا أراد أحدُنا أن ينامَ، أن يضطجعَ على شِقِّه الأيمن",
+     "src": "he:6335"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Abu Sālih used to order us that if anyone of us wanted to sleep, he should lie on his right side, and then say",
+     "src": "he:6335"
+    },
+    "fr": {
+     "text": "Lorsque l’un d’entre nous voulait dormir, Abû Ṣâliḥ ordonnait qu’il se couche sur le côté droit et qu’il dise",
+     "src": "he:6335"
+    }
+   },
+   "hadith": {
+    "ar": "عن سهيل، قال: كان أبو صالح يأمرنا، إذا أراد أحدُنا أن ينامَ، أن يضطجعَ على شِقِّه الأيمن، ثم يقول: «اللهم ربَّ السماواتِ وربَّ الأرض وربَّ العرش العظيم، ربَّنا وربِّ كلِّ شيء، فالقَ الحَبِّ والنَّوى، ومُنْزِلَ التوراة والإنجيل والفُرقان، أعوذ بك من شرِّ كل شيء أنت آخذٌ بناصيتِه، اللهم أنت الأولُ فليس قبلك شيء، وأنت الآخرُ فليس بعدك شيء، وأنت الظاهرُ فليس فوقك شيء، وأنت الباطن فليس دونك شيء، اقضِ عنَّا الدِّينَ، وأغنِنا من الفقر» وكان يروي ذلك عن أبي هريرة، عن النبي صلى الله عليه وسلم .",
+    "arSrc": "he:6335",
+    "url": "https://hadeethenc.com/ar/browse/hadith/6335",
+    "en": {
+     "text": "Suhayl reported: Abu Sālih used to order us that if anyone of us wanted to sleep, he should lie on his right side, and then say: \"O Allah, Lord of the heavens and Lord of the earth and Lord of the Magnificent Throne! Our Lord, and the Lord of everything, the Cleaver of grains and date seeds, the Revealer of the Torah, the Gospel, and the Criterion (the Qur'an), I seek refuge with You from the evil of everything that You have grasp of its forelock (You have full control over it). O Allah, You are the First, there is nothing before You, You are the Last and there is nothing after You, You are the Highest and there is nothing above You, and You are the Nearest and there is nothing nearer than You. Remove the burden of debt from us and relieve us of poverty.\" Abu Sālih used to narrate this from Abu Hurayrah, who narrated it from the Prophet (may Allah's peace and blessings be upon him).",
+     "src": "he:6335",
+     "url": "https://hadeethenc.com/en/browse/hadith/6335"
+    },
+    "enExplain": {
+     "text": "The Prophet (may Allah's peace and blessings be upon him) used to order his Companions that if any of them wanted to sleep, he should lie on t his right side and then say: \"O Allah, Lord of the heavens and Lord of the earth and Lord of the Magnificent Throne! Our Lord, and the Lord of everything\", i.e. O Allah the Lord of the heavens and the earth, their Creator and their Owner and the One who raises the creation, the Lord, Owner and Creator of the Great and Magnificent Throne, the Creator of all human beings, their Owner and their Nurturer, and the Lord of everything.\n\"The Cleaver of grains and date seeds\", i.e. O Allah the One who splits them and brings forth from them plants  and date palm trees. Grains and date seeds are mentioned in particular here because of their excellence, or because of  their abundance in the land of the Arabs.\n\"The Revealer of the Torah, the Gospel, and the Criterion\", i.e. O Allah the One who revealed the Torah to Mūsa, the Gospel to ‘Īsa, and the Qur'an to Muhammad.\n\"I seek refuge with You from the evil of everything that You have grasp of its forelock (You have full control over it)\", i.e. I flee to You and seek refuge with You from the evil of all creatures, because all of them are under Your authority, Your power and control.\n\"O Allah, You are the First, there is nothing before You, You are the Last and there is nothing after You, You are the Highest and there is nothing above You, and You are the Nearest and there is nothing nearer than You\", the Prophet (may Allah's peace and blessings be upon him) clearly explained these four names of Allah.\n\"The First\" means that everything other than Him is created after being non-existent. This makes it obligatory for the slave to observe the favor  of his Lord in every religious and worldly blessing. This is because the cause and the result are all from Allah, the Almighty.\n\"The Last\" means that Allah is the only One who will remain, and everything else will perish. He is also the Self-Sufficient to whom all creatures turn in worship, with hope and fear, and ask Him for whatever they need.\n\"The Highest\" indicates the greatness of His attributes, and that all things, including entities and attributes, are of no worth when compared to His greatness. It also indicates Allah's real superiority and elevation over all of His creatures.\n\"The Nearest\" indicates Allah's knowledge of all secrets, consciences, everything hidden and concealed, and subtle matters. It also indicates Allah's perfect closeness and nearness. There is no conflict between the Highest and the Nearest, because there is no one similar to Allah in His attributes. He is high in His nearness, and near in His elevation. \n\"Remove the burden of debt from us and relieve us of poverty\", i.e. the Prophet (may Allah's peace and blessings be upon him) asked Allah, Exalted, to relieve him of his debts and grant him sufficiency against poverty.",
+     "src": "he:6335",
+     "url": "https://hadeethenc.com/en/browse/hadith/6335"
+    },
+    "fr": {
+     "text": "Suhayl relate : « Lorsque l’un d’entre nous voulait dormir, Abû Ṣâliḥ ordonnait qu’il se couche sur le côté droit et qu’il dise : \" Ô Allah ! Seigneur des Cieux, Seigneur de la Terre et Seigneur du Trône immense ! Notre Seigneur et Seigneur de toute chose ! Toi qui fends le grain et le noyau ! Toi qui as fait descendre la Thorah, l’Évangile et le Discernement ! Je me réfugie auprès de toi contre toute chose que tu tiens par le toupet. Ô Allah ! Tu es le Premier, rien n’est avant Toi ! Tu es le Dernier, rien n’est après Toi ! Tu es l’Apparent, rien n’est au-dessus de Toi, Tu es le Caché, rien n’est au-dessous de Toi. Acquitte nos dettes et affranchis-nous de la pauvreté ! \" » Il le rapportait d’Abû Hurayrah, qui lui-même le rapportait du Prophète (sur lui la paix et le salut).",
+     "src": "he:6335",
+     "url": "https://hadeethenc.com/fr/browse/hadith/6335"
+    },
+    "frExplain": {
+     "text": "Le Prophète (sur lui la paix et le salut) ordonnait à ses Compagnons de se coucher sur le côté droit, au moment de dormir, et de dire ensuite : « Ô Allah ! Seigneur des Cieux, Seigneur de la Terre, Seigneur du Trône immense, notre Seigneur et Seigneur de toute chose ! », c'est à dire : Ô Allah ! Toi qui as créé les Cieux et la Terre, qui en es le Possesseur et qui élève leurs habitants, Créateur et Détenteur du Trône immense, Toi qui as créé tous les gens, qui T’appartiennent et que Tu élèves, Seigneur de toute chose. « Toi qui fends le grain et le noyau » : Tu les fends pour en faire sortir les cultures et les dattiers, qui sont cités ici de façon particulière en raison de leur valeur ou parce que les cultures et les dattiers étaient très répandues chez les Arabes. « Toi qui as fait descendre la Thorah, l’Évangile et le Discernement » : Toi qui as révélé la Thorah à Moïse, l’Évangile à Jésus et le Coran à Muḥammad (sur lui la paix et le salut). « Je me réfugie auprès de Toi contre toute chose que Tu tiens par le toupet » : Je Te demande de me protéger contre le mal de toutes les créatures, qui sont toutes soumises à Ton autorité et à Ton contrôle. « Ô Allah ! Tu es le Premier, rien n’est avant Toi ! Tu es le Dernier, rien n’est après Toi ! Tu es l’Apparent, rien n’est au-dessus de Toi, Tu es le Caché, rien n’est au-dessous de Toi. » Le Prophète (sur lui la paix et le salut) a expliqué clairement le sens de ces quatre Noms divins : « Le Premier » indique que tout autre qu’Allah est nouveau et n’existe qu’après avoir été inexistant. Cela pousse l’être humain à reconnaître la grâce de son Seigneur dans chaque bienfait, qu’il soit terrestre ou religieux, car les causes comme les conséquences proviennent de Lui, Exalté soit-Il. « Le Dernier » indique qu’Allah restera alors que tout autre que lui est voué à disparaître. Il est Celui vers qui les créatures se tournent afin de L’adorer, vers qui elles dirigent leurs craintes et leurs aspirations, pour Lui demander tout ce dont elles ont besoin. « L’Apparent » indique la grandeur de Ses qualités : tout être et toute qualité ne sont rien comparés à Sa grandeur. Il indique aussi qu’Il est concrètement situé au-dessus de Ses créatures. « Le Caché » indique qu’Il a connaissance des secrets et [du contenu] des cœurs, ainsi que de toute chose, aussi subtile soit-elle. Il indique aussi qu’Il est parfaitement caché. En effet, le fait qu’Il soit le Caché ne contredit pas le fait qu’Il est l’Apparent, car rien ne Lui ressemble, dans aucun de Ses attributs. Il est le Très-Haut, tout en étant proche et il est le Proche, tout en étant élevé. « Acquitte nos dettes et affranchis-nous de la pauvreté ! » Enfin, il a demandé à Allah, à Lui la Puissance et la Grandeur, de l’acquitter de ses dettes et de l’affranchir de la pauvreté.",
+     "src": "he:6335",
+     "url": "https://hadeethenc.com/fr/browse/hadith/6335"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih Muslim 2713a",
+     "url": "https://sunnah.com/muslim/48/82",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih Muslim 2713c",
+     "url": "https://sunnah.com/muslim/48/84",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h108",
+   "hisn": 108,
+   "hisnUrl": "https://sunnah.com/hisn:108",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": null,
+   "recite": [
+    {
+     "ar": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا، وَكَفَانَا، وَآوَانَا، فَكَمْ مِمَّنْ لاَ كَافِيَ لَهُ وَلاَ مُؤْوِيَ",
+     "src": "hisn:108"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "Praise be to Allah Who gave us food and drink, provided for us sufficiently, and gave us shelter, for how many there are who have no one to provide for them or to give them shelter.",
+     "src": "he:5882"
+    },
+    "fr": {
+     "text": "Louange à Allah qui nous a nourris, nous a abreuvés, nous suffit et nous abrite ! Et combien de gens n’ont personne pour leur suffire ou les abriter !",
+     "src": "he:5882"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "كان إذا أوى إلى فراشه",
+     "src": "he:5882"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "When he ﷺ went to bed, he would say: …",
+     "src": "mine"
+    },
+    "fr": {
+     "text": "lorsque le Prophète (sur lui la paix et le salut) se mettait au lit, il disait",
+     "src": "he:5882"
+    }
+   },
+   "hadith": {
+    "ar": "عن أنس رضي الله عنه أن رسول الله صلى الله عليه وسلم كان إذا أوى إلى فراشه، قال: «الحمد لله الذي أطعمنا وسقانا، وكفانا وآوانَا، فَكَمْ مِمَّنْ لا كَافِيَ له وَلاَ مُؤْوِيَ».",
+    "arSrc": "he:5882",
+    "url": "https://hadeethenc.com/ar/browse/hadith/5882",
+    "en": {
+     "text": "Anas ibn Mālik (may Allah be pleased with him) reported that the Prophet (may Allah's peace and blessings be upon him) said: ''Praise be to Allah Who gave us food and drink, provided for us sufficiently, and gave us shelter, for how many there are who have no one to provide for them or to give them shelter.''",
+     "src": "he:5882",
+     "url": "https://hadeethenc.com/en/browse/hadith/5882"
+    },
+    "enExplain": {
+     "text": "When the Prophet (may Allah's peace and blessings be upon him) went to bed, he would say this Dhikr in which he would thank Allah for providing him with food and drink. Were it not for Allah, the Almighty,, one would not have access to food and drink, so praise is due to Allah for that. Also, the Prophet would thank Allah for facilitating matters for him, securing him provisions, as well as giving him a place to shelter him, given that many people have no means of sustenance or shelter. So, it is recommended to say this Dhikr when going to bed.",
+     "src": "he:5882",
+     "url": "https://hadeethenc.com/en/browse/hadith/5882"
+    },
+    "fr": {
+     "text": "Anas Ibn Mâlik (qu’Allah l’agrée) relate que lorsque le Prophète (sur lui la paix et le salut) se mettait au lit, il disait : « Louange à Allah qui nous a nourris, nous a abreuvés, nous suffit et nous abrite ! Et combien de gens n’ont personne pour leur suffire ou les abriter ! »",
+     "src": "he:5882",
+     "url": "https://hadeethenc.com/fr/browse/hadith/5882"
+    },
+    "frExplain": {
+     "text": "Lorsque le Prophète (sur lui la paix et le salut) se mettait au lit, il disait : « Louange à Allah qui nous a nourris, nous a abreuvés, nous suffit et nous abrite ! » Il louait Allah, Exalté soit-Il, qui l’a nourri et l’a abreuvé, car s’Il ne lui avait pas facilité l'obtention de cette nourriture et de cette boisson, il n’aurait pu ni manger ni boire. Par conséquent, tu dois louer Allah qui t’a donné à manger et t’a abreuvé. « Louange à Allah qui nous a nourris, nous a abreuvés, nous suffit et nous abrite ! » Il nous suffit en nous facilitant nos affaires et en nous procurant notre subsistance. Il nous abrite en nous fournissant un endroit où l’on puisse se réfugier. En effet, combien de gens n’ont personne pour leur suffire ou les abriter, ou n’ont aucun protecteur. Il convient donc que tu dises cette invocation lorsque tu te mets au lit.",
+     "src": "he:5882",
+     "url": "https://hadeethenc.com/fr/browse/hadith/5882"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih Muslim 2715",
+     "url": "https://sunnah.com/muslim/48/87",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h109",
+   "hisn": 109,
+   "hisnUrl": "https://sunnah.com/hisn:109",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ عَالِمَ الغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ الشَّيْطانِ وَشِرْكِهِ، وَأَنْ أَقْتَرِفَ عَلَى نَفْسِي سُوءاً، أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",
+     "src": "hisn:109"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, Knower of the seen and the unseen, Creator of the heavens and the earth, Lord and Sovereign of all things I bear witness that none has the right to be worshipped except You.  I take refuge in You from the evil of my soul and from the evil and shirk of the devil, and from committing wrong against my soul or bringing such upon another Muslim.",
+     "src": "hisn:109"
+    },
+    "fr": {
+     "text": "Ô Allah ! Créateur des cieux et de la terre, Connaisseur de l'invisible et du visible, Seigneur et Maître de toute chose, je témoigne qu'il n'est de divinité [qui soit digne d'adoration] à part Toi, je me réfugie auprès de Toi contre mon propre mal, contre le mal du diable et son polythéisme, et contre le fait de me causer du tort à moi-même ou d'en causer à un musulman.",
+     "src": "he:3006"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "وإذا أخذْتَ مَضْجَعَك",
+     "src": "he:3006"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "Recite them in the morning, in the evening, and when you go to bed.",
+     "src": "he:3006"
+    },
+    "fr": {
+     "text": "Dis-le le matin, ajouta le Prophète (sur lui la paix et le salut), le soir et quand tu te couches",
+     "src": "he:3006"
+    }
+   },
+   "hadith": {
+    "ar": "عن أبي هريرة رضي الله عنه أن أبا بكر الصديق رضي الله عنه قال: يا رسول الله مُرني بكلمات أقُولُهُنَّ إذا أصبَحتُ وإذا أمسَيتُ، قال: «قل: اللهم فاطِرَ السماوات والأرض عالم الغيبِ والشهادة، ربَّ كُلِّ شَيءٍ ومَلِيكَه، أَشْهد أن لا إله إلا أنت، أعوذ بك من شرِّ نفسي وشرِّ الشيطان وشِرْكِهِ وأن أقترف على نفسي سوءًا أو أجرُّه إلى مسلم» قال: «قلها إذا أصبحت، وإذا أمسيت، وإذا أخذْتَ مَضْجَعَك».",
+    "arSrc": "he:3006",
+    "url": "https://hadeethenc.com/ar/browse/hadith/3006",
+    "en": {
+     "text": "Abu Hurayrah (may Allah be pleased with him) reported that Abu Bakr (may Allah be pleased with him) said: \"O Messenger of Allah, teach me some words to recite in the morning and in the evening.\" He said: \"Say: 'O Allah, Creator of the heavens and the earth, Knower of the hidden and the apparent, Lord of everything and its Possessor. I bear witness that there is no god but You. I seek refuge in You from the evil of my own self and from the evil of the devil and the evil of polytheism to which he calls, and from incurring any sin upon myself or upon any other Muslim.'\" He added: \"Recite them in the morning, in the evening, and when you go to bed.\"",
+     "src": "he:3006",
+     "url": "https://hadeethenc.com/en/browse/hadith/3006"
+    },
+    "enExplain": {
+     "text": "This Dhikr is one of the supplications that are recited in the morning and in the evening, which the Prophet (may Allah’s peace and blessings be upon him) taught Abu Bakr (may Allah be pleased with him), who said: \"Teach me!\" So, the Prophet (may Allah's peace and blessings be upon him) taught him a Dhikr and a supplication that he could recite every morning and every evening. He ordered him to say: O Allah, the Creator of the heavens and the earth in an unprecedented manner, Who originated them and brought them into existence from non-existence. Knower of what is hidden from the creatures and what is apparent to them, because Allah, the Almighty, knows the present, the past, and the future. Lord of everything and its Possessor, as Allah, the Almighty, is the Lord of everything and the Owner of everything. I testify with my tongue and heart that there is no god but You. Everything worshiped other than Allah is a false deity that has no right to be worshiped, and none has the right to be worshiped but Allah alone, may He be Glorified. I seek refuge in You from the evil of my own self, because the self has evils, as a verse reads: {And I do not acquit myself. Indeed, the soul is a persistent enjoiner of evil, except those upon whom my Lord has mercy} [Yusuf: 53]. So, if Allah does not protect you from the evils of your own self, then it will harm you and order you to do evil things. If He protects you from its evil, then He has guided you to all goodness. The Prophet (may Allah's peace and blessings be upon him) concluded his supplication with: and from the evil of the devil and the evil of polytheism to which he calls, or from the evil of his trap which he sets for people through desires, doubts, or other means of temptation. The completion of the supplication is to say: I seek refuge in Allah from committing evil against myself or causing evil to another Muslim. This supplication is what the Prophet (may Allah's peace and blessings be upon him) taught Abu Bakr to say in the morning, evening, and before going to bed.",
+     "src": "he:3006",
+     "url": "https://hadeethenc.com/en/browse/hadith/3006"
+    },
+    "fr": {
+     "text": "Abû Hurayra (qu'Allah l'agrée) relate : « Abû Bakr As-Siddîq (qu'Allah l'agrée) demanda : Ô Messager d'Allah ! Conseille-moi des paroles à dire le matin et le soir ! [Le Prophète] dit : Dis : « Ô Allah ! Créateur des cieux et de la terre, Connaisseur de l'invisible et du visible, Seigneur et Maître de toute chose, je témoigne qu'il n'est de divinité [qui soit digne d'adoration] à part Toi, je me réfugie auprès de Toi contre mon propre mal, contre le mal du diable et son polythéisme, et contre le fait de me causer du tort à moi-même ou d'en causer à un musulman. » - Dis-le le matin, ajouta le Prophète (sur lui la paix et le salut), le soir et quand tu te couches ».",
+     "src": "he:3006",
+     "url": "https://hadeethenc.com/fr/browse/hadith/3006"
+    },
+    "frExplain": {
+     "text": "Cette formule fait partie des formules d'évocation d'Allah que l'on dit le matin et le soir. Le Prophète (sur lui la paix et le salut) l'a enseignée à Abû Bakr (qu'Allah l'agrée) quand ce dernier lui demanda : apprends-moi ! Il lui enseigna alors une formule d'évocation et d'invocation qu'il pouvait dire le matin et le soir. Il lui a donc ordonné de dire : « Ô, Allah ! Créateur des cieux et de la terre », c’est-à-dire : Ô Allah ! Toi qui as créé les cieux et la terre sans modèle préalable, Toi qui les as inventés et les as fait sortir du néant. « Connaisseur de l'invisible et du visible », c’est-à-dire : Toi qui connais ce qui échappe aux créatures et qu'elles ne peuvent percevoir. En effet, Allah, Exalté soit-Il, connaît le passé, le présent et le futur. « Seigneur et Maître de toute chose », c’est-à-dire : Ô Seigneur et Maître de toute chose ! Allah est le Seigneur de toute chose ainsi que le Maître de toute chose. « J'atteste qu'il n'est de divinité [qui soit digne d'adoration] à part Toi », c’est-à-dire : je reconnais par la parole et par le cœur que Toi seul mérites d'être adoré. Tout ce qui est adoré en dehors d'Allah est nul et ne mérite pas d'être adoré. Allah Seul mérite l'adoration. « Je me réfugie auprès de Toi contre mon propre mal », car l’âme comporte différents maux comme il est dit dans le Coran : {( et je ne m'innocente pas, car l'âme ordonne certes le mal, sauf pour celui à qui mon Seigneur a fait miséricorde )} [Coran : 12/53]. Ainsi, si Allah ne te préserve pas de tes propres maux, ton âme te nuira et t'ordonnera le mal. Au contraire, s'Il te protège de son mal, Il te mènera à tout ce qui t'est bénéfique. « Et contre le mal du diable et son polythéisme », c’est-à-dire que tu demandes à Allah de te protéger du mal du diable et du polythéisme auquel il appelle. Le terme « shirk » traduit ici par polythéisme peut être lu « sharak » et il signifie dans ce cas : son filet, son piège, comme l’accessoire à l'aide duquel on chasse les oiseaux, les poissons, etc. En effet, le diable tend des pièges par lesquels il s'empare des êtres humains, comme les plaisirs, les idéologies erronées et autres... « et contre le fait de me causer du tort à moi-même », c’est-à-dire : de m'attirer du mal, « ou d'en causer à un musulman. » Le Prophète (sur lui la paix et le salut) a donc ordonné à Abû Bakr (qu’Allah l’agrée) de prononcer ces paroles le matin, le soir et en se couchant.",
+     "src": "he:3006",
+     "url": "https://hadeethenc.com/fr/browse/hadith/3006"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5067",
+     "url": "https://sunnah.com/abudawud:5067",
+     "book": "abudawud",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Jami' at-Tirmidhi 3392",
+     "url": "https://sunnah.com/tirmidhi:3392",
+     "book": "tirmidhi",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    }
+   ]
+  },
+  {
+   "id": "h110",
+   "hisn": 110,
+   "hisnUrl": "https://sunnah.com/hisn:110",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": "mulk_sajdah",
+   "recite": [
+    {
+     "ar": "يَقْرَأُ ﴿الم﴾ تَنْزِيلَ السَّجْدَة ِ،  وَتَبَارَكَ الَّذي بِيَدِهِ الْمُلْكُ",
+     "src": "hisn:110"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "The Prophet  never used to sleep until he had recited Soorat As-Sajdah (chapter 32) and Soorat Al-Mulk (chapter 67).",
+     "src": "hisn:110"
+    },
+    "fr": {
+     "text": "Le Prophète ﷺ ne dormait pas avant d’avoir récité la sourate as-Sajda (32) et la sourate al-Mulk (67).",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "لاَ يَنَامُ حَتَّى يَقْرَأَ",
+     "src": "hadith:tirmidhi:3404"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "The Prophet would not sleep until he reached Tanzil as-Sajdah and Tabarak.",
+     "src": "hadith:tirmidhi:3404"
+    },
+    "fr": {
+     "text": "Le Prophète ﷺ ne dormait pas avant d’avoir récité Tanzîl as-Sajda et Tabârak.",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنَا هِشَامُ بْنُ يُونُسَ الْكُوفِيُّ، حَدَّثَنَا الْمُحَارِبِيُّ، عَنْ لَيْثٍ، عَنْ أَبِي الزُّبَيْرِ، عَنْ جَابِرٍ، رضى الله عنه قَالَ كَانَ النَّبِيُّ صلى الله عليه وسلم لاَ يَنَامُ حَتَّى يَقْرَأَ بِتَنْزِيلَ السَّجْدَةِ وَبِتَبَارَكَ ‏.‏ قَالَ أَبُو عِيسَى هَكَذَا رَوَى سُفْيَانُ وَغَيْرُ وَاحِدٍ هَذَا الْحَدِيثَ عَنْ لَيْثٍ عَنْ أَبِي الزُّبَيْرِ عَنْ جَابِرٍ عَنِ النَّبِيِّ صلى الله عليه وسلم نَحْوَهُ ‏.‏ وَرَوَى زُهَيْرٌ هَذَا الْحَدِيثَ عَنْ أَبِي الزُّبَيْرِ قَالَ قُلْتُ لَهُ سَمِعْتَهُ مِنْ جَابِرٍ قَالَ لَمْ أَسْمَعْهُ مِنْ جَابِرٍ إِنَّمَا سَمِعْتُهُ مِنْ صَفْوَانَ أَوِ ابْنِ صَفْوَانَ ‏.‏ وَرَوَى شَبَابَةُ عَنْ مُغِيرَةَ بْنِ مُسْلِمٍ عَنْ أَبِي الزُّبَيْرِ عَنْ جَابِرٍ نَحْوَ حَدِيثِ لَيْثٍ ‏.‏",
+    "arSrc": "hadith:tirmidhi:3404",
+    "url": "https://sunnah.com/tirmidhi:3404",
+    "en": {
+     "text": "Jabir said:“The Prophet would not sleep until he reached Tanzil as-Sajdah and Tabarak.”",
+     "src": "hadith:tirmidhi:3404",
+     "url": "https://sunnah.com/tirmidhi:3404"
+    }
+   },
+   "refs": [
+    {
+     "label": "Jami' at-Tirmidhi 3404",
+     "url": "https://sunnah.com/tirmidhi:3404",
+     "book": "tirmidhi",
+     "grade": "Sahih",
+     "grader": "al-Albani"
+    },
+    {
+     "label": "Jami' at-Tirmidhi 2891",
+     "url": "https://sunnah.com/tirmidhi:2891",
+     "book": "tirmidhi",
+     "grade": "Hasan",
+     "grader": "al-Albani"
+    }
+   ],
+   "surahs": [
+    32,
+    67
+   ],
+   "virtue": {
+    "en": {
+     "text": "Indeed there is a Surah in the Qur'an of thirty Ayat, which intercedes for a man until he is forgiven. It is [Surah] Tabarak Alladhi Biyadihil-Mulk",
+     "src": "hadith:tirmidhi:2891"
+    },
+    "fr": {
+     "text": "Il y a dans le Coran une sourate de trente versets qui a intercédé pour un homme jusqu'à ce qu'il soit pardonné : c'est la sourate Tabârak (al-Mulk).",
+     "src": "mine"
+    },
+    "ref": {
+     "label": "Jami' at-Tirmidhi 2891",
+     "url": "https://sunnah.com/tirmidhi:2891",
+     "book": "tirmidhi",
+     "grade": "Hasan",
+     "grader": "al-Albani"
+    }
+   }
+  },
+  {
+   "id": "h111",
+   "hisn": 111,
+   "hisnUrl": "https://sunnah.com/hisn:111",
+   "tabs": [
+    "night"
+   ],
+   "group": "bed",
+   "count": 1,
+   "when": "bed",
+   "name": null,
+   "recite": [
+    {
+     "ar": "اللَّهُمَّ أَسْلَمْتُ نَفْسِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَوَجَّهْتُ وَجْهِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لاَ مَلْجَأَ وَلاَ مَنْجَا مِنْكَ إِلاَّ إِلَيْكَ، آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ",
+     "src": "hisn:111"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "O Allah, I submit my soul unto You, and I entrust my affair unto You, and I turn my face towards You, and I totally rely on You, in hope and fear of You.Verily there is no refuge nor safe haven from You except with You.  I believe in Your Book which You have revealed and in Your Prophet whom You have sent.",
+     "src": "hisn:111"
+    },
+    "fr": {
+     "text": "Ô Allah ! Je Te soumets mon âme, je Te confie mon affaire, je tourne mon visage vers Toi et je m'adosse à Toi, par désir [de Ta récompense] et par crainte [de Toi]. Il n'y a de refuge ni de salut contre Toi qu'auprès de Toi. J'ai cru en Ton Livre que Tu as fait descendre et en Ton Prophète que Tu as envoyé.",
+     "src": "mine"
+    }
+   },
+   "practice": {
+    "en": {
+     "text": "Whenever you go to bed perform ablution like that for the prayer, lie on your right side … Let the aforesaid words be your last utterance (before sleep).",
+     "src": "hadith:bukhari:247"
+    },
+    "fr": {
+     "text": "Lorsque tu te mets au lit, fais tes ablutions comme pour la prière, puis couche-toi sur le côté droit. Fais que ce soient tes dernières paroles.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "إِذَا أَتَيْتَ مَضْجَعَكَ فَتَوَضَّأْ وُضُوءَكَ لِلصَّلاَةِ، ثُمَّ اضْطَجِعْ عَلَى شِقِّكَ الأَيْمَنِ",
+     "src": "hadith:bukhari:247"
+    },
+    {
+     "ar": "وَاجْعَلْهُنَّ آخِرَ مَا تَتَكَلَّمُ بِهِ",
+     "src": "hadith:bukhari:247"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "And if you should die then (after reciting this before going to bed) you will die on the religion of Islam",
+     "src": "hadith:bukhari:6313"
+    },
+    "fr": {
+     "text": "Si tu meurs [cette nuit-là], tu mourras sur la fitra (l’islam).",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "حَدَّثَنَا سَعِيدُ بْنُ الرَّبِيعِ، وَمُحَمَّدُ بْنُ عَرْعَرَةَ، قَالاَ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي إِسْحَاقَ، سَمِعَ الْبَرَاءَ بْنَ عَازِبٍ، أَنَّ النَّبِيَّ صلى الله عليه وسلم أَمَرَ رَجُلاً‏.‏ وَحَدَّثَنَا آدَمُ حَدَّثَنَا شُعْبَةُ حَدَّثَنَا أَبُو إِسْحَاقَ الْهَمْدَانِيُّ عَنِ الْبَرَاءِ بْنِ عَازِبٍ أَنَّ النَّبِيَّ صلى الله عليه وسلم أَوْصَى رَجُلاً فَقَالَ ‏ \"‏ إِذَا أَرَدْتَ مَضْجَعَكَ فَقُلِ اللَّهُمَّ أَسْلَمْتُ نَفْسِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَوَجَّهْتُ وَجْهِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لاَ مَلْجَأَ وَلاَ مَنْجَا مِنْكَ إِلاَّ إِلَيْكَ، آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ‏.‏ فَإِنْ مُتَّ مُتَّ عَلَى الْفِطْرَةِ ‏\"‏‏.‏",
+    "arSrc": "hadith:bukhari:6313",
+    "url": "https://sunnah.com/bukhari:6313",
+    "en": {
+     "text": "Narrated Al-Bara bin `Azib:That the Prophet (ﷺ) advised a man, saying, \"If you intend to lie down (i.e. go to bed), say, 'Allahumma aslamtu nafsi ilaika wa fauwadtu `Amri ilaika, wa wajjahtu wajhi ilaika wa alja'tu zahri ilaika, reghbatan wa rahbatan ilaika. La malja'a wa la manja minka illa ilaika. Amantu bikitabikal-ladhi anzalta; wa nabiyyikalladhi arsalta.' And if you should die then (after reciting this before going to bed) you will die on the religion of Islam",
+     "src": "hadith:bukhari:6313",
+     "url": "https://sunnah.com/bukhari:6313"
+    }
+   },
+   "refs": [
+    {
+     "label": "Sahih al-Bukhari 6313",
+     "url": "https://sunnah.com/bukhari:6313",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih al-Bukhari 247",
+     "url": "https://sunnah.com/bukhari:247",
+     "book": "bukhari",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    },
+    {
+     "label": "Sahih Muslim 2710a",
+     "url": "https://sunnah.com/muslim/48/75",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   ]
+  },
+  {
+   "id": "h112",
+   "hisn": 112,
+   "hisnUrl": "https://sunnah.com/hisn:112",
+   "tabs": [
+    "night"
+   ],
+   "group": "turning",
+   "count": 1,
+   "when": "turning",
+   "name": null,
+   "recite": [
+    {
+     "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ الْوَاحِدُ الْقَهّارُ، رَبُّ السَّمَوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا الْعَزيزُ الْغَفَّارُ",
+     "src": "hisn:112"
+    }
+   ],
+   "meaning": {
+    "en": {
+     "text": "None has the right to be worshipped except Allah, The One, AL-Qahhar.Lord of the heavens and the Earth and all between them, The Exalted in Might, The Oft-Forgiving.",
+     "src": "hisn:112"
+    },
+    "fr": {
+     "text": "Il n'y a de divinité [digne d'adoration] qu'Allah, l'Unique, le Dominateur suprême, Seigneur des cieux, de la terre et de ce qui est entre eux, le Tout-Puissant, Celui qui pardonne abondamment.",
+     "src": "mine"
+    }
+   },
+   "whenAr": [
+    {
+     "ar": "كان إذا تضور من الليل",
+     "src": "ext:turning"
+    }
+   ],
+   "about": {
+    "en": {
+     "text": "When he ﷺ turned over [in bed] during the night, he would say: …",
+     "src": "mine"
+    },
+    "fr": {
+     "text": "Lorsqu'il ﷺ se retournait [dans son lit] pendant la nuit, il disait : …",
+     "src": "mine"
+    }
+   },
+   "hadith": {
+    "ar": "كان إذا تضور من الليل قال: لا إله إلا الله الواحد القهار رب السموات والأرض وما بينهما العزيز الغفار",
+    "arSrc": "ext:turning",
+    "url": "https://en.tohed.com/hadith/sahih-al-jami-al-saghir/4693/",
+    "excerpt": true
+   },
+   "refs": [
+    {
+     "label": "'A'ishah: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/540), Ibn Hibban, Ibn al-Sunni",
+     "grade": "Sahih",
+     "grader": "al-Albani",
+     "where": "Sahih al-Jami' 4693, al-Silsila al-Sahiha 2066",
+     "url": "https://en.tohed.com/hadith/sahih-al-jami-al-saghir/4693/"
+    }
+   ]
+  }
+ ],
+ "excluded": [
+  {
+   "hisn": 80,
+   "hisnUrl": "https://sunnah.com/hisn:80",
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5069",
+     "grade": "Daif",
+     "url": "https://sunnah.com/abudawud:5069"
+    },
+    {
+     "label": "Sunan Abi Dawud 5078",
+     "grade": "Daif",
+     "url": "https://sunnah.com/abudawud:5078"
+    }
+   ]
+  },
+  {
+   "hisn": 81,
+   "hisnUrl": "https://sunnah.com/hisn:81",
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5073",
+     "grade": "Daif",
+     "url": "https://sunnah.com/abudawud:5073"
+    }
+   ]
+  },
+  {
+   "hisn": 83,
+   "hisnUrl": "https://sunnah.com/hisn:83",
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5081",
+     "grade": "Mawdu",
+     "url": "https://sunnah.com/abudawud:5081"
+    }
+   ]
+  },
+  {
+   "hisn": 87,
+   "hisnUrl": "https://sunnah.com/hisn:87",
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5072",
+     "grade": "Daif",
+     "url": "https://sunnah.com/abudawud:5072"
+    },
+    {
+     "label": "Jami' at-Tirmidhi 3389",
+     "grade": "Daif",
+     "url": "https://sunnah.com/tirmidhi:3389"
+    },
+    {
+     "label": "Sunan Ibn Majah 3870",
+     "grade": "Daif",
+     "url": "https://sunnah.com/ibnmajah:3870"
+    }
+   ]
+  },
+  {
+   "hisn": 89,
+   "hisnUrl": "https://sunnah.com/hisn:89",
+   "refs": [
+    {
+     "label": "Sunan Abi Dawud 5084",
+     "grade": "Daif",
+     "url": "https://sunnah.com/abudawud:5084"
+    }
+   ]
+  },
+  {
+   "hisn": 98,
+   "hisnUrl": "https://sunnah.com/hisn:98",
+   "refs": [],
+   "note": {
+    "en": "al-Tabarani. Al-Albani first graded it hasan (Sahih al-Jami' 5357), then weakened it (al-Silsila al-Da'ifa 5788).",
+    "fr": "At-Tabarânî. Al-Albânî l'a d'abord jugé hasan (Sahîh al-Jâmi' 5357), puis faible (as-Silsila ad-Da'îfa 5788).",
+    "url": "https://islamqa.info/ar/answers/130213"
+   }
+  }
+ ],
+ "srcs": {
+  "ext:fatimah": {
+   "label": "Anas: the Prophet's advice to Fatimah: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/545)",
+   "url": "https://kalemtayeb.com/safahat/item/115307",
+   "where": "Sahih al-Targhib 1/273 (no. 661), «إسناده حسن»"
+  },
+  "ext:fitrah": {
+   "label": "'Abd al-Rahman ibn Abza: Ahmad (al-Musnad 3/406), Ibn al-Sunni ('Amal al-Yawm wa al-Layla 34)",
+   "url": "https://surahquran.com/Hadith-96702.html",
+   "where": "Sahih al-Jami' 4674"
+  },
+  "ext:turning": {
+   "label": "'A'ishah: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/540), Ibn Hibban, Ibn al-Sunni",
+   "url": "https://en.tohed.com/hadith/sahih-al-jami-al-saghir/4693/",
+   "where": "Sahih al-Jami' 4693, al-Silsila al-Sahiha 2066"
+  },
+  "ext:ubayy": {
+   "label": "Ubayy ibn Ka'b, the jinn and the dates: al-Nasa'i (al-Sunan al-Kubra), al-Hakim (al-Mustadrak 1/562)",
+   "url": "https://surahquran.com/Hadith-100968.html",
+   "where": "Sahih al-Targhib 662"
+  },
+  "hadith:abudawud:3667": {
+   "label": "Sunan Abi Dawud 3667",
+   "url": "https://sunnah.com/abudawud:3667",
+   "site": "sunnah.com"
+  },
+  "hadith:abudawud:5045": {
+   "label": "Sunan Abi Dawud 5045",
+   "url": "https://sunnah.com/abudawud:5045",
+   "site": "sunnah.com"
+  },
+  "hadith:abudawud:5077": {
+   "label": "Sunan Abi Dawud 5077",
+   "url": "https://sunnah.com/abudawud:5077",
+   "site": "sunnah.com"
+  },
+  "hadith:abudawud:5090": {
+   "label": "Sunan Abi Dawud 5090",
+   "url": "https://sunnah.com/abudawud:5090",
+   "site": "sunnah.com"
+  },
+  "hadith:bukhari:2311": {
+   "label": "Sahih al-Bukhari 2311",
+   "url": "https://sunnah.com/bukhari:2311",
+   "site": "sunnah.com"
+  },
+  "hadith:bukhari:247": {
+   "label": "Sahih al-Bukhari 247",
+   "url": "https://sunnah.com/bukhari:247",
+   "site": "sunnah.com"
+  },
+  "hadith:bukhari:6313": {
+   "label": "Sahih al-Bukhari 6313",
+   "url": "https://sunnah.com/bukhari:6313",
+   "site": "sunnah.com"
+  },
+  "hadith:bukhari:6324": {
+   "label": "Sahih al-Bukhari 6324",
+   "url": "https://sunnah.com/bukhari:6324",
+   "site": "sunnah.com"
+  },
+  "hadith:ibnmajah:925": {
+   "label": "Sunan Ibn Majah 925",
+   "url": "https://sunnah.com/ibnmajah:925",
+   "site": "sunnah.com"
+  },
+  "hadith:muslim:6843": {
+   "label": "Sahih Muslim 2692",
+   "url": "https://sunnah.com/muslim/48/39",
+   "site": "sunnah.com"
+  },
+  "hadith:muslim:6858": {
+   "label": "Sahih Muslim 2702a",
+   "url": "https://sunnah.com/muslim/48/52",
+   "site": "sunnah.com"
+  },
+  "hadith:muslim:6880": {
+   "label": "Sahih Muslim 2709a",
+   "url": "https://sunnah.com/muslim/48/73",
+   "site": "sunnah.com"
+  },
+  "hadith:muslim:6888": {
+   "label": "Sahih Muslim 2712",
+   "url": "https://sunnah.com/muslim/48/81",
+   "site": "sunnah.com"
+  },
+  "hadith:muslim:6908": {
+   "label": "Sahih Muslim 2723b",
+   "url": "https://sunnah.com/muslim/48/101",
+   "site": "sunnah.com"
+  },
+  "hadith:tirmidhi:2891": {
+   "label": "Jami' at-Tirmidhi 2891",
+   "url": "https://sunnah.com/tirmidhi:2891",
+   "site": "sunnah.com"
+  },
+  "hadith:tirmidhi:3388": {
+   "label": "Jami' at-Tirmidhi 3388",
+   "url": "https://sunnah.com/tirmidhi:3388",
+   "site": "sunnah.com"
+  },
+  "hadith:tirmidhi:3404": {
+   "label": "Jami' at-Tirmidhi 3404",
+   "url": "https://sunnah.com/tirmidhi:3404",
+   "site": "sunnah.com"
+  },
+  "hadith:tirmidhi:3604.02": {
+   "label": "Jami' at-Tirmidhi 3604b",
+   "url": "https://sunnah.com/tirmidhi/48/236",
+   "site": "sunnah.com"
+  },
+  "he:3006": {
+   "label": "HadeethEnc 3006",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/3006",
+    "en": "https://hadeethenc.com/en/browse/hadith/3006",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/3006"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:3008": {
+   "label": "HadeethEnc 3008",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/3008",
+    "en": "https://hadeethenc.com/en/browse/hadith/3008",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/3008"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:4808": {
+   "label": "HadeethEnc 4808",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/4808",
+    "en": "https://hadeethenc.com/en/browse/hadith/4808",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/4808"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:5485": {
+   "label": "HadeethEnc 5485",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/5485",
+    "en": "https://hadeethenc.com/en/browse/hadith/5485"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:5490": {
+   "label": "HadeethEnc 5490",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/5490",
+    "en": "https://hadeethenc.com/en/browse/hadith/5490"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:5503": {
+   "label": "HadeethEnc 5503",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/5503",
+    "en": "https://hadeethenc.com/en/browse/hadith/5503"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:5508": {
+   "label": "HadeethEnc 5508",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/5508",
+    "en": "https://hadeethenc.com/en/browse/hadith/5508"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:5879": {
+   "label": "HadeethEnc 5879",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/5879",
+    "en": "https://hadeethenc.com/en/browse/hadith/5879",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/5879"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:5882": {
+   "label": "HadeethEnc 5882",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/5882",
+    "en": "https://hadeethenc.com/en/browse/hadith/5882",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/5882"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:6034": {
+   "label": "HadeethEnc 6034",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/6034",
+    "en": "https://hadeethenc.com/en/browse/hadith/6034",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/6034"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:6076": {
+   "label": "HadeethEnc 6076",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/6076",
+    "en": "https://hadeethenc.com/en/browse/hadith/6076"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:6082": {
+   "label": "HadeethEnc 6082",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/6082",
+    "en": "https://hadeethenc.com/en/browse/hadith/6082",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/6082"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:6093": {
+   "label": "HadeethEnc 6093",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/6093",
+    "en": "https://hadeethenc.com/en/browse/hadith/6093"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:6274": {
+   "label": "HadeethEnc 6274",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/6274",
+    "en": "https://hadeethenc.com/en/browse/hadith/6274",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/6274"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:6335": {
+   "label": "HadeethEnc 6335",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/6335",
+    "en": "https://hadeethenc.com/en/browse/hadith/6335",
+    "fr": "https://hadeethenc.com/fr/browse/hadith/6335"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "he:65905": {
+   "label": "HadeethEnc 65905",
+   "url": {
+    "ar": "https://hadeethenc.com/ar/browse/hadith/65905",
+    "en": "https://hadeethenc.com/en/browse/hadith/65905"
+   },
+   "site": "HadeethEnc.com"
+  },
+  "hisn:102": {
+   "label": "Hisn al-Muslim 102",
+   "url": "https://sunnah.com/hisn:102",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:103": {
+   "label": "Hisn al-Muslim 103",
+   "url": "https://sunnah.com/hisn:103",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:104": {
+   "label": "Hisn al-Muslim 104",
+   "url": "https://sunnah.com/hisn:104",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:105": {
+   "label": "Hisn al-Muslim 105",
+   "url": "https://sunnah.com/hisn:105",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:106": {
+   "label": "Hisn al-Muslim 106",
+   "url": "https://sunnah.com/hisn:106",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:107": {
+   "label": "Hisn al-Muslim 107",
+   "url": "https://sunnah.com/hisn:107",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:108": {
+   "label": "Hisn al-Muslim 108",
+   "url": "https://sunnah.com/hisn:108",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:109": {
+   "label": "Hisn al-Muslim 109",
+   "url": "https://sunnah.com/hisn:109",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:110": {
+   "label": "Hisn al-Muslim 110",
+   "url": "https://sunnah.com/hisn:110",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:111": {
+   "label": "Hisn al-Muslim 111",
+   "url": "https://sunnah.com/hisn:111",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:112": {
+   "label": "Hisn al-Muslim 112",
+   "url": "https://sunnah.com/hisn:112",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:75": {
+   "label": "Hisn al-Muslim 75",
+   "url": "https://sunnah.com/hisn:75",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:76": {
+   "label": "Hisn al-Muslim 76",
+   "url": "https://sunnah.com/hisn:76",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:77": {
+   "label": "Hisn al-Muslim 77",
+   "url": "https://sunnah.com/hisn:77",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:78": {
+   "label": "Hisn al-Muslim 78",
+   "url": "https://sunnah.com/hisn:78",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:79": {
+   "label": "Hisn al-Muslim 79",
+   "url": "https://sunnah.com/hisn:79",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:82": {
+   "label": "Hisn al-Muslim 82",
+   "url": "https://sunnah.com/hisn:82",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:84": {
+   "label": "Hisn al-Muslim 84",
+   "url": "https://sunnah.com/hisn:84",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:85": {
+   "label": "Hisn al-Muslim 85",
+   "url": "https://sunnah.com/hisn:85",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:86": {
+   "label": "Hisn al-Muslim 86",
+   "url": "https://sunnah.com/hisn:86",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:88": {
+   "label": "Hisn al-Muslim 88",
+   "url": "https://sunnah.com/hisn:88",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:90": {
+   "label": "Hisn al-Muslim 90",
+   "url": "https://sunnah.com/hisn:90",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:91": {
+   "label": "Hisn al-Muslim 91",
+   "url": "https://sunnah.com/hisn:91",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:92": {
+   "label": "Hisn al-Muslim 92",
+   "url": "https://sunnah.com/hisn:92",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:93": {
+   "label": "Hisn al-Muslim 93",
+   "url": "https://sunnah.com/hisn:93",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:94": {
+   "label": "Hisn al-Muslim 94",
+   "url": "https://sunnah.com/hisn:94",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:95": {
+   "label": "Hisn al-Muslim 95",
+   "url": "https://sunnah.com/hisn:95",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:96": {
+   "label": "Hisn al-Muslim 96",
+   "url": "https://sunnah.com/hisn:96",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:97": {
+   "label": "Hisn al-Muslim 97",
+   "url": "https://sunnah.com/hisn:97",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  },
+  "hisn:99": {
+   "label": "Hisn al-Muslim 99",
+   "url": "https://sunnah.com/hisn:99",
+   "enUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/d793023e3b69c91674023f692425950c8ebbb64d/data/en.json",
+   "site": "hisnmuslim.com"
+  }
+ }
+}

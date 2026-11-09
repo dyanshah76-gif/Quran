@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Adhkar du matin et du soir</title>
+    <meta name="description" content="Les adhkar du matin, du soir, de la nuit et du coucher, dans l'ordre de Hisn al-Muslim : uniquement ce qu'al-Albani a jugé sahih ou hasan, avec la référence de chaque hadith.">
+    <meta name="theme-color" content="#0b1230">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@93e6f64925ae76273520d636fcaaf061129f2316/fonts/uthmanic-hafs-ver13.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap">
+    <link rel="stylesheet" href="assets/adhkar.css">
+    <script>
+      // Language and Arabic size before the first paint.
+      (function () {
+        try {
+          var a = JSON.parse(localStorage.getItem('adhkar.settings.v1') || 'null');
+          var q = JSON.parse(localStorage.getItem('quran.settings.v1') || 'null');
+          var lang = a && (a.lang === 'fr' || a.lang === 'en') ? a.lang : q && (q.ui === 'fr' || q.ui === 'en') ? q.ui : null;
+          if (lang) document.documentElement.lang = lang;
+          if (a && typeof a.arSize === 'number') document.documentElement.style.setProperty('--ar', a.arSize + 'px');
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" src="assets/adhkar.js"></script>
+  </head>
+  <body>
+    <div class="sky" id="sky" aria-hidden="true"><div class="stars"></div></div>
+
+    <header class="hero" id="hero"></header>
+    <nav class="tabs" id="tabs"></nav>
+
+    <main id="main" class="column" tabindex="-1">
+      <noscript>
+        <p class="notice">Cette page a besoin de JavaScript. This page needs JavaScript.</p>
+      </noscript>
+    </main>
+
+    <footer class="column foot" id="foot"></footer>
+
+    <dialog class="settings" id="settings" aria-labelledby="settings-title"></dialog>
+  </body>
+</html>

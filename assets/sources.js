@@ -18,6 +18,11 @@
 //   four Sunan. Which hadith quote which ayah: data/hadith (tools/hadith-map).
 // - fawazahmed0/quran-api, commit 93e6f64: copy of the KFGQPC HAFS Uthmanic
 //   Script font (King Fahd Complex), loaded in styles.css.
+//
+// One exception: the adhkar page (adhkar.html) reads its texts from
+// data/adhkar/adhkar.json, a file on this site built from pinned sources by
+// tools/adhkar/build.py (see data/adhkar/README.md). Its Quran passages are
+// still downloaded at runtime from QURAN_JSON below.
 
 export const QURAN_JSON = {
   name: 'quran-json',

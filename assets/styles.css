@@ -1327,52 +1327,208 @@ main {
   font-size: 14px;
 }
 
-/* ---------- home: the card of the hour ---------- */
+/* ---------- home: link to the adhkar, bookmark and saved ayat ---------- */
 
-.now-card {
-  position: relative;
+.now-card,
+.mark-row {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin: 20px 0 0;
-  padding: 58px 18px 16px;
-  overflow: hidden;
-  border-radius: 20px;
-  background: linear-gradient(180deg, var(--s0), var(--s1) 40%, var(--s2) 78%, var(--s3));
-  color: #13203b;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+  color: var(--ink);
   text-decoration: none;
 }
 
-.now-card[data-dark='1'] {
-  color: #f1f3fa;
+.now-card {
+  margin: 22px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: start;
 }
 
-.now-card strong {
-  font-size: 22px;
-  line-height: 1.2;
+.now-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
 }
 
-.now-card span {
+.now-text strong {
+  font-size: 17px;
+}
+
+.now-text span {
+  color: var(--muted);
   font-size: 14px;
-  opacity: 0.86;
+}
+
+.now-card > svg,
+.mark-row > svg:last-child:not(:first-child) {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+}
+
+[dir='rtl'] .now-card > svg,
+[dir='rtl'] .mark-row > svg:last-child:not(:first-child) {
+  transform: scaleX(-1);
 }
 
 .now-orb {
-  position: absolute;
-  top: 16px;
-  inset-inline-end: 22px;
-  width: 30px;
-  height: 30px;
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
   border-radius: 50%;
-  opacity: 1 !important;
+  background: linear-gradient(180deg, var(--s0), var(--s2) 70%, var(--s3));
 }
 
-.now-card[data-orb='sun'] .now-orb {
+.now-orb::after {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 13px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.now-orb[data-orb='sun']::after {
   background: #fff6cf;
-  box-shadow: 0 0 34px 14px rgba(255, 236, 170, 0.6);
+  box-shadow: 0 0 10px 4px rgba(255, 240, 190, 0.7);
 }
 
-.now-card[data-orb='moon'] .now-orb {
-  box-shadow: inset -9px 2px 0 0 #f3f1e4;
-  transform: rotate(-20deg);
+.now-orb[data-orb='moon']::after {
+  box-shadow: inset -5px 1px 0 0 #f3f1e4;
+}
+
+.quick-links:has(.mark-row) {
+  display: block;
+}
+
+.mark-row {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 0;
+}
+
+.mark-row > svg:first-child {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--gold);
+}
+
+.mark-row.bookmark {
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--tint);
+  font-weight: 600;
+}
+
+.mark-row.bookmark > svg:first-child {
+  color: var(--green);
+  fill: currentColor;
+}
+
+.mark-row span {
+  flex: 1;
+  min-width: 0;
+}
+
+.mark-title {
+  margin: 18px 0 2px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mark-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mark-list li {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.mark-remove {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.mark-remove svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- verse bar: bookmark, save, share ---------- */
+
+.ayah-bar {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.ayah-bar .btn.icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  min-height: 40px;
+  padding: 0;
+  border-color: transparent;
+}
+
+.ayah-bar .btn.icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.ayah-bar .btn.icon[aria-pressed='true'] {
+  color: var(--green);
+}
+
+.ayah-bar .btn.icon[aria-pressed='true'] svg path {
+  fill: currentColor;
+}
+
+.ayah-bar .btn[data-action='save'][aria-pressed='true'] {
+  color: var(--gold);
+}
+
+.ayah.bookmarked {
+  box-shadow: inset 3px 0 0 var(--green);
+}
+
+[dir='rtl'] .ayah.bookmarked {
+  box-shadow: inset -3px 0 0 var(--green);
+}
+
+.ayah-bar {
+  gap: 3px;
+}
+
+.ayah-bar .btn:not(.icon) {
+  padding-inline: 10px;
+}
+
+.ayah-bar .btn.play {
+  padding-inline-start: 6px;
+}
+
+.ayah-bar .btn.icon {
+  width: 36px;
 }

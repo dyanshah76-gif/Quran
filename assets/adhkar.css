@@ -282,3 +282,46 @@ dialog.settings .ar { text-align: center; margin: 4px 0 0; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- simpler cards (10 Nov) ---------- */
+.clock { background: none; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 0; border-radius: 0; }
+.clock summary { min-height: 40px; font-weight: 600; font-size: 15px; justify-content: flex-start; }
+.clock-at { margin-left: 0; }
+.clock[open] { background: var(--veil); border-radius: 18px; padding: 0 14px; }
+.hero h1 { margin-top: 96px; }
+.hero { padding-bottom: 6px; }
+
+.pill-n { font-size: 12.5px; font-weight: 700; min-width: 20px; padding: 1px 6px; border-radius: 10px; background: var(--inset); color: var(--muted); text-align: center; }
+.pill[aria-selected='true'] .pill-n { background: rgba(255, 255, 255, 0.2); color: inherit; }
+[data-sky='dark'] .pill[aria-selected='true'] .pill-n { background: rgba(0, 0, 0, 0.14); }
+.tabs .progress { max-width: calc(var(--column) + 32px); margin: 10px auto 0; padding: 0 18px; }
+.progress-text { font-weight: 600; color: var(--ink); }
+.progress-track { height: 8px; border-radius: 4px; }
+
+.card { padding: 14px 16px 12px; }
+.card-head { align-items: center; margin-bottom: 0; }
+.num { font-size: 14px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+.card-body h2 { font: 600 19px/1.25 var(--font-read); margin: 8px 0 0; }
+.folded { display: none; }
+.proof-btn {
+  width: 100%; margin: 6px 0 0; padding: 0; min-height: 44px; justify-content: flex-start; gap: 8px;
+  font-weight: 500; font-size: 13.5px; color: var(--ink-soft); text-align: start;
+}
+.proof-ref { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.proof-word { font-weight: 600; color: var(--ink); }
+.proof-box { margin-top: 2px; }
+.proof .src a { font-weight: 500; }
+
+/* said: the card folds to one line */
+.card.done:not(.open) { padding: 4px 12px 4px 16px; background: color-mix(in srgb, var(--veil) 55%, transparent); }
+.card.done:not(.open) .card-body, .card.done:not(.open) .count { display: none; }
+.card.done .folded {
+  display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; min-height: 44px; border: 0; background: none; cursor: pointer;
+  font-weight: 600; font-size: 15px; color: var(--ink-soft); text-align: start; order: 2;
+}
+.card.done.open .folded { flex-basis: 100%; order: 5; min-height: 32px; }
+.folded svg { flex: none; width: 18px; height: 18px; color: var(--green); }
+.folded span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card.done .num { order: 1; }
+.card.done:not(.open) .recite, .card.done .recite, .card.done .meaning { opacity: 1; }
+.progress-track { background: color-mix(in srgb, var(--ink) 16%, transparent); }

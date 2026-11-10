@@ -191,6 +191,7 @@ export const AUDIO = {
   reciters: {
     minshawi: { folder: 'Minshawy_Murattal_128kbps', name: 'Muhammad Siddiq al-Minshawi', ar: 'محمد صديق المنشاوي' },
     husary: { folder: 'Husary_128kbps', name: 'Mahmud Khalil al-Husary', ar: 'محمود خليل الحصري' },
+    alijaber: { folder: 'Ali_Jaber_64kbps', name: 'Ali Jaber', ar: 'علي جابر' },
     hudhaify: { folder: 'Hudhaify_128kbps', name: 'Ali al-Hudhaify', ar: 'علي الحذيفي' },
     muaiqly: { folder: 'MaherAlMuaiqly128kbps', name: 'Maher al-Muaiqly', ar: 'ماهر المعيقلي' },
     abdulbasit: { folder: 'Abdul_Basit_Murattal_192kbps', name: 'Abdul Basit Abdus-Samad', ar: 'عبد الباسط عبد الصمد' },

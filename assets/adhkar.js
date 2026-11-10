@@ -108,7 +108,10 @@ const STRINGS = {
     own: 'Texte tel qu’il est écrit dans Hisn al-Muslim.',
     mine: 'Traduction non officielle (Claude)',
     source: 'Source',
-    progress: (a, b) => `${a} sur ${b}`,
+    progress: (a, b) => (a === b ? `${b} sur ${b}` : `Reste ${b - a} sur ${b}`),
+    position: (i, n) => `${i} / ${n}`,
+    translation: 'Traduction',
+    open: 'Rouvrir',
     allDone: 'Tout est dit. Qu’Allah accepte.',
     reset: 'Recommencer cette liste',
     resetPrayer: 'Recommencer pour la prochaine prière',
@@ -221,7 +224,10 @@ const STRINGS = {
     own: 'Text as written in Hisn al-Muslim.',
     mine: 'Unofficial translation (Claude)',
     source: 'Source',
-    progress: (a, b) => `${a} of ${b}`,
+    progress: (a, b) => (a === b ? `${b} of ${b}` : `${b - a} left of ${b}`),
+    position: (i, n) => `${i} / ${n}`,
+    translation: 'Translation',
+    open: 'Open again',
     allDone: 'All said. May Allah accept.',
     reset: 'Start this list again',
     resetPrayer: 'Start again for the next prayer',
@@ -653,10 +659,11 @@ function renderTabs() {
             onclick: () => selectTab(tab, true),
           },
           s.tabs[tab],
-          total && done === total ? svg(ICONS.check) : null,
+          total && done === total ? svg(ICONS.check) : el('span', { class: 'pill-n' }, String(total - done)),
         );
       }),
     ),
+    el('div', { class: 'progress', id: 'progress' }, el('div', { class: 'progress-track' }, el('div', { class: 'progress-fill' })), el('span', { class: 'progress-text' })),
   );
   const active = nav.querySelector('[aria-selected="true"]');
   if (active && active.scrollIntoView) active.scrollIntoView({ block: 'nearest', inline: 'center' });
@@ -721,11 +728,9 @@ function renderMeaning(it, tab, slots) {
       slots.push({ kind: 'tr', seg: seg.quran, text: p });
       box.append(p);
     }
-    const tr = TRANSLATIONS[state.lang];
-    box.append(el('span', { class: 'src' }, colon(S().source), el('a', { href: tr.url, target: '_blank', rel: 'noopener' }, tr.translator)));
   } else {
     const m = meaning[state.lang];
-    box.append(el('p', {}, withSalawat(m.text)), srcNode(m.src));
+    box.append(el('p', {}, withSalawat(m.text)), m.src === 'mine' ? srcNode('mine') : null);
   }
   return box;
 }
@@ -765,9 +770,17 @@ function renderProof(it, tab) {
   const tr = h[state.lang] || h.en;
   const explain = h[`${state.lang}Explain`];
   const own = reciteFor(it, tab).some((seg) => seg.own);
+  const meaning = meaningFor(it, tab);
+  const tr2 = TRANSLATIONS[state.lang];
   return el(
     'div',
     { class: 'proof' },
+    meaning === 'quran'
+      ? el('span', { class: 'src' }, colon(s.translation), el('a', { href: tr2.url, target: '_blank', rel: 'noopener' }, tr2.translator))
+      : meaning[state.lang].src !== 'mine'
+        ? el('span', { class: 'src' }, colon(s.translation), srcNode(meaning[state.lang].src).lastChild)
+        : null,
+    reciteFor(it, tab).filter((seg) => seg.ar).slice(0, 1).map((seg) => srcNode(seg.inside || seg.src)),
     el('h3', {}, s.whenProof),
     it.whenAr.map((w) => el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${w.ar}»`)),
     srcNode(it.whenAr[0].src),
@@ -804,21 +817,37 @@ function phaseAt(it, tab, count) {
   return null;
 }
 
-function renderCard(it, tab, slots) {
+function renderCard(it, tab, slots, position, count) {
   const s = S();
   const total = totalOf(it);
   const name = it.name ? s.names[it.name] : null;
   const steps = reciteFor(it, tab).filter((seg) => seg.ar && seg.n).map((seg) => seg.n);
   const first = it.refs[0];
   const more = it.refs.length - 1;
+  const firstAr = reciteFor(it, tab).find((seg) => seg.ar);
+  const short = firstAr ? `${firstAr.ar.split(' ').slice(0, 5).join(' ')}…` : '';
 
   const tapLabel = el('span', { class: 'tap-label' });
   const tapNum = el('span', { class: 'tap-num' });
   const tap = el('button', { class: 'tap', type: 'button' }, el('span', { class: 'tap-fill', 'aria-hidden': 'true' }), tapLabel, tapNum);
   const undo = el('button', { class: 'undo', type: 'button', 'aria-label': s.undo }, svg(ICONS.undo));
-  const proofBtn = el('button', { class: 'proof-btn', type: 'button', 'aria-expanded': 'false' }, s.proof, svg(ICONS.chevron));
+  const proofBtn = el(
+    'button',
+    { class: 'proof-btn', type: 'button', 'aria-expanded': 'false' },
+    el('span', { class: 'badge' }, gradeText(first.grade)),
+    el('span', { class: 'proof-ref' }, first.label, more > 0 ? ` +${more}` : ''),
+    el('span', { class: 'proof-word' }, s.proof),
+    svg(ICONS.chevron),
+  );
   const proofBox = el('div', { class: 'proof-box', hidden: true });
   const recite = renderRecite(it, tab, slots);
+  // Shown alone once the dhikr is said: the card folds to this line.
+  const folded = el(
+    'button',
+    { class: 'folded', type: 'button', 'aria-label': s.open },
+    svg(ICONS.check),
+    name ? el('span', {}, name) : el('span', { lang: 'ar', dir: 'rtl', class: 'ar-inline' }, short),
+  );
 
   const card = el(
     'article',
@@ -826,22 +855,22 @@ function renderCard(it, tab, slots) {
     el(
       'header',
       { class: 'card-head' },
-      el('span', { class: 'tag' }, s.when[it.when]),
-      name ? el('h2', {}, name) : null,
+      el('span', { class: 'num' }, s.position(position, count)),
       el('span', { class: 'count' }, steps.length ? steps.join(' + ') : total === 1 ? s.once : s.times(total)),
+      folded,
     ),
-    recite,
-    renderMeaning(it, tab, slots),
-    notesFor(it, tab, true).map(noteNode),
-    it.surahs ? el('p', { class: 'links' }, it.surahs.map((n) => el('a', { class: 'chip', href: `./#${n}`, dataset: { surah: String(n) } }, s.read(n)))) : null,
     el(
       'div',
-      { class: 'card-foot' },
-      el('span', { class: 'grade' }, el('span', { class: 'badge' }, gradeText(first.grade)), ' ', first.grader === 'sahihayn' ? first.label : `${first.label}`, more > 0 ? ` +${more}` : ''),
+      { class: 'card-body' },
+      name ? el('h2', {}, name) : null,
+      recite,
+      renderMeaning(it, tab, slots),
+      notesFor(it, tab, true).map(noteNode),
+      it.surahs ? el('p', { class: 'links' }, it.surahs.map((n) => el('a', { class: 'chip', href: `./#${n}`, dataset: { surah: String(n) } }, s.read(n)))) : null,
+      el('div', { class: 'tap-row' }, tap, undo),
       proofBtn,
+      proofBox,
     ),
-    proofBox,
-    el('div', { class: 'tap-row' }, tap, undo),
   );
 
   proofBtn.addEventListener('click', () => {
@@ -849,36 +878,37 @@ function renderCard(it, tab, slots) {
     if (open && !proofBox.firstChild) proofBox.append(renderProof(it, tab));
     proofBox.hidden = !open;
     proofBtn.setAttribute('aria-expanded', String(open));
-    proofBtn.firstChild.textContent = open ? s.hideProof : s.proof;
   });
+  folded.addEventListener('click', () => card.classList.toggle('open'));
 
   const paint = () => {
-    const count = Math.min(total, getCount(tab, it.id));
-    const done = count >= total;
+    const n = Math.min(total, getCount(tab, it.id));
+    const done = n >= total;
     card.classList.toggle('done', done);
-    tap.style.setProperty('--fill', `${Math.round((count / total) * 100)}%`);
+    if (!done) card.classList.remove('open');
+    tap.style.setProperty('--fill', `${Math.round((n / total) * 100)}%`);
     tap.setAttribute('aria-pressed', String(done));
     tapLabel.replaceChildren(done ? svg(ICONS.check) : '', done ? s.done : total === 1 ? s.tapOnce : s.tapCount);
-    tapNum.textContent = total === 1 ? '' : `${count} / ${total}`;
-    undo.hidden = count === 0;
-    const phase = done ? null : phaseAt(it, tab, count);
+    tapNum.textContent = total === 1 ? '' : `${n} / ${total}`;
+    undo.hidden = n === 0;
+    const phase = done ? null : phaseAt(it, tab, n);
     recite.querySelectorAll('.ar[data-n]').forEach((p, i) => p.classList.toggle('now', Boolean(phase) && phase.index === i));
   };
 
   tap.addEventListener('click', () => {
-    const count = getCount(tab, it.id);
-    if (count >= total) return;
-    setCount(tab, it.id, count + 1);
-    paint();
-    if (count + 1 >= total) {
+    const n = getCount(tab, it.id);
+    if (n >= total) return;
+    setCount(tab, it.id, n + 1);
+    if (n + 1 >= total) {
       if (navigator.vibrate) navigator.vibrate(30);
+      paint();
       afterDone(card);
-    }
+    } else paint();
     updateProgress();
   });
   undo.addEventListener('click', () => {
-    const count = Math.min(total, getCount(tab, it.id));
-    setCount(tab, it.id, total === 1 || count >= total ? 0 : count - 1);
+    const n = Math.min(total, getCount(tab, it.id));
+    setCount(tab, it.id, total === 1 || n >= total ? 0 : n - 1);
     paint();
     updateProgress();
   });
@@ -886,9 +916,13 @@ function renderCard(it, tab, slots) {
   return card;
 }
 
+// The card just said folds to one line; the next one comes up under the list bar.
 function afterDone(card) {
-  const next = [...document.querySelectorAll('.card')].find((c) => !c.classList.contains('done') && c.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_PRECEDING);
-  if (next) setTimeout(() => next.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }), 350);
+  const next = [...document.querySelectorAll('.card:not(.done)')].find((c) => card.compareDocumentPosition(c) & Node.DOCUMENT_POSITION_FOLLOWING);
+  if (!next) return;
+  const bar = document.getElementById('tabs').getBoundingClientRect().height;
+  const y = next.getBoundingClientRect().top + window.scrollY - bar - 10;
+  if (next.getBoundingClientRect().top < bar || next.getBoundingClientRect().top > window.innerHeight * 0.5) window.scrollTo({ top: y, behavior: reduceMotion() ? 'auto' : 'smooth' });
 }
 
 function updateProgress() {
@@ -901,11 +935,14 @@ function updateProgress() {
   }
   const end = document.getElementById('list-end');
   if (end) end.classList.toggle('complete', total > 0 && done === total);
-  document.querySelectorAll('.pill').forEach((pill) => {
-    const p = tabProgress(pill.dataset.tab);
-    const complete = p.total > 0 && p.done === p.total;
-    if (complete !== (pill.dataset.complete === '1')) renderTabs();
-  });
+  const pill = document.getElementById(`tab-${state.tab}`);
+  if (pill) {
+    const complete = total > 0 && done === total;
+    if (complete !== (pill.dataset.complete === '1')) {
+      renderTabs();
+      updateProgress();
+    } else if (pill.querySelector('.pill-n')) pill.querySelector('.pill-n').textContent = String(total - done);
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -941,20 +978,17 @@ function renderList() {
   const token = (state.listToken += 1);
   const slots = [];
   const items = itemsFor(tab);
-  const nodes = [
-    el('div', { class: 'progress', id: 'progress' }, el('div', { class: 'progress-track' }, el('div', { class: 'progress-fill' })), el('span', { class: 'progress-text' })),
-  ];
-  if (tab === 'morning' || tab === 'evening') nodes.push(renderTiming());
-
+  const nodes = [];
   const groups = GROUPS[tab];
-  if (groups) {
-    for (const group of groups) {
-      const part = items.filter((it) => (tab === 'wake' ? it.when : it.group) === group);
-      if (!part.length) continue;
-      nodes.push(el('h2', { class: 'group' }, s.groups[group]));
-      part.forEach((it) => nodes.push(renderCard(it, tab, slots)));
-    }
-  } else items.forEach((it) => nodes.push(renderCard(it, tab, slots)));
+  const ordered = groups ? groups.flatMap((group) => items.filter((it) => (tab === 'wake' ? it.when : it.group) === group)) : items;
+  let lastGroup = null;
+  ordered.forEach((it, i) => {
+    const group = groups ? (tab === 'wake' ? it.when : it.group) : null;
+    if (group && group !== lastGroup) nodes.push(el('h2', { class: 'group' }, s.groups[group]));
+    lastGroup = group;
+    nodes.push(renderCard(it, tab, slots, i + 1, ordered.length));
+  });
+  if (tab === 'morning' || tab === 'evening') nodes.push(renderTiming());
 
   nodes.push(
     el(

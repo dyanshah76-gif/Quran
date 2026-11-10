@@ -14,7 +14,8 @@ import { initAudio, playFrom, stopAudio, refreshAudio } from './audio.js';
 
 const SURAH_COUNT = 114;
 const SETTINGS_KEY = 'quran.settings.v1';
-const LAST_READ_KEY = 'quran.lastRead.v1';
+const BOOKMARK_KEY = 'quran.bookmark.v1'; // the one place the reader marked to continue from
+const SAVED_KEY = 'quran.saved.v1'; // ayat the reader saved to come back to
 const FETCH_TIMEOUT_MS = 15000;
 const GROUP_SCAN_LIMIT = 20;
 const HADITH_BATCH = 5;
@@ -48,6 +49,11 @@ function svgIcon(markup) {
 }
 
 const ICONS = {
+  bookmark: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4h10v16l-5-4-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+  star: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4l2.4 5 5.4.7-4 3.8 1 5.4-4.8-2.6-4.8 2.6 1-5.4-4-3.8 5.4-.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+  shareIcon: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 7.5L12 4l4 3.5"/><path d="M6 11v8h12v-8"/></g></svg>',
+  remove: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  chevron: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   play: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>',
   brand:
     '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8.5" y="8.5" width="15" height="15" rx="1"/><rect x="8.5" y="8.5" width="15" height="15" rx="1" transform="rotate(45 16 16)"/></g><circle cx="16" cy="16" r="2.2" fill="currentColor"/></svg>',
@@ -564,15 +570,15 @@ function nowCard() {
   const sun = ['morning', 'day', 'evening'].includes(period.segment);
   return el(
     'a',
-    {
-      class: 'now-card',
-      href: `adhkar.html#${list}`,
-      dataset: { dark: sky.dark ? '1' : '0', orb: sun ? 'sun' : 'moon' },
-      style: `--s0:${sky.stops[0]};--s1:${sky.stops[1]};--s2:${sky.stops[2]};--s3:${sky.stops[3]}`,
-    },
-    el('span', { class: 'now-orb', 'aria-hidden': 'true' }),
-    el('strong', {}, raw('homeNow')[list]),
-    el('span', {}, t('homeAdhkar')),
+    { class: 'now-card', href: `adhkar.html#${list}` },
+    el('span', {
+      class: 'now-orb',
+      'aria-hidden': 'true',
+      dataset: { orb: sun ? 'sun' : 'moon' },
+      style: `--s0:${sky.stops[0]};--s2:${sky.stops[2]};--s3:${sky.stops[3]}`,
+    }),
+    el('span', { class: 'now-text' }, el('strong', {}, raw('homeNow')[list]), el('span', {}, t('homeAdhkar'))),
+    svgIcon(ICONS.chevron),
   );
 }
 
@@ -648,12 +654,49 @@ async function renderHome(token) {
   list.append(...rows.map((row) => row.item));
   body.replaceChildren(list, empty);
 
-  const lastRead = readStore(LAST_READ_KEY);
-  const resumeLink = () => {
-    if (!lastRead || !Number.isInteger(lastRead.s) || !Number.isInteger(lastRead.a)) return null;
-    const surah = index[lastRead.s - 1];
-    if (!surah || lastRead.a < 1 || lastRead.a > surah.total_verses) return null;
-    return el('a', { class: 'btn', href: `#${lastRead.s}:${lastRead.a}` }, t('resume', { name: surah.transliteration, a: fmtNum(lastRead.a) }));
+  // What the reader marked: the bookmark first, then the saved ayat.
+  const markRows = () => {
+    const nodes = [];
+    const label = (m) => `${index[m.s - 1].transliteration} ${m.s}:${m.a}`;
+    const ok = (m) => index[m.s - 1] && m.a <= index[m.s - 1].total_verses;
+    const mark = getBookmark();
+    if (mark && ok(mark)) {
+      const surah = index[mark.s - 1];
+      nodes.push(
+        el('a', { class: 'mark-row bookmark', href: `#${mark.s}:${mark.a}` }, svgIcon(ICONS.bookmark), el('span', {}, t('resume', { name: surah.transliteration, a: fmtNum(mark.a) })), svgIcon(ICONS.chevron)),
+      );
+    }
+    const saved = getSaved().filter(ok);
+    if (saved.length) {
+      nodes.push(
+        el('h2', { class: 'mark-title' }, t('savedTitle'), ' ', el('span', { class: 'mark-count' }, fmtNum(saved.length))),
+        el(
+          'ul',
+          { class: 'mark-list' },
+          saved.map((m) =>
+            el(
+              'li',
+              {},
+              el('a', { class: 'mark-row', href: `#${m.s}:${m.a}` }, svgIcon(ICONS.star), el('span', {}, label(m))),
+              el(
+                'button',
+                {
+                  class: 'mark-remove',
+                  type: 'button',
+                  'aria-label': t('removeSaved', { key: `${m.s}:${m.a}` }),
+                  onclick: () => {
+                    writeStore(SAVED_KEY, getSaved().filter((x) => !(x.s === m.s && x.a === m.a)));
+                    applyFilter();
+                  },
+                },
+                svgIcon(ICONS.remove),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    return nodes;
   };
 
   let firstMatch = null;
@@ -666,8 +709,7 @@ async function renderHome(token) {
     if (!query) {
       rows.forEach((row) => (row.item.hidden = false));
       empty.hidden = true;
-      const resume = resumeLink();
-      if (resume) quick.append(resume);
+      quick.append(...markRows());
       return;
     }
     const keyMatch = query.match(/^(\d{1,3})\s*[:.]\s*(\d{1,3})$/);
@@ -864,7 +906,9 @@ async function renderSurah(s, a, token) {
         el('a', { class: 'ayah-key', href: `#${key}`, 'aria-label': t('keyAria', { key }) }, key),
         el('button', { class: 'btn play', type: 'button', dataset: { action: 'play' }, 'aria-label': t('listenAria', { key }) }, svgIcon(ICONS.play), t('listen')),
         el('button', { class: 'btn', type: 'button', dataset: { action: 'tafsir' } }, t('tafsirButton')),
-        el('button', { class: 'btn', type: 'button', dataset: { action: 'share' }, 'aria-label': t('shareAria', { key }) }, t('share')),
+        el('button', { class: 'btn icon', type: 'button', dataset: { action: 'bookmark' }, 'aria-label': t('bookmarkAria', { key }), 'aria-pressed': String(isBookmark(s, verse.id)) }, svgIcon(ICONS.bookmark)),
+        el('button', { class: 'btn icon', type: 'button', dataset: { action: 'save' }, 'aria-label': t('saveAria', { key }), 'aria-pressed': String(isSaved(s, verse.id)) }, svgIcon(ICONS.star)),
+        el('button', { class: 'btn icon', type: 'button', dataset: { action: 'share' }, 'aria-label': t('shareAria', { key }) }, svgIcon(ICONS.shareIcon)),
       ),
     );
     fragment.append(item);
@@ -890,7 +934,7 @@ async function renderSurah(s, a, token) {
 
   if (a !== null && a >= 1 && a <= total) focusAyah(a, { fromLink: false });
   else restoreScroll(location.hash);
-  startReadingObserver(s);
+  paintMarks(s);
   refreshAudio();
 }
 
@@ -916,12 +960,66 @@ function onAyahClick(event, s) {
     if (action.dataset.action === 'play') playFrom(s, a, state.current.meta.total_verses || document.querySelectorAll('.ayah').length);
     else if (action.dataset.action === 'tafsir') openTafsir(s, a);
     else if (action.dataset.action === 'share') shareAyah(s, a);
+    else if (action.dataset.action === 'bookmark') toggleBookmark(s, a);
+    else if (action.dataset.action === 'save') toggleSaved(s, a);
     return;
   }
   if (event.target.closest('a, button, input, label')) return;
   const selection = window.getSelection();
   if (selection && !selection.isCollapsed && item.contains(selection.anchorNode)) return; // user is selecting text
   openTafsir(s, a);
+}
+
+/* Bookmark (one, placed by the reader) and saved ayat (as many as wanted).
+   Both stay in this browser only. */
+
+const validMark = (m) => m && Number.isInteger(m.s) && Number.isInteger(m.a) && m.s >= 1 && m.s <= 114 && m.a >= 1;
+const getBookmark = () => {
+  const m = readStore(BOOKMARK_KEY);
+  return validMark(m) ? m : null;
+};
+const getSaved = () => {
+  const list = readStore(SAVED_KEY);
+  return Array.isArray(list) ? list.filter(validMark) : [];
+};
+const isBookmark = (s, a) => {
+  const m = getBookmark();
+  return Boolean(m) && m.s === s && m.a === a;
+};
+const isSaved = (s, a) => getSaved().some((m) => m.s === s && m.a === a);
+
+function paintMarks(s) {
+  document.querySelectorAll('.ayah').forEach((item) => {
+    const a = Number(item.dataset.ayah);
+    const marked = isBookmark(s, a);
+    item.classList.toggle('bookmarked', marked);
+    const b = item.querySelector('[data-action="bookmark"]');
+    const v = item.querySelector('[data-action="save"]');
+    if (b) b.setAttribute('aria-pressed', String(marked));
+    if (v) v.setAttribute('aria-pressed', String(isSaved(s, a)));
+  });
+}
+
+function toggleBookmark(s, a) {
+  const key = `${s}:${a}`;
+  if (isBookmark(s, a)) {
+    writeStore(BOOKMARK_KEY, null);
+    toast(t('bookmarkRemoved'));
+  } else {
+    writeStore(BOOKMARK_KEY, { s, a });
+    toast(t('bookmarkSet', { key }));
+  }
+  paintMarks(s);
+}
+
+function toggleSaved(s, a) {
+  const list = getSaved();
+  const at = list.findIndex((m) => m.s === s && m.a === a);
+  if (at >= 0) list.splice(at, 1);
+  else list.unshift({ s, a });
+  writeStore(SAVED_KEY, list);
+  toast(t(at >= 0 ? 'savedOff' : 'savedOn', { key: `${s}:${a}` }));
+  paintMarks(s);
 }
 
 async function shareAyah(s, a) {
@@ -958,25 +1056,6 @@ function renderNotFound() {
 /* Remember the last ayah read (shown as "Continue" on the home page). */
 let readObserver = null;
 let readTimer = 0;
-function startReadingObserver(s) {
-  stopReadingObserver();
-  if (!('IntersectionObserver' in window)) return;
-  let latest = null;
-  readObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) latest = Number(entry.target.dataset.ayah);
-      });
-      clearTimeout(readTimer);
-      readTimer = setTimeout(() => {
-        if (latest) writeStore(LAST_READ_KEY, { s, a: latest });
-      }, 900);
-    },
-    { rootMargin: '-30% 0px -60% 0px' },
-  );
-  document.querySelectorAll('.ayah').forEach((node) => readObserver.observe(node));
-}
-
 function stopReadingObserver() {
   if (readObserver) readObserver.disconnect();
   readObserver = null;
@@ -1083,7 +1162,6 @@ function openTafsir(s, a, { push = true } = {}) {
   } else {
     history.replaceState({ tafsir: { s, a } }, '', location.href);
   }
-  writeStore(LAST_READ_KEY, { s, a });
   loadPanel();
 }
 
@@ -1121,7 +1199,6 @@ function goToPassage(a) {
   history.replaceState({ tafsir: { s: panel.s, a } }, '', location.href);
   const node = document.getElementById(`a-${a}`);
   if (node) node.scrollIntoView({ block: 'start' });
-  writeStore(LAST_READ_KEY, { s: panel.s, a });
   loadPanel();
 }
 

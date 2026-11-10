@@ -9,7 +9,7 @@
 //
 // Nothing is changed on the way: responses are stored and given back as is.
 
-const VERSION = 'v1';
+const VERSION = 'v2';
 const SITE = `site-${VERSION}`;
 const PINNED = 'pinned-v1';
 const SHELL = [

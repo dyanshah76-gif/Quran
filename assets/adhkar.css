@@ -325,3 +325,13 @@ dialog.settings .ar { text-align: center; margin: 4px 0 0; }
 .card.done .num { order: 1; }
 .card.done:not(.open) .recite, .card.done .recite, .card.done .meaning { opacity: 1; }
 .progress-track { background: color-mix(in srgb, var(--ink) 16%, transparent); }
+
+/* ---------- Arabic of the adhkar: every letter written out ----------
+   Amiri stacks some letters on top of each other (the lam and ha of "al-hamd")
+   through its contextual alternates. They are switched off so each letter and
+   its vowel mark stand apart and are easy to read. The Quran passages keep the
+   Madinah Mushaf font unchanged. */
+.recite { margin-top: 16px; }
+.ar, .ar-inline, .small-ar, .salawat { font-feature-settings: 'calt' 0; }
+.recite .ar { line-height: 2.15; word-spacing: 0.14em; }
+.quran { font-feature-settings: normal; word-spacing: normal; }

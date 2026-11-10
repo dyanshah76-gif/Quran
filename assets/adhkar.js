@@ -730,7 +730,8 @@ function renderMeaning(it, tab, slots) {
     }
   } else {
     const m = meaning[state.lang];
-    box.append(el('p', {}, withSalawat(m.text)), m.src === 'mine' ? srcNode('mine') : null);
+    box.append(el('p', {}, withSalawat(m.text)));
+    if (m.src === 'mine') box.append(srcNode('mine'));
   }
   return box;
 }

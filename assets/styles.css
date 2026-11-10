@@ -1241,3 +1241,138 @@ main {
     animation: none;
   }
 }
+
+/* ---------- recitation ---------- */
+
+.ayah-bar .btn.play {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-inline-start: 8px;
+}
+
+.ayah-bar .btn.play svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ayah.playing {
+  background: var(--tint);
+  box-shadow: 0 0 0 10px var(--tint);
+  border-radius: 6px;
+}
+
+.ayah.playing .btn.play {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.player {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: min(420px, calc(100vw - 24px));
+  padding: 6px;
+  border-radius: 28px;
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateX(-50%);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.player[hidden] {
+  display: none;
+}
+
+.player button {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: inherit;
+  cursor: pointer;
+}
+
+.player .player-stop {
+  background: transparent;
+}
+
+.player svg {
+  width: 22px;
+  height: 22px;
+}
+
+.player-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.hadith-q {
+  margin: 6px 0;
+  padding: 8px 10px;
+  border-inline-start: 3px solid var(--gold);
+  background: var(--tint);
+  font-size: 14px;
+}
+
+/* ---------- home: the card of the hour ---------- */
+
+.now-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 20px 0 0;
+  padding: 58px 18px 16px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(180deg, var(--s0), var(--s1) 40%, var(--s2) 78%, var(--s3));
+  color: #13203b;
+  text-decoration: none;
+}
+
+.now-card[data-dark='1'] {
+  color: #f1f3fa;
+}
+
+.now-card strong {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.now-card span {
+  font-size: 14px;
+  opacity: 0.86;
+}
+
+.now-orb {
+  position: absolute;
+  top: 16px;
+  inset-inline-end: 22px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  opacity: 1 !important;
+}
+
+.now-card[data-orb='sun'] .now-orb {
+  background: #fff6cf;
+  box-shadow: 0 0 34px 14px rgba(255, 236, 170, 0.6);
+}
+
+.now-card[data-orb='moon'] .now-orb {
+  box-shadow: inset -9px 2px 0 0 #f3f1e4;
+  transform: rotate(-20deg);
+}

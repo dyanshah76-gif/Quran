@@ -14,21 +14,38 @@ Everything is chosen in Settings and saved in the browser.
 
 https://dyanshah76-gif.github.io/Quran/adhkar.html
 
-The adhkar of the morning, the day, the evening and the night, in the order of
-Hisn al-Muslim. Only adhkar whose hadith are in Sahih al-Bukhari or Sahih
-Muslim, or were graded sahih or hasan by al-Albani, are kept. Each one shows the
-Arabic, a translation with its source, the words of the hadith that give its
-time, its references and grades, and the full hadith. Each dhikr sits at the
-time its hadith gives (for example al-Mulk at bedtime, the end of al-Baqarah
-"in a night"). Tap counters keep the day's count in the browser.
+Six lists, in the order of Hisn al-Muslim: waking up, morning, during the day,
+evening, night and bedtime, after the prayer. Only adhkar whose hadith are in
+Sahih al-Bukhari or Sahih Muslim, or were graded sahih or hasan by al-Albani,
+are kept. Each dhikr is a short card: the Arabic in the wording of the hadith,
+its meaning with the source, how many times, the grade, and a counter. "Proof"
+opens the words of the hadith that give the time and the count, every
+reference with al-Albani's ruling in his own Arabic words, and the full hadith.
 
-The background follows the sky in Paris: deep blue after Fajr, light at
-sunrise, blue by day, pink from Asr to Maghrib, dark at night. Prayer times are
-calculated on the phone (Muslim World League by default; UOIF and ISNA in
-Settings; or the reader's own location). How the texts were chosen and where
-each one comes from: `data/adhkar/README.md`.
+The background follows the sky in Paris (or the reader's position): the sun
+crosses the top of the page by day, the moon by night with its phase. The
+header shows the Hijri date (Umm al-Qura calculation) and the next prayer.
+Prayer times are calculated on the phone (Muslim World League by default; UOIF
+and ISNA in Settings). How the texts were chosen and checked:
+`data/adhkar/README.md`.
 
 For testing another time of day: `adhkar.html?now=2026-11-09T17:00`.
+
+## Recitation
+
+In a surah, "Listen" under an ayah plays it and continues to the end of the
+surah. The recordings are streamed, one file per ayah, from
+[EveryAyah.com](https://everyayah.com/); the site does not host or change them.
+Reciter: Muhammad Siddiq al-Minshawi by default; al-Husary, al-Hudhaify, Maher
+al-Muaiqly and Abdul Basit in Settings (`AUDIO` in `assets/sources.js`).
+
+## App and offline
+
+On iPhone: Share, then "Add to Home Screen". `sw.js` keeps the site's files,
+and every surah, tafsir, hadith and font already opened, so they can be read
+without a connection. Files of the site are fetched from the network first, so
+a new version shows at once; pinned source files never change, so the saved
+copy is used. Recitation needs a connection.
 
 ## Where every word comes from
 
@@ -82,6 +99,8 @@ index.html             page shell, early theme script
 adhkar.html            adhkar page shell
 favicon.svg            octagram icon
 .nojekyll              tells GitHub Pages to serve files as they are
+manifest.webmanifest   name and icons for "Add to Home Screen"
+sw.js                  offline copy of the pages already opened
 assets/
   styles.css           layout, light and dark themes, right-to-left, fonts
   app.js               routing, loading, tafsir and hadith panel, settings
@@ -90,11 +109,13 @@ assets/
   adhkar.js            adhkar page: texts, counters, sky, settings
   adhkar.css           adhkar page styles
   sky.js               prayer times and sky colours, computed on the phone
+  audio.js             recitation player of the reader
+  icon-*.png           app icons
 data/roman-urdu/       unofficial Roman Urdu (one file per surah) + README
 data/hadith/           which authentic hadith quote which ayah (one file per surah) + README
 data/adhkar/           every text of the adhkar page, copied from pinned sources + README
 tools/roman-urdu/      the script and hand-written spellings used to make it
-tools/hadith-map/      the script that builds data/hadith
+tools/hadith-map/      the scripts that build and review data/hadith
 tools/adhkar/          the script that builds data/adhkar
 README.md
 ```

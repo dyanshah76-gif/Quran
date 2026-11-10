@@ -13,49 +13,62 @@ either is missing, so no text is typed by hand.
 
 | Content | Source | Pinned version |
 | --- | --- | --- |
-| Arabic text of each dhikr, its number and the order | Hisn al-Muslim by Sa'id ibn Wahf al-Qahtani, hisnmuslim.com edition, copied in [YousefAsalya/Islamic-Pro-azkar-API](https://github.com/YousefAsalya/Islamic-Pro-azkar-API/tree/d793023e3b69c91674023f692425950c8ebbb64d) | commit `d793023` |
-| English translation of most adhkar | the same hisnmuslim.com edition | same |
+| Hadith of al-Bukhari, Muslim, Abu Dawud, at-Tirmidhi, an-Nasa'i, Ibn Majah: Arabic and sunnah.com English | [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api/tree/df57907be35291c91ad6a6691180e22ca9920784) | commit `df57907` |
+| Al-Albani's rulings on the four Sunan, in his own Arabic words (Sahih wa Da'if Sunan Abi Dawud, at-Tirmidhi, an-Nasa'i, Ibn Majah; al-maktaba.org books 1755, 782, 783, 810) | [fawazahmed0/hadith, Scripts/uncleaned grades](https://github.com/fawazahmed0/hadith/tree/e4e7f39c83509194fd8ca53996033734bc4b5f83/Scripts/uncleaned%20grades) | commit `e4e7f39` |
+| Al-Albani, Sahih al-Jami' as-Saghir: text and grade of hadith outside the six books | [HsnSaboor/hadith-api-toon](https://github.com/HsnSaboor/hadith-api-toon/tree/db81b0bd1d9cbfa4fe8c30148066c687056542e3/editions/jami-saghir) | commit `db81b0b` |
 | Hadith text, English and French translation, explanation | [HadeethEnc.com](https://hadeethenc.com/) official Excel files: Arabic v1.8.0, English v1.25.0, French v1.17.0, byte-for-byte copies in [Younes12345698/hadeethenc-mirror](https://github.com/Younes12345698/hadeethenc-mirror/tree/429f7bd041246a943751121590287c7877b15372) | commit `429f7bd` |
-| Hadith of al-Bukhari, Muslim, Abu Dawud, at-Tirmidhi, Ibn Majah: Arabic, sunnah.com English, al-Albani's grades | [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api/tree/df57907be35291c91ad6a6691180e22ca9920784) | commit `df57907` |
-| Five hadith outside these books (Ubayy and the jinn; the advice to Fatimah; «asbahna 'ala fitrat al-Islam»; ten tahlil; turning over at night) | al-Albani's grade and the book where he gives it (Sahih al-Targhib, Sahih al-Jami', al-Silsila al-Sahiha), each with a page to check | see `ext` in the file |
+| Order, numbering and some wordings and English translations | Hisn al-Muslim by Sa'id ibn Wahf al-Qahtani, hisnmuslim.com edition, copied in [YousefAsalya/Islamic-Pro-azkar-API](https://github.com/YousefAsalya/Islamic-Pro-azkar-API/tree/d793023e3b69c91674023f692425950c8ebbb64d) | commit `d793023` |
+| When to say the morning and evening adhkar | Ibn al-Qayyim, al-Wabil as-Sayyib ([shamela.ws/book/216](https://shamela.ws/book/216)), text from [OpenITI/RELEASE](https://github.com/OpenITI/RELEASE/tree/cfc4157a3cf2054c0888f133970a4eaa3e22e58c/data/0751IbnQayyimJawziyya/0751IbnQayyimJawziyya.WabilSayyib) | commit `cfc4157` |
+| Seven hadith outside the six books | al-Albani's grade and the book where he gives it (Sahih at-Targhib, Sahih al-Jami', as-Silsila as-Sahiha), each with a page to check | `EXTERNAL` in the build |
 
 HadeethEnc's terms ask that its texts are not changed, that the source and the
-version are named, and that new versions are followed. The page names
-HadeethEnc and the version under every text taken from it.
+version are named, and that new versions are followed.
 
-## Rules
+## Checks made by the build
 
-- **Grades.** A dhikr is kept only if every hadith it rests on is in Sahih
-  al-Bukhari or Sahih Muslim, or was graded sahih or hasan by al-Albani. The
-  build stops if a kept reference has another grade, or if a left-out one is
-  sahih or hasan. The page checks the grades again before showing a dhikr.
-- **Left out.** Six adhkar of the morning and evening chapter of Hisn al-Muslim
-  (numbers 80, 81, 83, 87, 89, 98) are graded weak by al-Albani. The page lists
-  their numbers and grades only, not their text.
-- **Order.** Hisn al-Muslim's order: chapter 27 (morning and evening),
-  chapter 28 (sleep), chapter 29 (turning over at night).
-- **Time.** Each dhikr is placed at the time its own hadith gives, and the page
-  shows those words in Arabic. Where this differs from Hisn al-Muslim, a note
-  says so:
-  - Hisn 93 (*la ilaha illa Allah…*, 100 times) and Hisn 96 (*astaghfiru
-    Allah wa atubu ilayh*, 100 times): their hadith say «في يوم», "in a day",
-    so they are in the Day tab.
-  - Hisn 101 (the last two ayat of al-Baqarah): the hadith says «في ليلة», "in
-    a night", so it is under "During the night", not "When going to bed".
-  - Ayat al-Kursi appears twice, each with its own hadith: morning and evening
-    (Ubayy ibn Ka'b, Sahih al-Targhib 662) and at bedtime (al-Bukhari 2311,
-    quoted by al-Bukhari without his full chain, *mu'allaq*).
-  - Surat al-Mulk and as-Sajdah are at bedtime: «لا ينام حتى يقرأ», "he would
-    not sleep until he had recited" (at-Tirmidhi 3404).
-- **Counts.** From the hadith, or from Hisn al-Muslim where the hadith gives
-  none. Where the count comes from a second hadith, the page names it.
+The build stops if one of these fails:
+
+1. **Wording.** Every dhikr is found, letter for letter, inside the authentic
+   hadith it cites. Ten short texts are declared instead as Hisn al-Muslim's
+   own presentation (the isti'adha before Ayat al-Kursi, *subhan Allah /
+   al-hamdu lillah / Allahu akbar* where the hadith only names the acts, the
+   morning form of *amsayna wa amsa al-mulku lillah*, *asbahna 'ala fitrat
+   al-Islam* in Ahmad's wording, the names of two surahs); the page says so.
+2. **Grades.** Every reference is in Sahih al-Bukhari or Sahih Muslim, or was
+   graded sahih or hasan by al-Albani. His Arabic ruling is read from his own
+   edition and copied into the file. If it holds a reservation ("except the
+   words…", "the chain is…"), the build stops unless that reference was
+   reviewed (`REVIEWED`).
+3. **Counts.** A dhikr said more than once must come with the words of a hadith
+   that give the number.
+4. **Vowel marks.** Every text to recite carries them.
+
+The page re-checks grades and counts before showing a dhikr.
+
+## Decisions that differ from Hisn al-Muslim
+
+- **Hisn 104** («اللهم قني عذابك يوم تبعث عبادك»): said once, not three times.
+  Al-Albani, Sunan Abi Dawud 5045: «صحيح، دون قوله: " ثلاث مرار "», and he
+  writes that "three times" is in Sahih al-Jami' 4656 by mistake.
+- **Hisn 72** (ten tahlil with *yuhyi wa yumit*): after Maghrib only. The Fajr
+  hadith (at-Tirmidhi 3474) is «ضعيف» in al-Albani's edition.
+- **Hisn 70** (al-Ikhlas, al-Falaq, an-Nas after the prayer): once after every
+  prayer, as in the hadith (Abu Dawud 1523). "Three times after Fajr and
+  Maghrib" is not in it; three times morning and evening is Hisn 76.
+- **Hisn 67**: once, as in al-Bukhari 844.
+- **Left out** (weak according to al-Albani): Hisn 80, 81, 83, 87, 89, 98. The
+  page lists their numbers and his rulings only.
+- **Wordings** are those of one authentic hadith, named under each dhikr, where
+  Hisn al-Muslim blends several narrations (Hisn 2, 78, 79, 82, 84, 85, 102,
+  103, 107, 109).
+- **Time.** Hisn 93 and 96: «في يوم», "in a day" (Day list). Hisn 101: «في
+  ليلة», "in a night". Ayat al-Kursi at bedtime: al-Bukhari 2311, quoted by
+  al-Bukhari without his full chain (*mu'allaq*).
 
 ## Translations
 
-- English: the hisnmuslim.com translation of Hisn al-Muslim, or HadeethEnc or
-  sunnah.com where theirs is closer to the hadith. Two hisnmuslim.com lines are
-  not used: Hisn 86 renders السميع as "All-Seeing", and Hisn 105 reverses
-  «أموت وأحيا».
+- English: sunnah.com, HadeethEnc or the hisnmuslim.com translation of Hisn
+  al-Muslim, whichever matches the wording shown.
 - French: HadeethEnc where it has the hadith.
 - Where no published translation was found, the line is marked
   `"src": "mine"`: written for this page by Claude, and shown with the label
@@ -66,28 +79,30 @@ HadeethEnc and the version under every text taken from it.
 ## Fields
 
 ```
-items[]      one dhikr per entry, in Hisn al-Muslim order
+timing       Ibn al-Qayyim's words and Abu Dawud 3667 on the two times
+items[]      one dhikr per entry
   id         "h" + Hisn al-Muslim number
-  tabs       morning, day, evening, night
-  group      night tab only: night, bed or turning
-  count      number of times, or [33, 33, 34]
-  when       time tag shown on the page
-  recite[]   {ar, src} copied text, or {quran: [surah, from, to]}
+  tabs       wake, morning, day, evening, night, prayer
+  group      night: night, bed, turning; prayer: each, maghrib, fajr
+  count      number of times; absent when each phrase has its own "n"
+  recite[]   {ar, src, n?, inside?, own?} | {quran: [surah, from, to]} | {basmala: true}
+             inside = the hadith that contains the words; own = Hisn's presentation
   reciteEvening, meaningEvening   evening wording, where it differs
   meaning    {en, fr} each {text, src}, or "quran"
   whenAr[]   the words of the hadith that give the time
+  countAr    the words of the hadith that give the count
   about      {en, fr}: what the hadith says about it
+  notes[]    {label, en, fr, ar?, tabs?, face?}
   hadith     full Arabic hadith, its translations and explanation
-  refs[]     {label, url, grade, grader, where}
+  refs[]     {label, url, grade, grader, ruling, where}; ruling = al-Albani's words
 srcs         label and link for every "src" tag used in the file
-times        Sunan Abi Dawud 3667, the hadith that names the two times
-excluded[]   the left-out Hisn al-Muslim numbers and their grades
+excluded[]   the left-out Hisn al-Muslim numbers and al-Albani's rulings
 ```
 
 ## Rebuild
 
 ```
-python3 tools/adhkar/build.py HADITH_DIR HADEETHENC_DIR HISN_DIR data/adhkar/adhkar.json
+python3 tools/adhkar/build.py HADITH_DIR HADEETHENC_DIR HISN_DIR ALBANI_DIR JAMI_DIR WABIL_FILE data/adhkar/adhkar.json
 ```
 
-The three folders are listed at the top of `tools/adhkar/build.py`.
+The folders are described at the top of `tools/adhkar/build.py`.

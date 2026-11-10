@@ -8,6 +8,9 @@
 
 import { QURAN_JSON, ARABIC_TEXT, TRANSLATIONS, URDU, ROMAN_URDU, TAFSIR, PANEL_LANGS, HADITH, HADITH_INDEX, QURAN_FONT } from './sources.js';
 import { STRINGS, LANGUAGES, arabicDigits } from './i18n.js';
+import { AUDIO } from './sources.js';
+import { METHODS, PARIS, periodAt, skyColors } from './sky.js';
+import { initAudio, playFrom, stopAudio, refreshAudio } from './audio.js';
 
 const SURAH_COUNT = 114;
 const SETTINGS_KEY = 'quran.settings.v1';
@@ -45,6 +48,7 @@ function svgIcon(markup) {
 }
 
 const ICONS = {
+  play: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>',
   brand:
     '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8.5" y="8.5" width="15" height="15" rx="1"/><rect x="8.5" y="8.5" width="15" height="15" rx="1" transform="rotate(45 16 16)"/></g><circle cx="16" cy="16" r="2.2" fill="currentColor"/></svg>',
   settings:
@@ -105,6 +109,7 @@ const DEFAULTS = {
   arSize: 30,
   trSize: 17,
   theme: 'auto',
+  reciter: AUDIO.default,
 };
 
 function loadSettings() {
@@ -121,6 +126,7 @@ function loadSettings() {
     arSize: clampNumber(saved.arSize, 22, 46, DEFAULTS.arSize),
     trSize: clampNumber(saved.trSize, 14, 26, DEFAULTS.trSize),
     theme: ['auto', 'light', 'dark'].includes(saved.theme) ? saved.theme : DEFAULTS.theme,
+    reciter: AUDIO.reciters[saved.reciter] ? saved.reciter : DEFAULTS.reciter,
   };
 }
 
@@ -519,6 +525,7 @@ async function route() {
     focusAyah(target.a, { fromLink: true });
     return;
   }
+  if (!(target.view === 'surah' && state.current && state.current.view === 'surah' && state.current.s === target.s)) stopAudio();
   const token = ++state.routeToken;
   if (target.view === 'home') return renderHome(token);
   if (target.view === 'surah') return renderSurah(target.s, target.a, token);
@@ -546,6 +553,29 @@ function normalize(text) {
     .replace(/['’‘`ʿʾ\-\s.,]/g, '');
 }
 
+// Link to the adhkar page, in the colours of the sky at this hour (Paris, or
+// the place chosen on the adhkar page).
+function nowCard() {
+  const saved = readStore('adhkar.settings.v1') || {};
+  const place = saved.place && Number.isFinite(saved.place.lat) && Number.isFinite(saved.place.lng) ? saved.place : PARIS;
+  const period = periodAt(new Date(), place.lat, place.lng, METHODS[saved.method] ? saved.method : 'mwl', 1);
+  const sky = skyColors(period.segment, period.t);
+  const list = { fajr: 'morning', morning: 'morning', day: 'day', evening: 'evening', dusk: 'evening', night: 'night' }[period.segment];
+  const sun = ['morning', 'day', 'evening'].includes(period.segment);
+  return el(
+    'a',
+    {
+      class: 'now-card',
+      href: `adhkar.html#${list}`,
+      dataset: { dark: sky.dark ? '1' : '0', orb: sun ? 'sun' : 'moon' },
+      style: `--s0:${sky.stops[0]};--s1:${sky.stops[1]};--s2:${sky.stops[2]};--s3:${sky.stops[3]}`,
+    },
+    el('span', { class: 'now-orb', 'aria-hidden': 'true' }),
+    el('strong', {}, raw('homeNow')[list]),
+    el('span', {}, t('homeAdhkar')),
+  );
+}
+
 async function renderHome(token) {
   state.current = { view: 'home' };
   document.title = t('docTitleHome');
@@ -558,7 +588,7 @@ async function renderHome(token) {
     el('p', { class: 'home-title-ar', lang: 'ar', dir: 'rtl', 'aria-hidden': 'true' }, t('homeTitleAr')),
     el('h1', { class: 'home-title', id: 'home-title', tabindex: '-1' }, t('homeTitle')),
     el('p', { class: 'home-lead' }, t('homeLead')),
-    el('p', { class: 'home-links' }, el('a', { class: 'btn', href: 'adhkar.html' }, svgIcon(ICONS.horizon), t('homeAdhkar'))),
+    nowCard(),
   );
   const input = el('input', {
     type: 'search',
@@ -832,6 +862,7 @@ async function renderSurah(s, a, token) {
         'div',
         { class: 'ayah-bar' },
         el('a', { class: 'ayah-key', href: `#${key}`, 'aria-label': t('keyAria', { key }) }, key),
+        el('button', { class: 'btn play', type: 'button', dataset: { action: 'play' }, 'aria-label': t('listenAria', { key }) }, svgIcon(ICONS.play), t('listen')),
         el('button', { class: 'btn', type: 'button', dataset: { action: 'tafsir' } }, t('tafsirButton')),
         el('button', { class: 'btn', type: 'button', dataset: { action: 'share' }, 'aria-label': t('shareAria', { key }) }, t('share')),
       ),
@@ -860,6 +891,7 @@ async function renderSurah(s, a, token) {
   if (a !== null && a >= 1 && a <= total) focusAyah(a, { fromLink: false });
   else restoreScroll(location.hash);
   startReadingObserver(s);
+  refreshAudio();
 }
 
 function focusAyah(a, { fromLink }) {
@@ -881,7 +913,8 @@ function onAyahClick(event, s) {
   const action = event.target.closest('[data-action]');
   if (action) {
     event.preventDefault();
-    if (action.dataset.action === 'tafsir') openTafsir(s, a);
+    if (action.dataset.action === 'play') playFrom(s, a, state.current.meta.total_verses || document.querySelectorAll('.ayah').length);
+    else if (action.dataset.action === 'tafsir') openTafsir(s, a);
     else if (action.dataset.action === 'share') shareAyah(s, a);
     return;
   }
@@ -1306,6 +1339,7 @@ function hadithCard(ref, token) {
     'li',
     { class: 'hadith', dataset: { book: ref.b, n: String(ref.n) } },
     el('p', { class: 'hadith-ref' }, el('strong', {}, `${books[ref.b]} ${refNumber(ref.no)}`), ' ', el('span', { class: 'grade' }, grade)),
+    ref.q ? el('p', { class: 'hadith-q' }, t('albaniWords'), ' ', el('span', { lang: 'ar', dir: 'rtl' }, ref.q)) : null,
     body,
     links,
   );
@@ -1457,6 +1491,16 @@ function buildSettingsForm() {
       (v) => update({ tafsir: v }),
     ),
     radioGroup(
+      'reciter',
+      t('reciter'),
+      Object.entries(AUDIO.reciters).map(([key, r]) => [key, state.settings.ui === 'ar' ? r.ar : r.name]),
+      s.reciter,
+      (v) => {
+        stopAudio();
+        update({ reciter: v });
+      },
+    ),
+    radioGroup(
       'theme',
       t('theme'),
       [
@@ -1510,6 +1554,8 @@ function rerenderKeepingPlace() {
 /* ------------------------------------------------------------------ */
 
 function init() {
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) navigator.serviceWorker.register('sw.js').catch(() => {});
+  initAudio({ t, reciter: () => state.settings.reciter, toast });
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   applySettings();
   renderTopbar();

@@ -178,3 +178,21 @@ export const QURAN_FONT = {
   copyUrl: 'https://github.com/fawazahmed0/quran-api/tree/93e6f64925ae76273520d636fcaaf061129f2316/fonts',
   family: 'QuranHafs',
 };
+
+// Recitation, one MP3 file per ayah, from EveryAyah.com (Verse By Verse Quran
+// project). The site only plays these recordings; it does not host or change
+// them. File name: three digits for the surah, three for the ayah.
+export const AUDIO = {
+  name: 'EveryAyah.com',
+  url: 'https://everyayah.com/',
+  base: 'https://everyayah.com/data/',
+  file: (folder, s, a) => `${folder}/${String(s).padStart(3, '0')}${String(a).padStart(3, '0')}.mp3`,
+  default: 'minshawi',
+  reciters: {
+    minshawi: { folder: 'Minshawy_Murattal_128kbps', name: 'Muhammad Siddiq al-Minshawi', ar: 'محمد صديق المنشاوي' },
+    husary: { folder: 'Husary_128kbps', name: 'Mahmud Khalil al-Husary', ar: 'محمود خليل الحصري' },
+    hudhaify: { folder: 'Hudhaify_128kbps', name: 'Ali al-Hudhaify', ar: 'علي الحذيفي' },
+    muaiqly: { folder: 'MaherAlMuaiqly128kbps', name: 'Maher al-Muaiqly', ar: 'ماهر المعيقلي' },
+    abdulbasit: { folder: 'Abdul_Basit_Murattal_192kbps', name: 'Abdul Basit Abdus-Samad', ar: 'عبد الباسط عبد الصمد' },
+  },
+};

@@ -26,6 +26,23 @@ These files hold no hadith text. The site loads the texts at runtime, unchanged,
   dataset from al-maktaba.org. Grades on the chain only ("... isnad"), sayings of
   Companions or Successors (mawquf, maqtu'), and every weak grade are left out.
 
+## Second pass: al-Albani's full rulings
+
+The dataset keeps one word of al-Albani's ruling ("Sahih", "Hasan") and drops
+what he adds after it. `tools/hadith-map/review.py` reads his full rulings for
+the 713 Sunan hadith used here (fawazahmed0/hadith @ `e4e7f39`,
+`Scripts/uncleaned grades`, copied from al-maktaba.org books 1755, 782, 783,
+810). 696 are plain. For the others:
+
+- **Removed (2):** Sunan an-Nasa'i 3216 («صحيح، إن كان الحسن سمعه من سعد،
+  موقوف») and 5643 («… دون تلاوة الآية، وكأنها مدرجة»): his reservation touches
+  the link with the ayah.
+- **Shown with his words (13):** where he accepts the hadith except some words,
+  his Arabic ruling is copied into the entry (`q`) and the reader shows it
+  under the grade: Abu Dawud 507, 1260, 2214, 2599, 2891, 3984, 4338; Ibn Majah
+  1627; an-Nasa'i 932, 1172, 4007, 4991; at-Tirmidhi 3116.
+- The pass stops if any other ruling carries a reservation.
+
 ## When a hadith is placed under an ayah
 
 The link always comes from the hadith's own words, never from an opinion:

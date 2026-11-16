@@ -9,7 +9,7 @@
 //
 // Nothing is changed on the way: responses are stored and given back as is.
 
-const VERSION = 'v3';
+const VERSION = 'v4';
 const SITE = `site-${VERSION}`;
 const PINNED = 'pinned-v1';
 const SHELL = [
@@ -26,6 +26,8 @@ const SHELL = [
   'assets/adhkar.js',
   'assets/adhkar.css',
   'assets/sky.js',
+  'assets/fonts/noto-naskh-arabic.woff',
+  'assets/fonts/noto-sans-arabic.woff',
   'assets/icon-180.png',
   'assets/icon-192.png',
   'data/adhkar/adhkar.json',

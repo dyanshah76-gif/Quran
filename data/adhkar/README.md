@@ -43,7 +43,34 @@ The build stops if one of these fails:
    that give the number.
 4. **Vowel marks.** Every text to recite carries them.
 
+5. **Two copies of al-Albani's ruling.** His ruling read from his own edition
+   must be the same as the one sunnah.com carries (in hadith-api), unless the
+   reference was reviewed by hand.
+6. **HadeethEnc's grade.** When the main hadith is taken from HadeethEnc, its
+   own grade there must be sahih or hasan.
+
 The page re-checks grades and counts before showing a dhikr.
+
+## What each card shows
+
+Under the meaning, the card gives what the hadith says (`about`), with the
+first reference and its grade. Other authentic hadith about the same dhikr are
+notes with their own reference, graded by the same rules (for example al-Bukhari
+6405 under *subhan Allah wa bihamdih*, al-Bukhari 843 under the tasbih after the
+prayer, 'Ali's words in al-Bukhari 5362 under the tasbih at bedtime).
+
+A scholar's words are never shown as a hadith. Under the tasbih at bedtime the
+page quotes Ibn Taymiyya, as Ibn al-Qayyim reports him in al-Wabil as-Sayyib:
+«بلغنا أنه من حافظ على هذه الكلمات لم يأخذه إعياء فيما يعانيه من شغل ومن غيره».
+It is labelled "words of a scholar, not a hadith of the Prophet ﷺ"; the hadith
+itself says «خير لكما من خادم», "better for you than a servant".
+
+## Arabic fonts
+
+The adhkar are set in Noto Naskh Arabic (default) or Noto Sans Arabic
+(Settings), served from `assets/fonts` and cut down to the Arabic characters.
+Source: google/fonts @ `7af0d90`, SIL Open Font License (texts beside the
+files). Quran passages keep the Madinah Mushaf font of the reader.
 
 ## Decisions that differ from Hisn al-Muslim
 
@@ -92,7 +119,8 @@ items[]      one dhikr per entry
   whenAr[]   the words of the hadith that give the time
   countAr    the words of the hadith that give the count
   about      {en, fr}: what the hadith says about it
-  notes[]    {label, en, fr, ar?, tabs?, face?}
+  notes[]    {label, en, fr, ar?, tabs?, face?, ref?, scholar?}
+             ref = another hadith, with its grade; scholar = a scholar's words
   hadith     full Arabic hadith, its translations and explanation
   refs[]     {label, url, grade, grader, ruling, where}; ruling = al-Albani's words
 srcs         label and link for every "src" tag used in the file

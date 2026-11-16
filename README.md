@@ -110,6 +110,7 @@ assets/
   adhkar.css           adhkar page styles
   sky.js               prayer times and sky colours, computed on the phone
   audio.js             recitation player of the reader
+  fonts/               Arabic fonts of the adhkar page (Noto Naskh Arabic, Noto Sans Arabic)
   icon-*.png           app icons
 data/roman-urdu/       unofficial Roman Urdu (one file per surah) + README
 data/hadith/           which authentic hadith quote which ayah (one file per surah) + README

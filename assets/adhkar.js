@@ -90,8 +90,15 @@ const STRINGS = {
     tapOnce: 'Je l’ai dit',
     done: 'Fait',
     undo: 'Annuler',
-    proof: 'Preuve',
+    proof: 'Preuve et détails',
     hideProof: 'Fermer',
+    hadith: 'Hadith',
+    otherHadith: 'Autre hadith',
+    scholar: (name) => `Parole d’un savant (${name}), pas un hadith du Prophète ﷺ`,
+    more: 'Lire la suite',
+    less: 'Réduire',
+    setFont: 'Écriture arabe',
+    fonts: { naskh: 'Naskh', modern: 'Moderne' },
     whenProof: 'Les mots du hadith pour le moment',
     countProof: 'Les mots du hadith pour le nombre',
     aboutProof: 'Ce que dit le hadith',
@@ -206,8 +213,15 @@ const STRINGS = {
     tapOnce: 'I have said it',
     done: 'Done',
     undo: 'Undo',
-    proof: 'Proof',
+    proof: 'Proof and details',
     hideProof: 'Close',
+    hadith: 'Hadith',
+    otherHadith: 'Another hadith',
+    scholar: (name) => `Words of a scholar (${name}), not a hadith of the Prophet ﷺ`,
+    more: 'Read more',
+    less: 'Show less',
+    setFont: 'Arabic writing',
+    fonts: { naskh: 'Naskh', modern: 'Modern' },
     whenProof: 'The words of the hadith for the time',
     countProof: 'The words of the hadith for the count',
     aboutProof: 'What the hadith says',
@@ -321,6 +335,7 @@ const state = {
   method: 'mwl',
   place: null, // null = Paris, or {lat, lng}
   arSize: 28,
+  arFont: 'naskh',
   tab: 'morning',
   manualTab: false,
   data: null,
@@ -347,10 +362,11 @@ function loadSettings() {
   state.method = METHODS[a.method] ? a.method : 'mwl';
   state.place = a.place && Number.isFinite(a.place.lat) && Number.isFinite(a.place.lng) ? { lat: a.place.lat, lng: a.place.lng } : null;
   state.arSize = Number.isFinite(a.arSize) ? Math.min(44, Math.max(22, a.arSize)) : 28;
+  state.arFont = ['naskh', 'modern'].includes(a.arFont) ? a.arFont : 'naskh';
 }
 
 function saveSettings() {
-  writeStore(SETTINGS_KEY, { lang: state.lang, method: state.method, place: state.place, arSize: state.arSize });
+  writeStore(SETTINGS_KEY, { lang: state.lang, method: state.method, place: state.place, arSize: state.arSize, arFont: state.arFont });
 }
 
 /* ------------------------------------------------------------------ */
@@ -417,6 +433,7 @@ function validItem(it) {
   if (!it.about || !textObj(it.about.en) || !textObj(it.about.fr)) return false;
   if (!it.hadith || !isText(it.hadith.ar) || !isHttps(it.hadith.url)) return false;
   if (!Array.isArray(it.refs) || !it.refs.length || !it.refs.every(validRef)) return false;
+  if (it.notes && !(Array.isArray(it.notes) && it.notes.every((n) => n && n.label && textObj(n.en) && textObj(n.fr) && (!n.ref || validRef(n.ref))))) return false;
   return true;
 }
 
@@ -736,15 +753,48 @@ function renderMeaning(it, tab, slots) {
   return box;
 }
 
+function refLine(ref) {
+  return el('p', { class: 'ref-line' }, el('span', { class: 'badge' }, gradeText(ref.grade)), ' ', el('a', { href: ref.url, target: '_blank', rel: 'noopener' }, ref.label));
+}
+
+// A note is another hadith (with its own reference and grade), the words of a
+// scholar (said plainly, so they are not taken for a hadith), or a remark.
 function noteNode(note) {
+  const s = S();
   const t = note[state.lang];
   return el(
     'div',
-    { class: 'note' },
-    el('p', {}, el('strong', {}, colon(note.label[state.lang])), withSalawat(t.text)),
+    { class: note.scholar ? 'note scholar' : note.ref ? 'note other' : 'note' },
+    el('p', { class: 'note-label' }, note.label[state.lang]),
+    note.scholar ? el('p', { class: 'note-kind' }, withSalawat(s.scholar(note.scholar))) : null,
+    el('p', {}, withSalawat(t.text)),
+    t.src === 'mine' ? srcNode('mine') : null,
     note.ar ? el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, note.ar.ar) : null,
-    note.ar ? srcNode(note.ar.src) : null,
-    t.src === 'mine' ? srcNode('mine') : srcNode(t.src),
+    note.ref ? refLine(note.ref) : note.ar ? srcNode(note.ar.src) : null,
+    !note.ref && t.src !== 'mine' ? srcNode(t.src) : null,
+  );
+}
+
+// What the hadith says, shown on the card under the meaning.
+function renderHadithBlock(it, tab) {
+  const s = S();
+  const about = it.about[state.lang];
+  const first = it.refs[0];
+  const more = it.refs.length - 1;
+  const text = el('p', { class: 'hb-text' }, withSalawat(about.text));
+  const toggle = el('button', { class: 'hb-more', type: 'button', hidden: true }, s.more);
+  toggle.addEventListener('click', () => {
+    const open = text.classList.toggle('open');
+    toggle.textContent = open ? s.less : s.more;
+  });
+  return el(
+    'section',
+    { class: 'hadith-block' },
+    el('p', { class: 'hb-head' }, el('span', { class: 'hb-word' }, s.hadith), el('span', { class: 'badge' }, gradeText(first.grade)), el('span', { class: 'hb-ref' }, first.label, more > 0 ? ` +${more}` : '')),
+    text,
+    toggle,
+    about.src === 'mine' ? srcNode('mine') : srcNode(about.src),
+    notesFor(it, tab, true).map(noteNode),
   );
 }
 
@@ -767,7 +817,6 @@ function refRow(ref) {
 function renderProof(it, tab) {
   const s = S();
   const h = it.hadith;
-  const about = it.about[state.lang];
   const tr = h[state.lang] || h.en;
   const explain = h[`${state.lang}Explain`];
   const own = reciteFor(it, tab).some((seg) => seg.own);
@@ -786,9 +835,6 @@ function renderProof(it, tab) {
     it.whenAr.map((w) => el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${w.ar}»`)),
     srcNode(it.whenAr[0].src),
     it.countAr ? [el('h3', {}, s.countProof), el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${it.countAr.ar}»`), srcNode(it.countAr.src)] : null,
-    el('h3', {}, s.aboutProof),
-    el('p', {}, withSalawat(about.text)),
-    srcNode(about.src),
     notesFor(it, tab, false).map(noteNode),
     own ? el('p', { class: 'small' }, s.own) : null,
     el('h3', {}, s.refs),
@@ -823,8 +869,6 @@ function renderCard(it, tab, slots, position, count) {
   const total = totalOf(it);
   const name = it.name ? s.names[it.name] : null;
   const steps = reciteFor(it, tab).filter((seg) => seg.ar && seg.n).map((seg) => seg.n);
-  const first = it.refs[0];
-  const more = it.refs.length - 1;
   const firstAr = reciteFor(it, tab).find((seg) => seg.ar);
   const short = firstAr ? `${firstAr.ar.split(' ').slice(0, 5).join(' ')}…` : '';
 
@@ -835,8 +879,6 @@ function renderCard(it, tab, slots, position, count) {
   const proofBtn = el(
     'button',
     { class: 'proof-btn', type: 'button', 'aria-expanded': 'false' },
-    el('span', { class: 'badge' }, gradeText(first.grade)),
-    el('span', { class: 'proof-ref' }, first.label, more > 0 ? ` +${more}` : ''),
     el('span', { class: 'proof-word' }, s.proof),
     svg(ICONS.chevron),
   );
@@ -866,7 +908,7 @@ function renderCard(it, tab, slots, position, count) {
       name ? el('h2', {}, name) : null,
       recite,
       renderMeaning(it, tab, slots),
-      notesFor(it, tab, true).map(noteNode),
+      renderHadithBlock(it, tab),
       it.surahs ? el('p', { class: 'links' }, it.surahs.map((n) => el('a', { class: 'chip', href: `./#${n}`, dataset: { surah: String(n) } }, s.read(n)))) : null,
       el('div', { class: 'tap-row' }, tap, undo),
       proofBtn,
@@ -1015,6 +1057,9 @@ function renderList() {
   );
   main.replaceChildren(...nodes);
   main.dataset.tab = tab;
+  main.querySelectorAll('.hb-text').forEach((p) => {
+    if (p.scrollHeight > p.clientHeight + 4) p.nextElementSibling.hidden = false;
+  });
   updateProgress();
   fillQuran(slots, token);
 }
@@ -1166,6 +1211,30 @@ function renderSettings(dialog) {
       state.method = v;
       refresh();
     }),
+    el('h3', {}, s.setFont),
+    el(
+      'div',
+      { class: 'seg fonts', role: 'radiogroup', 'aria-label': s.setFont },
+      ['naskh', 'modern'].map((key) =>
+        el(
+          'button',
+          {
+            type: 'button',
+            role: 'radio',
+            'aria-checked': String(key === state.arFont),
+            dataset: { value: key, font: key },
+            onclick: () => {
+              state.arFont = key;
+              document.documentElement.dataset.arfont = key;
+              saveSettings();
+              renderSettings(dialog);
+            },
+          },
+          el('span', { lang: 'ar', dir: 'rtl', class: 'font-sample' }, 'الْحَمْدُ لِلَّهِ'),
+          el('span', {}, s.fonts[key]),
+        ),
+      ),
+    ),
     el('h3', {}, s.setSize),
     el('input', {
       type: 'range',
@@ -1232,6 +1301,7 @@ async function start() {
   loadSettings();
   document.documentElement.lang = state.lang;
   document.documentElement.style.setProperty('--ar', `${state.arSize}px`);
+  document.documentElement.dataset.arfont = state.arFont;
   applySky();
   loadProgress();
   const fromHash = location.hash.slice(1);

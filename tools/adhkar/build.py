@@ -184,6 +184,7 @@ class Hadith:
             'ref': f"{ref.get('book')}/{ref.get('hadith')}",
             'ar': clean(ar['text']),
             'en': clean(en['text']) if en else '',
+            'albani': next((g['grade'] for g in ar.get('grades', []) if g['name'] == 'Al-Albani'), None),
         }
 
 
@@ -223,7 +224,7 @@ class HadeethEnc:
         ar = self.rows['ar'].get(hid)
         if not ar:
             raise BuildError(f'HadeethEnc {hid}: not in the Arabic file')
-        out = {'id': hid, 'ar': ar['hadith_text'], 'link': {}}
+        out = {'id': hid, 'ar': ar['hadith_text'], 'link': {}, 'grade': ar.get('grade', ''), 'takhrij': ar.get('takhrij', '')}
         out['link']['ar'] = ar['link']
         for lang in ('en', 'fr'):
             row = self.rows[lang].get(hid)
@@ -359,6 +360,11 @@ def W(source, lang):
 
 def MINE(text):
     return ('mine', text)
+
+
+def WAB(start, end):
+    """A passage of Ibn al-Qayyim's al-Wabil as-Sayyib."""
+    return ('wab', start, end)
 
 
 def J(*parts):
@@ -734,7 +740,15 @@ ITEMS = [
             'en': X(H('muslim', 6843), 'en', 'He who recites in the morning', 'more than these words'),
             'fr': MINE("Celui qui dit le matin et le soir « Subhâna Llâhi wa bi-hamdih » cent fois, personne ne viendra le Jour de la Résurrection avec quelque chose de meilleur que ce qu'il apportera, sauf quelqu'un qui aura dit la même chose ou davantage."),
         },
-        'refs': [H('muslim', 6843)],
+        'notes': [{
+            'face': True,
+            'label': {'en': 'His sins fall away', 'fr': 'Ses péchés tombent'},
+            'ar': X(H('bukhari', 6405), 'ar', 'مَنْ قَالَ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ', 'زَبَدِ الْبَحْرِ'),
+            'en': X(H('bukhari', 6405), 'en', 'Whoever says', 'foam of the sea'),
+            'fr': MINE("Celui qui dit « Subhâna Llâhi wa bi-hamdih » cent fois dans une journée, ses péchés lui sont effacés, même s'ils sont comme l'écume de la mer."),
+            'ref': H('bukhari', 6405),
+        }],
+        'refs': [H('muslim', 6843), H('bukhari', 6405)],
     },
     {
         'hisn': 92, 'tabs': ['morning', 'evening'], 'count': 10, 'when': 'morning_evening',
@@ -927,7 +941,14 @@ ITEMS = [
             'en': X(HE(10948), 'en', 'Whoever glorifies Allah directly after each prayer', 'like the sea foam.'),
             'fr': MINE("Celui qui glorifie Allah après chaque prière trente-trois fois, Le loue trente-trois fois et proclame Sa grandeur trente-trois fois, cela fait quatre-vingt-dix-neuf, puis dit pour compléter cent : « Lâ ilâha illa Llâh… », ses péchés lui sont pardonnés, même s'ils sont comme l'écume de la mer."),
         },
-        'refs': [H('muslim', 1352)],
+        'notes': [{
+            'label': {'en': 'You catch up with those ahead of you', 'fr': 'Vous rattrapez ceux qui vous devancent'},
+            'ar': X(H('bukhari', 843), 'ar', 'أَلاَ أُحَدِّثُكُمْ بِأَمْرٍ', 'خَلْفَ كُلِّ صَلاَةٍ ثَلاَثًا وَثَلاَثِينَ'),
+            'en': X(H('bukhari', 843), 'en', 'Some poor people came to the Prophet', 'thirty three times each after every (compulsory) prayer.'),
+            'fr': MINE("Des pauvres vinrent dire au Prophète ﷺ que les riches avaient emporté les hauts degrés : ils prient et jeûnent comme eux, et ont en plus de quoi faire le hajj, la 'umra, le jihâd et l'aumône. Il dit : « Voulez-vous que je vous indique une chose qui, si vous la faites, vous fera rattraper ceux qui vous ont devancés, et personne après vous ne vous rattrapera ; vous serez les meilleurs de ceux parmi lesquels vous vivez, sauf celui qui fait de même ? Glorifiez, louez et proclamez la grandeur d'Allah après chaque prière, trente-trois fois. »"),
+            'ref': H('bukhari', 843),
+        }],
+        'refs': [H('muslim', 1352), H('bukhari', 843)],
     },
     {
         'hisn': 70, 'tabs': ['prayer'], 'group': 'each', 'count': 1, 'when': 'after_prayer',
@@ -1134,10 +1155,26 @@ ITEMS = [
         'when_ar': [X(HE(6076), 'ar', 'إِذَا أَخَذْتُمَا مَضَاجِعَكُمَا', 'إِلَى فِرَاشِكُمَا')],
         'count_ar': X(H('bukhari', 3705), 'ar', 'تُكَبِّرَا أَرْبَعًا وَثَلاَثِينَ', 'وَتَحْمَدَا ثَلاَثَةً وَثَلاَثِينَ'),
         'about': {
-            'en': X(HE(6076), 'en', 'This is better for you than a servant.'),
-            'fr': MINE('Cela est meilleur pour vous qu’un serviteur.'),
+            'en': X(H('bukhari', 6318), 'en', 'Fatima complained about the blisters on her hand', 'for that is better for you than a servant.'),
+            'fr': MINE("Fâtima se plaignit des marques que la meule laissait sur sa main. Elle alla demander un serviteur au Prophète ﷺ, mais ne le trouva pas, et en parla à 'Â'isha. 'Alî raconte : « Il vint chez nous alors que nous étions déjà couchés. Je voulus me lever, mais il dit : “Restez à votre place.” Il s'assit entre nous, au point que je sentis la fraîcheur de ses pieds sur ma poitrine, puis il dit : “Voulez-vous que je vous indique ce qui est meilleur pour vous qu'un serviteur ? Quand vous vous mettez au lit, dites Allâhu akbar trente-trois fois, Subhâna Llâh trente-trois fois et al-hamdu liLlâh trente-trois fois : cela est meilleur pour vous qu'un serviteur.” »"),
         },
-        'refs': [H('bukhari', 6318), H('bukhari', 3705), H('muslim', 6915)],
+        'notes': [
+            {
+                'label': {'en': "'Ali never left it", 'fr': "'Alî ne l'a plus jamais délaissé"},
+                'ar': X(H('bukhari', 5362), 'ar', 'فَمَا تَرَكْتُهَا بَعْدُ', 'قَالَ وَلاَ لَيْلَةَ صِفِّينَ'),
+                'en': X(H('bukhari', 5362), 'en', 'I have never failed to recite it ever since', 'He said, "Even on the night of the battle of Siffin'),
+                'fr': MINE("'Alî dit : « Je ne l'ai plus jamais délaissé depuis. » On lui demanda : « Même pas la nuit de Siffîn ? » Il répondit : « Même pas la nuit de Siffîn. »"),
+                'ref': H('bukhari', 5362),
+            },
+            {
+                'face': True, 'scholar': 'Ibn Taymiyya',
+                'label': {'en': 'Strength for your work', 'fr': 'De la force pour ton travail'},
+                'ar': WAB('قال شيخ الإسلام ابن تيمية قدس الله روحه: بلغنا', 'من شغل ومن غيره.'),
+                'en': MINE('Ibn al-Qayyim, after quoting this hadith: "Shaykh al-Islam Ibn Taymiyya said: it has reached us that whoever keeps to these words is not overcome by exhaustion in the work, or anything else, that he toils at." (al-Wabil as-Sayyib)'),
+                'fr': MINE("Ibn al-Qayyim, après avoir cité ce hadith : « Shaykh al-Islâm Ibn Taymiyya a dit : il nous est parvenu que celui qui est assidu à ces paroles n'est pas gagné par l'épuisement dans le travail, ou autre chose, qu'il endure. » (al-Wâbil as-Sayyib)"),
+            },
+        ],
+        'refs': [H('bukhari', 6318), H('bukhari', 3705), H('muslim', 6915), H('bukhari', 5362)],
     },
     {
         'hisn': 107, 'tabs': ['night'], 'group': 'bed', 'count': 1, 'when': 'bed',
@@ -1224,6 +1261,12 @@ ITEMS = [
             'label': {'en': 'How', 'fr': 'Comment'},
             'en': J(X(H('bukhari', 247), 'en', 'Whenever you go to bed perform ablution', 'lie on your right side'), '…', X(H('bukhari', 247), 'en', 'Let the aforesaid words be your last utterance', '(before sleep).')),
             'fr': MINE('Lorsque tu te mets au lit, fais tes ablutions comme pour la prière, puis couche-toi sur le côté droit. Fais que ce soient tes dernières paroles.'),
+        }, {
+            'label': {'en': 'And if you reach the morning', 'fr': 'Et si tu arrives au matin'},
+            'ar': X(H('bukhari', 7488), 'ar', 'فَإِنَّكَ إِنْ مُتَّ فِي لَيْلَتِكَ', 'أَصَبْتَ أَجْرًا'),
+            'en': X(H('bukhari', 7488), 'en', 'If you then die on that night', 'you will receive the reward.'),
+            'fr': MINE("Si tu meurs cette nuit-là, tu meurs sur la fitra ; et si tu arrives au matin, tu obtiens une récompense."),
+            'ref': H('bukhari', 7488),
         }],
         'refs': [H('bukhari', 6313), H('bukhari', 247), H('muslim', 6882)],
     },
@@ -1301,7 +1344,7 @@ def acceptable(grade):
 class Builder:
     def __init__(self, hadith, he, hisn, albani, jami, wabil):
         self.hadith, self.he, self.hisn, self.albani, self.jami, self.wabil = hadith, he, hisn, albani, jami, wabil
-        self.checks = {'inside': 0, 'own': 0, 'counts': 0, 'rulings': 0, 'vowels': 0}
+        self.checks = {'inside': 0, 'own': 0, 'counts': 0, 'rulings': 0, 'vowels': 0, 'two_copies': 0, 'he': 0}
 
     # ---- sources
 
@@ -1345,6 +1388,8 @@ class Builder:
                 raise BuildError(f'{where}: joined excerpts come from different sources {real}')
             return {'text': ' '.join(p if p == '…' else p['text'] for p in parts), 'src': real.pop() if real else 'mine',
                     **({'lead': 'mine'} if 'mine' in srcs and real else {})}
+        if kind == 'wab':
+            return {'text': cut(self.wabil.text, spec[1], spec[2], where).lstrip('# ').strip(), 'src': 'wabil'}
         if kind == 'w':
             return {'text': self.source_text(spec[1], spec[2], where), 'src': self.tag(spec[1])}
         if kind == 'x':
@@ -1425,6 +1470,12 @@ class Builder:
             grade = 'Hasan'
         if not acceptable(grade):
             raise BuildError(f'{where}: {out["label"]} graded {grade}: {ruling}')
+        # 5. the second copy of his ruling (sunnah.com's, in hadith-api) says the same
+        second = h['albani']
+        if not decision:
+            if not second or second.lower() != grade.lower():
+                raise BuildError(f'{where}: {out["label"]}: al-Albani is {grade!r} in his edition but {second!r} in hadith-api')
+            self.checks['two_copies'] += 1
         out['grade'] = grade
         out['grader'] = 'al-Albani'
         out['ruling'] = ruling
@@ -1438,7 +1489,11 @@ class Builder:
             return {'ar': self.source_text(source, 'ar', tag), 'arSrc': tag, 'url': e['url'], 'excerpt': True}
         if source[0] == 'he':
             row = self.he.get(source[1])
-            out = {'ar': clean(row['ar']), 'arSrc': tag, 'url': row['link'].get('ar')}
+            # 6. HadeethEnc grades its hadith too: it must call this one sahih or hasan
+            if not re.search('صحيح|حسن', row['grade']) or re.search('ضعيف|موضوع', row['grade']):
+                raise BuildError(f'HadeethEnc {source[1]} is graded {row["grade"]!r}')
+            self.checks['he'] += 1
+            out = {'ar': clean(row['ar']), 'arSrc': tag, 'url': row['link'].get('ar'), 'heGrade': row['grade'].strip(), 'heTakhrij': clean(row['takhrij'])}
             for lang in ('en', 'fr'):
                 if lang in row:
                     out[lang] = {'text': clean(row[lang]), 'src': tag, 'url': row['link'][lang]}
@@ -1508,6 +1563,12 @@ class Builder:
                 entry['ar'] = {'ar': ruling, 'src': f'albani:{book}:{n}'}
                 h = self.hadith.get(book, n)
                 entry['arLabel'] = {'en': f"Al-Albani's words ({BOOK_NAMES[book]} {h['number']})", 'fr': f"Les mots d'al-Albânî ({BOOK_NAMES[book]} {h['number']})"}
+            if 'ref' in note:
+                entry['ref'] = self.ref(note['ref'], where)
+            if note.get('scholar'):
+                if 'ref' in note:
+                    raise BuildError(f'{where}: a note is either a hadith or a scholar\'s saying')
+                entry['scholar'] = note['scholar']
             for key in ('tabs', 'face'):
                 if key in note:
                     entry[key] = note[key]
@@ -1631,7 +1692,8 @@ def main(argv):
     c = b.checks
     print(f'{len(data["items"])} adhkar, {len(data["excluded"])} left out -> {argv[7]}')
     print(f'checks: {c["inside"]} texts found word for word in their hadith, {c["own"]} declared as Hisn al-Muslim\'s presentation, '
-          f'{c["counts"]} counts backed by hadith words, {c["rulings"]} rulings of al-Albani read, {c["vowels"]} texts with vowel marks')
+          f'{c["counts"]} counts backed by hadith words, {c["rulings"]} rulings of al-Albani read, {c["two_copies"]} of them identical in a second copy, '
+          f'{c["he"]} main hadith also graded sahih or hasan by HadeethEnc, {c["vowels"]} texts with vowel marks')
     return 0
 
 

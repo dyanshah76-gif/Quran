@@ -13,10 +13,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Adhkar">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@93e6f64925ae76273520d636fcaaf061129f2316/fonts/uthmanic-hafs-ver13.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap">
+    <link rel="preload" href="assets/fonts/noto-naskh-arabic.woff" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="assets/adhkar.css">
     <script>
       // Language and Arabic size before the first paint.
@@ -27,6 +25,7 @@
           var lang = a && (a.lang === 'fr' || a.lang === 'en') ? a.lang : q && (q.ui === 'fr' || q.ui === 'en') ? q.ui : null;
           if (lang) document.documentElement.lang = lang;
           if (a && typeof a.arSize === 'number') document.documentElement.style.setProperty('--ar', a.arSize + 'px');
+          if (a && a.arFont === 'modern') document.documentElement.dataset.arfont = 'modern';
         } catch (e) {}
       })();
     </script>

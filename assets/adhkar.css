@@ -326,12 +326,52 @@ dialog.settings .ar { text-align: center; margin: 4px 0 0; }
 .card.done:not(.open) .recite, .card.done .recite, .card.done .meaning { opacity: 1; }
 .progress-track { background: color-mix(in srgb, var(--ink) 16%, transparent); }
 
-/* ---------- Arabic of the adhkar: every letter written out ----------
-   Amiri stacks some letters on top of each other (the lam and ha of "al-hamd")
-   through its contextual alternates. They are switched off so each letter and
-   its vowel mark stand apart and are easy to read. The Quran passages keep the
-   Madinah Mushaf font unchanged. */
-.recite { margin-top: 16px; }
-.ar, .ar-inline, .small-ar, .salawat { font-feature-settings: 'calt' 0; }
-.recite .ar { line-height: 2.15; word-spacing: 0.14em; }
-.quran { font-feature-settings: normal; word-spacing: normal; }
+/* ---------- Arabic of the adhkar ----------
+   Noto Naskh Arabic by default: a plain naskh made for reading, where each
+   letter sits on the line and each vowel mark has room. Noto Sans Arabic is
+   the other choice in Settings. Both are served from this site
+   (assets/fonts, SIL Open Font License). Quran passages keep the Madinah
+   Mushaf font. */
+@font-face {
+  font-family: 'Adhkar Naskh';
+  src: url('fonts/noto-naskh-arabic.woff') format('woff');
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Adhkar Modern';
+  src: url('fonts/noto-sans-arabic.woff') format('woff');
+  font-display: swap;
+}
+:root { --font-arabic: 'Adhkar Naskh', 'Noto Naskh Arabic', 'Geeza Pro', 'Traditional Arabic', serif; }
+:root[data-arfont='modern'] { --font-arabic: 'Adhkar Modern', 'Noto Sans Arabic', 'Geeza Pro', sans-serif; }
+.recite { margin-top: 14px; }
+.recite .ar { line-height: 2.1; word-spacing: 0.08em; margin-bottom: 10px; }
+:root[data-arfont='modern'] .recite .ar { font-size: calc(var(--ar) * 0.93); line-height: 2.05; }
+.small-ar { line-height: 2; }
+.seg.fonts button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 10px; font-size: 13px; }
+.font-sample { font-size: 24px; line-height: 1.7; }
+.seg.fonts button[data-font='naskh'] .font-sample { font-family: 'Adhkar Naskh', serif; }
+.seg.fonts button[data-font='modern'] .font-sample { font-family: 'Adhkar Modern', sans-serif; font-size: 22px; }
+
+/* ---------- the translation and the hadith on the card ---------- */
+.meaning p { font: 17px/1.62 var(--font-read); color: var(--ink); }
+.hadith-block { margin: 14px 0 4px; padding: 12px 14px 8px; border-radius: 14px; background: var(--inset); }
+.hb-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 0 0 6px; font-size: 13.5px; color: var(--ink-soft); }
+.hb-word { font-weight: 700; color: var(--gold); }
+.hb-ref { min-width: 0; }
+.hb-text { margin: 0; font: 15.5px/1.6 var(--font-read); color: var(--ink-soft); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; line-clamp: 6; overflow: hidden; }
+.hb-text.open { display: block; -webkit-line-clamp: unset; line-clamp: unset; overflow: visible; }
+.hb-more { border: 0; background: none; padding: 6px 0; min-height: 36px; font-weight: 600; font-size: 14px; color: var(--ink); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.hb-more[hidden] { display: none; }
+.hadith-block .src { margin-top: 4px; }
+.hadith-block .note { background: none; padding: 10px 0 2px; margin: 8px 0 0; border-top: 1px solid var(--line); border-radius: 0; }
+.note-label { font-weight: 700; margin: 0 0 4px; }
+.note-kind { font-size: 12.5px; font-weight: 600; color: var(--gold); margin: 0 0 6px; }
+.note.other, .note.scholar { font-size: 15px; }
+.ref-line { margin: 4px 0 6px; font-size: 13.5px; }
+.ref-line a { font-weight: 600; }
+.proof-btn { justify-content: space-between; }
+.proof-word { font-weight: 600; color: var(--ink-soft); }
+.note > p:not(.note-label):not(.note-kind):not(.ar):not(.ref-line) { font: 15.5px/1.6 var(--font-read); color: var(--ink-soft); }
+.hadith-block .note .small-ar { font-size: calc(var(--ar) * 0.7); color: var(--ink-soft); }

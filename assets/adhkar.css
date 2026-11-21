@@ -375,3 +375,53 @@ dialog.settings .ar { text-align: center; margin: 4px 0 0; }
 .proof-word { font-weight: 600; color: var(--ink-soft); }
 .note > p:not(.note-label):not(.note-kind):not(.ar):not(.ref-line) { font: 15.5px/1.6 var(--font-read); color: var(--ink-soft); }
 .hadith-block .note .small-ar { font-size: calc(var(--ar) * 0.7); color: var(--ink-soft); }
+
+/* ---------- tasbih ---------- */
+.bar-end { display: inline-flex; align-items: center; }
+.tb-link { font-weight: 600; }
+.pill-tool svg { width: 18px; height: 18px; color: inherit; }
+.pill-tool { margin-left: 6px; }
+.pill-tool::after { content: ''; position: absolute; left: -7px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+
+.tasbih { padding: 16px 16px 18px; }
+.tb-words { display: flex; flex-wrap: wrap; gap: 6px; }
+.tb-word {
+  min-height: 40px; padding: 0 14px; border-radius: 20px; border: 0; cursor: pointer;
+  background: var(--inset); color: var(--ink-soft); font-weight: 600; font-size: 14.5px;
+}
+.tb-word[aria-checked='true'] { background: var(--ink); color: var(--veil-solid); }
+.tb-said { min-height: 96px; margin: 14px 0 0; text-align: center; }
+.tb-said .tb-ar { text-align: center; font-size: calc(var(--ar) * 1.25); line-height: 1.9; margin: 0; }
+.tb-ref { margin: 0; color: var(--muted); }
+.tb-hint { margin: 0; padding-top: 30px; font: 17px/1.5 var(--font-read); color: var(--ink-soft); }
+
+.tb-center { display: flex; flex-direction: column; align-items: center; margin: 8px 0 4px; }
+.tb-tap {
+  position: relative; width: min(68vw, 250px); aspect-ratio: 1; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+  background: color-mix(in srgb, var(--ink) 7%, transparent); color: var(--ink);
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none;
+  transition: transform 0.08s;
+}
+.tb-tap:active { transform: scale(0.97); }
+.tb-ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tb-track { fill: none; stroke: var(--line); stroke-width: 3.5; }
+.tb-arc { fill: none; stroke: var(--green); stroke-width: 3.5; stroke-linecap: round; transition: stroke-dashoffset 0.2s; }
+.tb-face { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+.tb-num { font: 600 clamp(56px, 18vw, 76px)/1 var(--font-read); font-variant-numeric: tabular-nums; }
+.tb-of { font-size: 15px; color: var(--muted); margin-top: 6px; min-height: 1.4em; }
+.tb-tap.complete { background: var(--green-fill); }
+.tb-tap.complete .tb-num { color: var(--green); }
+.tb-status { margin: 12px 0 0; font-weight: 600; font-size: 15.5px; color: var(--ink-soft); min-height: 1.5em; text-align: center; }
+.tb-rounds { margin: 2px 0 0; font-size: 14px; color: var(--muted); min-height: 1.4em; }
+
+.tb-controls { display: flex; gap: 8px; margin-top: 10px; }
+.tb-controls .btn { flex: 1; background: var(--inset); display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.tb-controls .btn svg { width: 18px; height: 18px; }
+.tb-controls .btn:disabled { opacity: 0.45; cursor: default; }
+.tb-reset.armed { background: var(--gold-fill); color: var(--ink); }
+.tb-label { margin: 16px 0 6px; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+.tb-sunnah h2 { font: 600 19px/1.25 var(--font-read); margin: 2px 0 6px; }
+.tb-sunnah .note { background: none; border-top: 1px solid var(--line); border-radius: 0; padding: 12px 0 2px; margin: 6px 0 0; }
+.tb-sunnah .note:first-of-type { border-top: 0; }
+@media (max-width: 380px) { .tb-link span { display: none; } }
+.progress[hidden] { display: none; }

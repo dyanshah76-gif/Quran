@@ -108,6 +108,142 @@
    }
   }
  },
+ "tasbih": {
+  "phrases": [
+   {
+    "id": "subhan",
+    "label": "SubhanAllah",
+    "ar": "سُبْحَانَ اللَّهِ",
+    "src": "hadith:muslim:5601",
+    "ref": {
+     "label": "Sahih Muslim 2137a",
+     "url": "https://sunnah.com/muslim/38/16",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   },
+   {
+    "id": "hamd",
+    "label": "Alhamdulillah",
+    "ar": "الْحَمْدُ لِلَّهِ",
+    "src": "hadith:muslim:5601",
+    "ref": {
+     "label": "Sahih Muslim 2137a",
+     "url": "https://sunnah.com/muslim/38/16",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   },
+   {
+    "id": "akbar",
+    "label": "Allahu akbar",
+    "ar": "اللَّهُ أَكْبَرُ",
+    "src": "hadith:muslim:5601",
+    "ref": {
+     "label": "Sahih Muslim 2137a",
+     "url": "https://sunnah.com/muslim/38/16",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   },
+   {
+    "id": "tahlil",
+    "label": "La ilaha illa Allah",
+    "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ",
+    "src": "hadith:muslim:5601",
+    "ref": {
+     "label": "Sahih Muslim 2137a",
+     "url": "https://sunnah.com/muslim/38/16",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   },
+   {
+    "id": "bihamdih",
+    "label": "SubhanAllah wa bihamdih",
+    "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+    "src": "hadith:muslim:6843",
+    "ref": {
+     "label": "Sahih Muslim 2692",
+     "url": "https://sunnah.com/muslim/48/39",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   },
+   {
+    "id": "istighfar",
+    "label": "Astaghfirullah",
+    "ar": "أَسْتَغْفِرُ اللَّهَ",
+    "src": "hadith:muslim:1334",
+    "ref": {
+     "label": "Sahih Muslim 591",
+     "url": "https://sunnah.com/muslim/5/171",
+     "book": "muslim",
+     "grade": "Sahih",
+     "grader": "sahihayn"
+    }
+   }
+  ],
+  "notes": [
+   {
+    "label": {
+     "en": "The Prophet ﷺ counted on his fingers",
+     "fr": "Le Prophète ﷺ comptait sur ses doigts"
+    },
+    "en": {
+     "text": "I saw the Messenger of Allah (ﷺ) counting the glorification of Allah on fingers. Ibn Qudamah said (in his version: \"With his right hands)",
+     "src": "hadith:abudawud:1502"
+    },
+    "fr": {
+     "text": "J'ai vu le Messager d'Allah ﷺ compter le tasbîh sur ses doigts. Ibn Qudâma ajoute [dans sa version] : de sa main droite.",
+     "src": "mine"
+    },
+    "ar": {
+     "ar": "رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم - يَعْقِدُ التَّسْبِيحَ قَالَ ابْنُ قُدَامَةَ - بِيَمِينِهِ",
+     "src": "hadith:abudawud:1502"
+    },
+    "ref": {
+     "label": "Sunan Abi Dawud 1502",
+     "url": "https://sunnah.com/abudawud:1502",
+     "book": "abudawud",
+     "grade": "Sahih",
+     "grader": "al-Albani",
+     "ruling": "صحيح"
+    }
+   },
+   {
+    "label": {
+     "en": "The fingers will be made to speak",
+     "fr": "Les doigts seront interrogés"
+    },
+    "en": {
+     "text": "The Prophet (ﷺ) commanded them (the women emigrants) to be regular (in remembering Allah by saying): \"Allah is most great\"; \"Glory be to the King, the Holy\"; \"there is no god but Allah\"; and that they should count them on fingers, for they (the fingers) will be questioned and asked to speak",
+     "src": "hadith:abudawud:1501"
+    },
+    "fr": {
+     "text": "Le Prophète ﷺ leur ordonna [aux femmes émigrées] d'être assidues au takbîr, au taqdîs et au tahlîl, et de les compter sur le bout des doigts, car ils seront interrogés et on les fera parler.",
+     "src": "mine"
+    },
+    "ar": {
+     "ar": "أَمَرَهُنَّ أَنْ يُرَاعِينَ بِالتَّكْبِيرِ وَالتَّقْدِيسِ وَالتَّهْلِيلِ وَأَنْ يَعْقِدْنَ بِالأَنَامِلِ فَإِنَّهُنَّ مَسْئُولاَتٌ مُسْتَنْطَقَاتٌ",
+     "src": "hadith:abudawud:1501"
+    },
+    "ref": {
+     "label": "Sunan Abi Dawud 1501",
+     "url": "https://sunnah.com/abudawud:1501",
+     "book": "abudawud",
+     "grade": "Hasan",
+     "grader": "al-Albani",
+     "ruling": "حسن"
+    }
+   }
+  ]
+ },
  "items": [
   {
    "id": "h1",
@@ -4089,6 +4225,16 @@
    "url": "https://surahquran.com/Hadith-100968.html",
    "where": "Sahih at-Targhib 662"
   },
+  "hadith:abudawud:1501": {
+   "label": "Sunan Abi Dawud 1501",
+   "url": "https://sunnah.com/abudawud:1501",
+   "site": "sunnah.com"
+  },
+  "hadith:abudawud:1502": {
+   "label": "Sunan Abi Dawud 1502",
+   "url": "https://sunnah.com/abudawud:1502",
+   "site": "sunnah.com"
+  },
   "hadith:abudawud:1523": {
    "label": "Sunan Abi Dawud 1523",
    "url": "https://sunnah.com/abudawud:1523",
@@ -4237,6 +4383,11 @@
   "hadith:muslim:1352": {
    "label": "Sahih Muslim 597a",
    "url": "https://sunnah.com/muslim/5/188",
+   "site": "sunnah.com"
+  },
+  "hadith:muslim:5601": {
+   "label": "Sahih Muslim 2137a",
+   "url": "https://sunnah.com/muslim/38/16",
    "site": "sunnah.com"
   },
   "hadith:muslim:6843": {

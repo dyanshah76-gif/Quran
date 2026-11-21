@@ -1310,6 +1310,36 @@ TIMING = {
     },
 }
 
+# The tasbih counter: the words to count, each copied from an authentic hadith
+# (letters and vowel marks as sunnah.com has them), and the Sunna of counting
+# on the fingers.
+TASBIH = {
+    'phrases': [
+        {'id': 'subhan', 'label': 'SubhanAllah', 'ar': AR(H('muslim', 5601), 'سُبْحَانَ اللَّهِ')},
+        {'id': 'hamd', 'label': 'Alhamdulillah', 'ar': AR(H('muslim', 5601), 'الْحَمْدُ لِلَّهِ')},
+        {'id': 'akbar', 'label': 'Allahu akbar', 'ar': AR(H('muslim', 5601), 'اللَّهُ أَكْبَرُ')},
+        {'id': 'tahlil', 'label': 'La ilaha illa Allah', 'ar': AR(H('muslim', 5601), 'لاَ إِلَهَ إِلاَّ اللَّهُ')},
+        {'id': 'bihamdih', 'label': 'SubhanAllah wa bihamdih', 'ar': AR(H('muslim', 6843), 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ')},
+        {'id': 'istighfar', 'label': 'Astaghfirullah', 'ar': AR(H('muslim', 1334), 'أَسْتَغْفِرُ اللَّهَ')},
+    ],
+    'notes': [
+        {
+            'label': {'en': 'The Prophet ﷺ counted on his fingers', 'fr': 'Le Prophète ﷺ comptait sur ses doigts'},
+            'ar': X(H('abudawud', 1502), 'ar', 'رَأَيْتُ رَسُولَ اللَّهِ', 'بِيَمِينِهِ'),
+            'en': X(H('abudawud', 1502), 'en', 'I saw the Messenger of Allah', 'With his right hands)'),
+            'fr': MINE("J'ai vu le Messager d'Allah ﷺ compter le tasbîh sur ses doigts. Ibn Qudâma ajoute [dans sa version] : de sa main droite."),
+            'ref': H('abudawud', 1502),
+        },
+        {
+            'label': {'en': 'The fingers will be made to speak', 'fr': 'Les doigts seront interrogés'},
+            'ar': X(H('abudawud', 1501), 'ar', 'أَمَرَهُنَّ', 'مُسْتَنْطَقَاتٌ'),
+            'en': X(H('abudawud', 1501), 'en', 'The Prophet (ﷺ) commanded them', 'asked to speak'),
+            'fr': MINE("Le Prophète ﷺ leur ordonna [aux femmes émigrées] d'être assidues au takbîr, au taqdîs et au tahlîl, et de les compter sur le bout des doigts, car ils seront interrogés et on les fera parler."),
+            'ref': H('abudawud', 1501),
+        },
+    ],
+}
+
 # Hisn al-Muslim items left out: al-Albani graded the hadith weak.
 EXCLUDED = [
     {'hisn': 80, 'refs': [H('abudawud', 5069), H('abudawud', 5078)]},
@@ -1544,35 +1574,7 @@ class Builder:
             out['countAr'] = {'ar': t['text'], 'src': t['src']}
             self.checks['counts'] += 1
         out['about'] = {lang: self.text(spec['about'][lang], where) for lang in ('en', 'fr')}
-        notes = []
-        for note in spec.get('notes', []):
-            entry = {'label': note['label'], 'en': self.text(note['en'], where), 'fr': self.text(note['fr'], where)}
-            if 'ar' in note:
-                t = self.text(note['ar'], where)
-                entry['ar'] = {'ar': t['text'], 'src': t['src']}
-            if 'albani' in note:
-                book, n = note['albani'][1], note['albani'][2]
-                h = self.hadith.get(book, n)
-                entry['ar'] = {'ar': self.albani.ruling(book, n), 'src': f'albani:{book}:{n}'}
-                entry['arLabel'] = {'en': f"Al-Albani's words ({BOOK_NAMES[book]} {h['number']})", 'fr': f"Les mots d'al-Albânî ({BOOK_NAMES[book]} {h['number']})"}
-            if 'weak_ref' in note:
-                book, n = note['weak_ref'][1], note['weak_ref'][2]
-                ruling = self.albani.ruling(book, n)
-                if acceptable(grade_of(ruling)):
-                    raise BuildError(f'{where}: {book} {n} is called weak in a note but al-Albani says {ruling}')
-                entry['ar'] = {'ar': ruling, 'src': f'albani:{book}:{n}'}
-                h = self.hadith.get(book, n)
-                entry['arLabel'] = {'en': f"Al-Albani's words ({BOOK_NAMES[book]} {h['number']})", 'fr': f"Les mots d'al-Albânî ({BOOK_NAMES[book]} {h['number']})"}
-            if 'ref' in note:
-                entry['ref'] = self.ref(note['ref'], where)
-            if note.get('scholar'):
-                if 'ref' in note:
-                    raise BuildError(f'{where}: a note is either a hadith or a scholar\'s saying')
-                entry['scholar'] = note['scholar']
-            for key in ('tabs', 'face'):
-                if key in note:
-                    entry[key] = note[key]
-            notes.append(entry)
+        notes = [self.note(note, where) for note in spec.get('notes', [])]
         if notes:
             out['notes'] = notes
         out['hadith'] = self.primary(spec['primary'])
@@ -1580,6 +1582,36 @@ class Builder:
         if 'surahs' in spec:
             out['surahs'] = spec['surahs']
         return out
+
+    def note(self, note, where):
+        """A note under a dhikr: another hadith, a scholar's words or a remark."""
+        entry = {'label': note['label'], 'en': self.text(note['en'], where), 'fr': self.text(note['fr'], where)}
+        if 'ar' in note:
+            t = self.text(note['ar'], where)
+            entry['ar'] = {'ar': t['text'], 'src': t['src']}
+        if 'albani' in note:
+            book, n = note['albani'][1], note['albani'][2]
+            h = self.hadith.get(book, n)
+            entry['ar'] = {'ar': self.albani.ruling(book, n), 'src': f'albani:{book}:{n}'}
+            entry['arLabel'] = {'en': f"Al-Albani's words ({BOOK_NAMES[book]} {h['number']})", 'fr': f"Les mots d'al-Albânî ({BOOK_NAMES[book]} {h['number']})"}
+        if 'weak_ref' in note:
+            book, n = note['weak_ref'][1], note['weak_ref'][2]
+            ruling = self.albani.ruling(book, n)
+            if acceptable(grade_of(ruling)):
+                raise BuildError(f'{where}: {book} {n} is called weak in a note but al-Albani says {ruling}')
+            entry['ar'] = {'ar': ruling, 'src': f'albani:{book}:{n}'}
+            h = self.hadith.get(book, n)
+            entry['arLabel'] = {'en': f"Al-Albani's words ({BOOK_NAMES[book]} {h['number']})", 'fr': f"Les mots d'al-Albânî ({BOOK_NAMES[book]} {h['number']})"}
+        if 'ref' in note:
+            entry['ref'] = self.ref(note['ref'], where)
+        if note.get('scholar'):
+            if 'ref' in note:
+                raise BuildError(f'{where}: a note is either a hadith or a scholar\'s saying')
+            entry['scholar'] = note['scholar']
+        for key in ('tabs', 'face'):
+            if key in note:
+                entry[key] = note[key]
+        return entry
 
     def excluded(self, spec):
         out = {'hisn': spec['hisn'], 'hisnUrl': f'https://sunnah.com/hisn:{spec["hisn"]}', 'refs': []}
@@ -1619,6 +1651,14 @@ class Builder:
                 'ref': self.ref(hd['src'], 'times'),
             },
         }
+
+    def tasbih(self):
+        where = 'tasbih'
+        phrases = []
+        for p in TASBIH['phrases']:
+            seg = self.recite([p['ar']], where)[0]
+            phrases.append({'id': p['id'], 'label': p['label'], 'ar': seg['ar'], 'src': seg['src'], 'ref': self.ref(p['ar']['source'], where)})
+        return {'phrases': phrases, 'notes': [self.note(n, where) for n in TASBIH['notes']]}
 
     def src_table(self, data):
         """Label and link for every source tag used in the data, so the page can
@@ -1679,6 +1719,7 @@ def main(argv):
         'about': 'Built by tools/adhkar/build.py. Texts are copied unchanged from the sources; "src": "mine" marks translations written for this page.',
         'sources': SOURCES,
         'timing': b.timing(),
+        'tasbih': b.tasbih(),
         'items': [b.item(s) for s in ITEMS],
         'excluded': [b.excluded(s) for s in EXCLUDED],
     }

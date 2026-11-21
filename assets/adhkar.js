@@ -15,6 +15,10 @@ const PROGRESS_KEY = 'adhkar.progress.v1';
 const QURAN_SETTINGS_KEY = 'quran.settings.v1';
 const FETCH_TIMEOUT_MS = 15000;
 const TABS = ['wake', 'morning', 'day', 'evening', 'night', 'prayer'];
+// The lists, then the counter.
+const VIEWS = [...TABS, 'tasbih'];
+const TASBIH_KEY = 'adhkar.tasbih.v1';
+const TASBIH_TARGETS = [33, 100, 0]; // 0 = no target
 const GROUPS = { wake: ['wake', 'wake_night'], night: ['night', 'bed', 'turning'], prayer: ['each', 'maghrib', 'fajr'] };
 const ACCEPTED = /^(sahih|hasan)/i;
 const AR_DIGITS = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
@@ -26,7 +30,7 @@ const STRINGS = {
     title: 'Adhkar',
     back: 'Coran',
     settings: 'Réglages',
-    tabs: { wake: 'Réveil', morning: 'Matin', day: 'Journée', evening: 'Soir', night: 'Nuit', prayer: 'Après la prière' },
+    tabs: { wake: 'Réveil', morning: 'Matin', day: 'Journée', evening: 'Soir', night: 'Nuit', prayer: 'Après la prière', tasbih: 'Tasbih' },
     heads: {
       wake: 'Adhkar du réveil',
       morning: 'Adhkar du matin',
@@ -34,6 +38,7 @@ const STRINGS = {
       evening: 'Adhkar du soir',
       night: 'Adhkar de la nuit',
       prayer: 'Après la prière',
+      tasbih: 'Tasbih',
     },
     groups: {
       wake: 'En se réveillant',
@@ -128,6 +133,24 @@ const STRINGS = {
     retry: 'Réessayer',
     timing: 'Quand dire les adhkar du matin et du soir ?',
     timingHadith: 'Le hadith qui nomme les deux moments',
+    tb: {
+      open: 'Tasbih',
+      words: 'Ce que je compte',
+      other: 'Autre',
+      otherHint: 'Comptez le dhikr de votre choix.',
+      tap: 'Toucher pour compter',
+      of: (n) => `sur ${n}`,
+      left: (n) => `Encore ${n}`,
+      complete: 'Terminé. Touchez pour un nouveau tour.',
+      rounds: (n) => (n === 1 ? '1 tour terminé' : `${n} tours terminés`),
+      target: 'Objectif',
+      free: 'Libre',
+      undo: 'Enlever 1',
+      reset: 'Remettre à zéro',
+      resetSure: 'Toucher encore pour remettre à zéro',
+      label: (word, n, t) => `${word} : ${n}${t ? ` sur ${t}` : ''}`,
+      sunnah: 'Compter sur les doigts',
+    },
     read: (name) => `Lire la sourate ${name}`,
     footTitle: 'Comment cette page est faite',
     footRule:
@@ -149,7 +172,7 @@ const STRINGS = {
     title: 'Adhkar',
     back: 'Quran',
     settings: 'Settings',
-    tabs: { wake: 'Waking', morning: 'Morning', day: 'Day', evening: 'Evening', night: 'Night', prayer: 'After prayer' },
+    tabs: { wake: 'Waking', morning: 'Morning', day: 'Day', evening: 'Evening', night: 'Night', prayer: 'After prayer', tasbih: 'Tasbih' },
     heads: {
       wake: 'Adhkar on waking up',
       morning: 'Morning adhkar',
@@ -157,6 +180,7 @@ const STRINGS = {
       evening: 'Evening adhkar',
       night: 'Adhkar of the night',
       prayer: 'After the prayer',
+      tasbih: 'Tasbih',
     },
     groups: {
       wake: 'On waking up',
@@ -251,6 +275,24 @@ const STRINGS = {
     retry: 'Try again',
     timing: 'When to say the morning and evening adhkar?',
     timingHadith: 'The hadith that names the two times',
+    tb: {
+      open: 'Tasbih',
+      words: 'What I am counting',
+      other: 'Other',
+      otherHint: 'Count the dhikr of your choice.',
+      tap: 'Tap to count',
+      of: (n) => `of ${n}`,
+      left: (n) => `${n} to go`,
+      complete: 'Done. Tap for another round.',
+      rounds: (n) => (n === 1 ? '1 round done' : `${n} rounds done`),
+      target: 'Target',
+      free: 'Free',
+      undo: 'Take 1 off',
+      reset: 'Reset to zero',
+      resetSure: 'Tap again to reset',
+      label: (word, n, t) => `${word}: ${n}${t ? ` of ${t}` : ''}`,
+      sunnah: 'Counting on the fingers',
+    },
     read: (name) => `Read Surat ${name}`,
     footTitle: 'How this page is made',
     footRule:
@@ -306,6 +348,8 @@ const ICONS = {
     '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></g></svg>',
   check: '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   undo: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H5V3"/><path d="M5.6 7A8 8 0 1 1 4 12"/></g></svg>',
+  beads:
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="4.5" r="2"/><circle cx="6.2" cy="8" r="2"/><circle cx="17.8" cy="8" r="2"/><circle cx="5" cy="14.5" r="2"/><circle cx="19" cy="14.5" r="2"/><path d="M12 13v4.5M10.2 20.5h3.6" stroke-linecap="round"/></g></svg>',
   chevron: '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 };
 
@@ -343,6 +387,7 @@ const state = {
   progress: {},
   listToken: 0,
   clockOffset: 0,
+  tasbih: { word: 'subhan', target: 33, counts: {} },
 };
 const S = () => STRINGS[state.lang];
 const now = () => new Date(Date.now() + state.clockOffset);
@@ -433,15 +478,20 @@ function validItem(it) {
   if (!it.about || !textObj(it.about.en) || !textObj(it.about.fr)) return false;
   if (!it.hadith || !isText(it.hadith.ar) || !isHttps(it.hadith.url)) return false;
   if (!Array.isArray(it.refs) || !it.refs.length || !it.refs.every(validRef)) return false;
-  if (it.notes && !(Array.isArray(it.notes) && it.notes.every((n) => n && n.label && textObj(n.en) && textObj(n.fr) && (!n.ref || validRef(n.ref))))) return false;
+  if (it.notes && !(Array.isArray(it.notes) && it.notes.every((n) => validNote(n)))) return false;
   return true;
 }
 
 const validData = (data) => data && data.version === 2 && Array.isArray(data.items) && data.items.length > 0 && data.srcs && data.sources && data.timing;
 
+const validNote = (n) => n && n.label && textObj(n.en) && textObj(n.fr) && (!n.ref || validRef(n.ref));
+const validWord = (w) => w && /^[a-z]+$/.test(w.id) && isText(w.label) && isText(w.ar) && isText(w.src) && validRef(w.ref);
+
 async function loadData() {
   const data = await fetchVerified([DATA_URL], validData);
   data.items = data.items.filter(validItem);
+  const tb = data.tasbih || {};
+  data.tasbih = { phrases: (tb.phrases || []).filter(validWord), notes: (tb.notes || []).filter(validNote) };
   return data;
 }
 
@@ -639,7 +689,12 @@ function renderHero() {
       'div',
       { class: 'bar' },
       el('a', { class: 'icon-btn', href: './', 'aria-label': s.back }, svg(ICONS.back), el('span', {}, s.back)),
-      el('button', { class: 'icon-btn', type: 'button', 'aria-label': s.settings, onclick: openSettings }, svg(ICONS.settings)),
+      el(
+        'span',
+        { class: 'bar-end' },
+        state.tab === 'tasbih' ? null : el('a', { class: 'icon-btn tb-link', href: '#tasbih' }, svg(ICONS.beads), el('span', {}, s.tb.open)),
+        el('button', { class: 'icon-btn', type: 'button', 'aria-label': s.settings, onclick: openSettings }, svg(ICONS.settings)),
+      ),
     ),
     el('h1', { id: 'hero-title' }, s.heads[state.tab]),
     el('p', { class: 'date' }, dateText.charAt(0).toUpperCase() + dateText.slice(1), hijri ? el('span', { class: 'hijri' }, hijri) : null),
@@ -679,6 +734,12 @@ function renderTabs() {
           total && done === total ? svg(ICONS.check) : el('span', { class: 'pill-n' }, String(total - done)),
         );
       }),
+      el(
+        'button',
+        { class: 'pill pill-tool', type: 'button', role: 'tab', id: 'tab-tasbih', 'aria-selected': String(state.tab === 'tasbih'), dataset: { tab: 'tasbih' }, onclick: () => selectTab('tasbih', true) },
+        svg(ICONS.beads),
+        s.tabs.tasbih,
+      ),
     ),
     el('div', { class: 'progress', id: 'progress' }, el('div', { class: 'progress-track' }, el('div', { class: 'progress-fill' })), el('span', { class: 'progress-text' })),
   );
@@ -972,7 +1033,8 @@ function updateProgress() {
   const s = S();
   const { done, total } = tabProgress(state.tab);
   const bar = document.getElementById('progress');
-  if (bar) {
+  if (bar) bar.hidden = state.tab === 'tasbih';
+  if (bar && state.tab !== 'tasbih') {
     bar.querySelector('.progress-fill').style.width = `${total ? (done / total) * 100 : 0}%`;
     bar.querySelector('.progress-text').textContent = s.progress(done, total);
   }
@@ -1015,6 +1077,10 @@ function renderTiming() {
 }
 
 function renderList() {
+  if (state.tab === 'tasbih') {
+    renderTasbih();
+    return;
+  }
   const s = S();
   const main = document.getElementById('main');
   const tab = state.tab;
@@ -1267,11 +1333,177 @@ function setLang(lang, dialog) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Tasbih                                                              */
+/* ------------------------------------------------------------------ */
+
+// A counter for any dhikr. The words offered are copied from authentic hadith
+// (data/adhkar/adhkar.json, "tasbih"); "Other" counts whatever the reader says.
+function loadTasbih() {
+  const t = readStore(TASBIH_KEY) || {};
+  const counts = {};
+  if (t.counts && typeof t.counts === 'object') {
+    for (const [id, c] of Object.entries(t.counts)) {
+      if (/^[a-z]+$/.test(id) && c && Number.isInteger(c.n) && c.n >= 0 && Number.isInteger(c.rounds) && c.rounds >= 0) counts[id] = { n: c.n, rounds: c.rounds };
+    }
+  }
+  state.tasbih = {
+    word: typeof t.word === 'string' && /^[a-z]+$/.test(t.word) ? t.word : 'subhan',
+    target: TASBIH_TARGETS.includes(t.target) ? t.target : 33,
+    counts,
+  };
+}
+
+const saveTasbih = () => writeStore(TASBIH_KEY, state.tasbih);
+
+function renderTasbih() {
+  const s = S();
+  const tb = s.tb;
+  const main = document.getElementById('main');
+  const words = state.data.tasbih.phrases;
+  if (state.tasbih.word !== 'other' && !words.some((w) => w.id === state.tasbih.word)) state.tasbih.word = words.length ? words[0].id : 'other';
+  const word = () => words.find((w) => w.id === state.tasbih.word) || null;
+  const count = () => state.tasbih.counts[state.tasbih.word] || (state.tasbih.counts[state.tasbih.word] = { n: 0, rounds: 0 });
+
+  // the words
+  const chips = el(
+    'div',
+    { class: 'tb-words', role: 'radiogroup', 'aria-label': tb.words },
+    [...words.map((w) => ({ id: w.id, label: w.label })), { id: 'other', label: tb.other }].map((w) =>
+      el('button', { class: 'tb-word', type: 'button', role: 'radio', dataset: { word: w.id }, 'aria-checked': String(w.id === state.tasbih.word), onclick: () => pick(w.id) }, w.label),
+    ),
+  );
+  const said = el('div', { class: 'tb-said' });
+
+  // the counter
+  const R = 46;
+  const LEN = 2 * Math.PI * R;
+  const ring = svg(
+    `<svg class="tb-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><circle class="tb-track" cx="50" cy="50" r="${R}"/><circle class="tb-arc" cx="50" cy="50" r="${R}" stroke-dasharray="${LEN.toFixed(2)}" stroke-dashoffset="${LEN.toFixed(2)}" transform="rotate(-90 50 50)"/></svg>`,
+  );
+  const num = el('span', { class: 'tb-num' });
+  const of = el('span', { class: 'tb-of' });
+  const tap = el('button', { class: 'tb-tap', type: 'button' }, ring, el('span', { class: 'tb-face' }, num, of));
+  const status = el('p', { class: 'tb-status', 'aria-live': 'polite' });
+  const rounds = el('p', { class: 'tb-rounds' });
+
+  // controls
+  const undo = el('button', { class: 'btn tb-undo', type: 'button' }, svg(ICONS.undo), tb.undo);
+  const reset = el('button', { class: 'btn tb-reset', type: 'button' }, tb.reset);
+  const targets = el(
+    'div',
+    { class: 'seg tb-targets', role: 'radiogroup', 'aria-label': tb.target },
+    TASBIH_TARGETS.map((t) =>
+      el('button', { type: 'button', role: 'radio', dataset: { target: String(t) }, 'aria-checked': String(t === state.tasbih.target), onclick: () => setTarget(t) }, t ? String(t) : tb.free),
+    ),
+  );
+
+  const paint = () => {
+    const w = word();
+    const c = count();
+    const t = state.tasbih.target;
+    const complete = t > 0 && c.n >= t;
+    chips.querySelectorAll('.tb-word').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.word === state.tasbih.word)));
+    targets.querySelectorAll('button').forEach((b) => b.setAttribute('aria-checked', String(Number(b.dataset.target) === t)));
+    said.replaceChildren(
+      ...(w
+        ? [el('p', { class: 'ar tb-ar', lang: 'ar', dir: 'rtl' }, w.ar), el('p', { class: 'ref-line tb-ref' }, colon(s.source), el('a', { href: w.ref.url, target: '_blank', rel: 'noopener' }, w.ref.label), ' ', el('span', { class: 'badge' }, gradeText(w.ref.grade)))]
+        : [el('p', { class: 'tb-hint' }, tb.otherHint)]),
+    );
+    num.textContent = String(t ? Math.min(c.n, t) : c.n);
+    of.textContent = t ? tb.of(t) : '';
+    const part = t ? Math.min(1, c.n / t) : 0;
+    ring.querySelector('.tb-arc').setAttribute('stroke-dashoffset', (LEN * (1 - part)).toFixed(2));
+    tap.classList.toggle('complete', complete);
+    tap.setAttribute('aria-label', tb.label(w ? w.label : tb.other, t ? Math.min(c.n, t) : c.n, t));
+    status.textContent = complete ? tb.complete : t ? (c.n ? tb.left(t - c.n) : tb.tap) : c.n ? '' : tb.tap;
+    rounds.textContent = t && c.rounds ? tb.rounds(c.rounds) : '';
+    undo.disabled = c.n === 0 && !(t && c.rounds);
+  };
+
+  function pick(id) {
+    state.tasbih.word = id;
+    saveTasbih();
+    disarm();
+    paint();
+  }
+  function setTarget(t) {
+    state.tasbih.target = t;
+    const c = count();
+    if (t && c.n > t) c.n = t;
+    saveTasbih();
+    paint();
+  }
+
+  tap.addEventListener('click', () => {
+    const c = count();
+    const t = state.tasbih.target;
+    if (t && c.n >= t) c.n = 0; // a new round
+    c.n += 1;
+    if (t && c.n === t) {
+      c.rounds += 1;
+      if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
+    } else if (navigator.vibrate) navigator.vibrate(8);
+    saveTasbih();
+    disarm();
+    paint();
+  });
+  undo.addEventListener('click', () => {
+    const c = count();
+    const t = state.tasbih.target;
+    if (c.n > 0) {
+      if (t && c.n >= t) c.rounds = Math.max(0, c.rounds - 1);
+      c.n -= 1;
+    } else if (t && c.rounds) c.n = t; // back to the round just finished
+    saveTasbih();
+    paint();
+  });
+
+  // Reset asks for a second tap, so a slip of the finger does not lose the count.
+  let armed = null;
+  function disarm() {
+    clearTimeout(armed);
+    armed = null;
+    reset.textContent = tb.reset;
+    reset.classList.remove('armed');
+  }
+  reset.addEventListener('click', () => {
+    if (!armed) {
+      reset.textContent = tb.resetSure;
+      reset.classList.add('armed');
+      armed = setTimeout(disarm, 4000);
+      return;
+    }
+    state.tasbih.counts[state.tasbih.word] = { n: 0, rounds: 0 };
+    saveTasbih();
+    disarm();
+    paint();
+  });
+
+  const notes = state.data.tasbih.notes;
+  main.replaceChildren(
+    el(
+      'section',
+      { class: 'card tasbih' },
+      chips,
+      said,
+      el('div', { class: 'tb-center' }, tap, status, rounds),
+      el('div', { class: 'tb-controls' }, undo, reset),
+      el('p', { class: 'tb-label' }, tb.target),
+      targets,
+    ),
+    notes.length ? el('section', { class: 'card tb-sunnah' }, el('h2', {}, tb.sunnah), notes.map(noteNode)) : null,
+  );
+  main.dataset.tab = 'tasbih';
+  updateProgress();
+  paint();
+}
+
+/* ------------------------------------------------------------------ */
 /* Start                                                               */
 /* ------------------------------------------------------------------ */
 
 function selectTab(tab, manual) {
-  if (!TABS.includes(tab)) return;
+  if (!VIEWS.includes(tab)) return;
   state.tab = tab;
   if (manual) {
     state.manualTab = true;
@@ -1304,9 +1536,10 @@ async function start() {
   document.documentElement.dataset.arfont = state.arFont;
   applySky();
   loadProgress();
+  loadTasbih();
   const fromHash = location.hash.slice(1);
-  state.tab = TABS.includes(fromHash) ? fromHash : TAB_FOR_SEGMENT[state.period.segment];
-  state.manualTab = TABS.includes(fromHash);
+  state.tab = VIEWS.includes(fromHash) ? fromHash : TAB_FOR_SEGMENT[state.period.segment];
+  state.manualTab = VIEWS.includes(fromHash);
 
   const main = document.getElementById('main');
   const load = async () => {
@@ -1331,7 +1564,7 @@ async function start() {
   });
   window.addEventListener('hashchange', () => {
     const tab = location.hash.slice(1);
-    if (TABS.includes(tab) && tab !== state.tab) selectTab(tab, true);
+    if (VIEWS.includes(tab) && tab !== state.tab) selectTab(tab, true);
   });
   // The list picker gets a solid backing once it sticks to the top.
   const tabs = document.getElementById('tabs');

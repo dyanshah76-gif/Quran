@@ -134,3 +134,12 @@ python3 tools/adhkar/build.py HADITH_DIR HADEETHENC_DIR HISN_DIR ALBANI_DIR JAMI
 ```
 
 The folders are described at the top of `tools/adhkar/build.py`.
+
+## Tasbih counter
+
+`adhkar.json` → `tasbih` holds what the counter on adhkar.html#tasbih shows:
+
+- `phrases`: the words to count. Each is cut from an authentic hadith by the build (same containment and vowel checks as the adhkar): the four words of Sahih Muslim 2137a, "subhan Allahi wa bihamdihi" from Sahih Muslim 2692, and "astaghfirullah" from Sahih Muslim 591. "Other" on the page counts any dhikr and shows no Arabic.
+- `notes`: the Sunna of counting on the fingers, Abu Dawud 1502 (al-Albani: sahih) and Abu Dawud 1501 (al-Albani: hasan), both checked in two copies of al-Albani's ruling like every other reference.
+
+The counts stay on the phone (`localStorage`, key `adhkar.tasbih.v1`), one count per word.

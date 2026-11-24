@@ -143,3 +143,8 @@ The folders are described at the top of `tools/adhkar/build.py`.
 - `notes`: the Sunna of counting on the fingers, Abu Dawud 1502 (al-Albani: sahih) and Abu Dawud 1501 (al-Albani: hasan), both checked in two copies of al-Albani's ruling like every other reference.
 
 The counts stay on the phone (`localStorage`, key `adhkar.tasbih.v1`), one count per word.
+
+## How the Arabic is shown
+
+- The default writing is the Quran's own font (KFGQPC Hafs, the same file as the Quran reader), so the duas read like the mushaf. Naskh and Modern stay in the settings. The choice is saved as `arScript`; an old saved `arFont: "naskh"` was only the old default and is not kept.
+- The sources sometimes write a pronounced ya without its dots, in old-print style (شَىْءٍ, عَلَىَّ). The page shows it as ي (شَيْءٍ, عَلَيَّ): a ى followed by a vowel mark is always a ya. Alif maqsura (عَلَى, النَّوَى) has no vowel after it and is left as it is. Only the display changes; `adhkar.json` keeps the source's letters.

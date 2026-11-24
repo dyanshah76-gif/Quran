@@ -345,14 +345,19 @@ dialog.settings .ar { text-align: center; margin: 4px 0 0; }
 }
 :root { --font-arabic: 'Adhkar Naskh', 'Noto Naskh Arabic', 'Geeza Pro', 'Traditional Arabic', serif; }
 :root[data-arfont='modern'] { --font-arabic: 'Adhkar Modern', 'Noto Sans Arabic', 'Geeza Pro', sans-serif; }
+/* The default: the Quran's own font (KFGQPC Hafs), so the duas read like the mushaf.
+   Signs it lacks (ﷺ, the Arabic comma) come from Naskh. */
+:root[data-arfont='quran'] { --font-arabic: 'QuranHafs', 'Adhkar Naskh', 'Noto Naskh Arabic', 'Geeza Pro', serif; }
 .recite { margin-top: 14px; }
 .recite .ar { line-height: 2.1; word-spacing: 0.08em; margin-bottom: 10px; }
 :root[data-arfont='modern'] .recite .ar { font-size: calc(var(--ar) * 0.93); line-height: 2.05; }
+:root[data-arfont='quran'] .recite .ar { font-size: calc(var(--ar) * 1.04); line-height: 2.15; word-spacing: 0.04em; }
 .small-ar { line-height: 2; }
 .seg.fonts button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 10px; font-size: 13px; }
 .font-sample { font-size: 24px; line-height: 1.7; }
 .seg.fonts button[data-font='naskh'] .font-sample { font-family: 'Adhkar Naskh', serif; }
 .seg.fonts button[data-font='modern'] .font-sample { font-family: 'Adhkar Modern', sans-serif; font-size: 22px; }
+.seg.fonts button[data-font='quran'] .font-sample { font-family: 'QuranHafs', 'Adhkar Naskh', serif; font-size: 25px; }
 
 /* ---------- the translation and the hadith on the card ---------- */
 .meaning p { font: 17px/1.62 var(--font-read); color: var(--ink); }

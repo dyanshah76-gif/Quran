@@ -19,6 +19,7 @@ const TABS = ['wake', 'morning', 'day', 'evening', 'night', 'prayer'];
 const VIEWS = [...TABS, 'tasbih'];
 const TASBIH_KEY = 'adhkar.tasbih.v1';
 const TASBIH_TARGETS = [33, 100, 0]; // 0 = no target
+const ARABIC_FONTS = ['quran', 'naskh', 'modern'];
 const GROUPS = { wake: ['wake', 'wake_night'], night: ['night', 'bed', 'turning'], prayer: ['each', 'maghrib', 'fajr'] };
 const ACCEPTED = /^(sahih|hasan)/i;
 const AR_DIGITS = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
@@ -103,7 +104,7 @@ const STRINGS = {
     more: 'Lire la suite',
     less: 'Réduire',
     setFont: 'Écriture arabe',
-    fonts: { naskh: 'Naskh', modern: 'Moderne' },
+    fonts: { quran: 'Comme le Coran', naskh: 'Naskh', modern: 'Moderne' },
     whenProof: 'Les mots du hadith pour le moment',
     countProof: 'Les mots du hadith pour le nombre',
     aboutProof: 'Ce que dit le hadith',
@@ -245,7 +246,7 @@ const STRINGS = {
     more: 'Read more',
     less: 'Show less',
     setFont: 'Arabic writing',
-    fonts: { naskh: 'Naskh', modern: 'Modern' },
+    fonts: { quran: 'Like the Quran', naskh: 'Naskh', modern: 'Modern' },
     whenProof: 'The words of the hadith for the time',
     countProof: 'The words of the hadith for the count',
     aboutProof: 'What the hadith says',
@@ -379,7 +380,7 @@ const state = {
   method: 'mwl',
   place: null, // null = Paris, or {lat, lng}
   arSize: 28,
-  arFont: 'naskh',
+  arFont: 'quran',
   tab: 'morning',
   manualTab: false,
   data: null,
@@ -407,11 +408,13 @@ function loadSettings() {
   state.method = METHODS[a.method] ? a.method : 'mwl';
   state.place = a.place && Number.isFinite(a.place.lat) && Number.isFinite(a.place.lng) ? { lat: a.place.lat, lng: a.place.lng } : null;
   state.arSize = Number.isFinite(a.arSize) ? Math.min(44, Math.max(22, a.arSize)) : 28;
-  state.arFont = ['naskh', 'modern'].includes(a.arFont) ? a.arFont : 'naskh';
+  // 'arScript' replaced 'arFont' when the Quran's writing became the default:
+  // an old saved 'naskh' was only the old default, so it is not kept.
+  state.arFont = ARABIC_FONTS.includes(a.arScript) ? a.arScript : a.arFont === 'modern' ? 'modern' : 'quran';
 }
 
 function saveSettings() {
-  writeStore(SETTINGS_KEY, { lang: state.lang, method: state.method, place: state.place, arSize: state.arSize, arFont: state.arFont });
+  writeStore(SETTINGS_KEY, { lang: state.lang, method: state.method, place: state.place, arSize: state.arSize, arScript: state.arFont });
 }
 
 /* ------------------------------------------------------------------ */
@@ -752,6 +755,12 @@ function renderTabs() {
 /* ------------------------------------------------------------------ */
 
 // The salawat sign is drawn from the Arabic font so it is readable.
+// Old-print spelling in the sources writes a pronounced ya without its dots
+// (شَىْءٍ, عَلَىَّ). On screen it is shown as ي, as in the mushaf. A ى with a
+// vowel mark after it is always a ya; alif maqsura (عَلَى) has none. Only the
+// display changes: the data keeps the source's letters.
+const arShow = (t) => (typeof t === 'string' ? t.replace(/\u0649(?=[\u064B-\u0652\u0670])/g, '\u064A') : t);
+
 function withSalawat(text) {
   const parts = String(text).split('ﷺ');
   const out = [];
@@ -789,7 +798,7 @@ function renderRecite(it, tab, slots) {
       box.append(cap, p);
     } else {
       box.append(
-        el('p', { class: 'ar', lang: 'ar', dir: 'rtl', dataset: { n: seg.n ? String(seg.n) : null } }, seg.ar, seg.n && seg.n > 1 ? el('span', { class: 'ar-n', dir: 'ltr', lang: state.lang }, `×${seg.n}`) : null),
+        el('p', { class: 'ar', lang: 'ar', dir: 'rtl', dataset: { n: seg.n ? String(seg.n) : null } }, arShow(seg.ar), seg.n && seg.n > 1 ? el('span', { class: 'ar-n', dir: 'ltr', lang: state.lang }, `×${seg.n}`) : null),
       );
     }
   }
@@ -830,7 +839,7 @@ function noteNode(note) {
     note.scholar ? el('p', { class: 'note-kind' }, withSalawat(s.scholar(note.scholar))) : null,
     el('p', {}, withSalawat(t.text)),
     t.src === 'mine' ? srcNode('mine') : null,
-    note.ar ? el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, note.ar.ar) : null,
+    note.ar ? el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, arShow(note.ar.ar)) : null,
     note.ref ? refLine(note.ref) : note.ar ? srcNode(note.ar.src) : null,
     !note.ref && t.src !== 'mine' ? srcNode(t.src) : null,
   );
@@ -893,9 +902,9 @@ function renderProof(it, tab) {
         : null,
     reciteFor(it, tab).filter((seg) => seg.ar).slice(0, 1).map((seg) => srcNode(seg.inside || seg.src)),
     el('h3', {}, s.whenProof),
-    it.whenAr.map((w) => el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${w.ar}»`)),
+    it.whenAr.map((w) => el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${arShow(w.ar)}»`)),
     srcNode(it.whenAr[0].src),
-    it.countAr ? [el('h3', {}, s.countProof), el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${it.countAr.ar}»`), srcNode(it.countAr.src)] : null,
+    it.countAr ? [el('h3', {}, s.countProof), el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${arShow(it.countAr.ar)}»`), srcNode(it.countAr.src)] : null,
     notesFor(it, tab, false).map(noteNode),
     own ? el('p', { class: 'small' }, s.own) : null,
     el('h3', {}, s.refs),
@@ -905,7 +914,7 @@ function renderProof(it, tab) {
       { class: 'full' },
       el('summary', {}, s.fullHadith, svg(ICONS.chevron)),
       h.excerpt ? el('p', { class: 'small' }, s.excerpt) : null,
-      el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, h.ar),
+      el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, arShow(h.ar)),
       srcNode(h.arSrc),
       tr ? [!h[state.lang] && s.englishOnly ? el('p', { class: 'small' }, s.englishOnly) : null, el('p', { lang: h[state.lang] ? null : 'en' }, withSalawat(tr.text)), srcNode(tr.src)] : null,
       explain ? [el('h3', {}, s.explain), el('p', {}, withSalawat(explain.text)), srcNode(explain.src)] : null,
@@ -1063,13 +1072,13 @@ function renderTiming() {
     el('summary', {}, s.timing, svg(ICONS.chevron)),
     el('p', { class: 'small' }, t.scholar.cite[state.lang], ' — «', el('span', { lang: 'ar', dir: 'rtl', class: 'ar-inline' }, t.scholar.title), '»'),
     t.scholar.quotes.map((q, i) => [
-      el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, q.ar),
+      el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, arShow(q.ar)),
       el('p', {}, t.scholar[state.lang][i].text),
     ]),
     srcNode('mine'),
     el('p', { class: 'small' }, el('a', { href: t.scholar.url, target: '_blank', rel: 'noopener' }, 'shamela.ws/book/216')),
     el('h3', {}, s.timingHadith),
-    t.hadith.ar.map((a) => el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${a.ar}»`)),
+    t.hadith.ar.map((a) => el('p', { class: 'ar small-ar', lang: 'ar', dir: 'rtl' }, `«${arShow(a.ar)}»`)),
     el('p', {}, t.hadith[state.lang].text),
     srcNode(t.hadith[state.lang].src),
     el('ul', { class: 'refs' }, refRow(t.hadith.ref)),
@@ -1281,7 +1290,7 @@ function renderSettings(dialog) {
     el(
       'div',
       { class: 'seg fonts', role: 'radiogroup', 'aria-label': s.setFont },
-      ['naskh', 'modern'].map((key) =>
+      ARABIC_FONTS.map((key) =>
         el(
           'button',
           {
@@ -1406,7 +1415,7 @@ function renderTasbih() {
     targets.querySelectorAll('button').forEach((b) => b.setAttribute('aria-checked', String(Number(b.dataset.target) === t)));
     said.replaceChildren(
       ...(w
-        ? [el('p', { class: 'ar tb-ar', lang: 'ar', dir: 'rtl' }, w.ar), el('p', { class: 'ref-line tb-ref' }, colon(s.source), el('a', { href: w.ref.url, target: '_blank', rel: 'noopener' }, w.ref.label), ' ', el('span', { class: 'badge' }, gradeText(w.ref.grade)))]
+        ? [el('p', { class: 'ar tb-ar', lang: 'ar', dir: 'rtl' }, arShow(w.ar)), el('p', { class: 'ref-line tb-ref' }, colon(s.source), el('a', { href: w.ref.url, target: '_blank', rel: 'noopener' }, w.ref.label), ' ', el('span', { class: 'badge' }, gradeText(w.ref.grade)))]
         : [el('p', { class: 'tb-hint' }, tb.otherHint)]),
     );
     num.textContent = String(t ? Math.min(c.n, t) : c.n);
